@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joestar Peptide | Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-wrap" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <div class="logo">
+        <span class="logo-mark">
+          <img src="WhatsApp Image 2026-01-30 at 22.00.09.jpeg" alt="Joestar Peptides Logo" />
+        </span>
+        <div>
+          <p class="logo-title">Joestar Peptide</p>
+          <p class="logo-sub">Admin Panel</p>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a class="ghost" href="index.html">← Kembali ke Home</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="admin-guard" id="adminGuard">
+      <div class="admin-guard-card">
+        <h2>Admin Access</h2>
+        <p>Login sebagai admin untuk membuka panel.</p>
+        <form id="loginForm" class="admin-login">
+          <input type="text" id="loginUsername" placeholder="Username admin" required />
+          <input type="password" id="loginPassword" placeholder="Password" required />
+          <button class="primary" type="submit">Login Admin</button>
+        </form>
+        <p class="small" id="adminGuardMessage"></p>
+      </div>
+    </section>
+
+    <section id="admin" class="admin hidden">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Admin</p>
+          <h2>Admin Panel</h2>
+        </div>
+        <p class="lead">Kelola kode affiliate, status akun, dan role.</p>
+      </div>
+
+      <div class="admin-grid">
+        <div class="admin-card">
+          <h3>Status Login</h3>
+          <div class="admin-status">
+            <div><strong>Token:</strong> <span id="adminTokenStatus">-</span></div>
+            <div><strong>Role:</strong> <span id="adminRoleStatus">-</span></div>
+          </div>
+        </div>
+
+        <div class="admin-card admin-wide">
+          <h3>Input Order WhatsApp</h3>
+          <form id="orderForm" class="admin-order">
+            <input type="text" id="orderNumber" placeholder="Order Number (ex: INV-1001)" required />
+            <input type="number" id="orderTotal" placeholder="Total (IDR)" required />
+            <input type="date" id="orderDate" required />
+            <input type="text" id="orderAffiliate" placeholder="Kode Affiliate (optional)" />
+            <button class="primary" type="submit">Simpan Order</button>
+          </form>
+          <p class="small">Gunakan saat checkout via WhatsApp untuk mencatat penjualan affiliate.</p>
+        </div>
+        <div class="admin-card">
+          <h3>Generate Kode Affiliate</h3>
+          <form id="generateCodesForm">
+            <input type="number" id="codeCount" min="1" max="100" value="10" required />
+            <button class="primary" type="submit">Generate</button>
+          </form>
+          <div id="generatedCodes" class="code-list"></div>
+        </div>
+
+        <div class="admin-card admin-wide">
+          <div class="admin-header">
+            <h3>Daftar Affiliate</h3>
+            <div class="admin-actions">
+              <button class="ghost" id="exportAffiliatesBtn" type="button">Export CSV</button>
+              <button class="ghost" id="refreshAffiliatesBtn" type="button">Refresh</button>
+            </div>
+          </div>
+          <div class="admin-filters">
+            <input type="search" id="affiliateSearch" placeholder="Cari nama, username, kode" />
+            <select id="statusFilter">
+              <option value="all">Semua Status</option>
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+              <option value="banned">Banned</option>
+            </select>
+            <select id="roleFilter">
+              <option value="all">Semua Role</option>
+              <option value="affiliate">Affiliate</option>
+              <option value="admin">Admin</option>
+            </select>
+            <select id="limitFilter">
+              <option value="10">10 / halaman</option>
+              <option value="20">20 / halaman</option>
+              <option value="50">50 / halaman</option>
+            </select>
+          </div>
+          <div id="affiliateList" class="admin-table"></div>
+          <div class="admin-pagination">
+            <button class="ghost" id="prevPageBtn" type="button">Prev</button>
+            <span id="pageInfo" class="product-meta">Page 1</span>
+            <button class="ghost" id="nextPageBtn" type="button">Next</button>
+          </div>
+        </div>
+
+        <div class="admin-card admin-wide">
+          <div class="admin-header">
+            <h3>Audit Log</h3>
+            <button class="ghost" id="refreshAuditBtn" type="button">Refresh</button>
+          </div>
+          <div id="auditLog" class="admin-table"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal" id="otpModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeOtpModal" type="button">âœ•</button>
+      <h3>Verifikasi OTP WhatsApp</h3>
+      <p>Masukkan kode OTP yang dikirim ke WhatsApp Anda.</p>
+      <form id="otpForm">
+        <input type="text" id="otpInput" placeholder="Kode OTP" required />
+        <div class="modal-actions">
+          <button class="primary" type="submit">Verifikasi</button>
+          <button class="ghost" id="resendOtpBtn" type="button">Kirim ulang OTP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js?v=11"></script>
+  <script>
+    (function () {
+      const form = document.getElementById("loginForm");
+      if (!form || form.dataset.bound) return;
+
+      const toast = document.getElementById("toast");
+      const otpModal = document.getElementById("otpModal");
+      const otpForm = document.getElementById("otpForm");
+      const otpInput = document.getElementById("otpInput");
+
+      const showToast = (message) => {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2400);
+      };
+
+      const apiBase =
+        location.hostname === "localhost" || location.hostname === "127.0.0.1"
+          ? "http://localhost:3000/api"
+          : "/api";
+
+      let sessionId = null;
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+        if (!username || !password) {
+          showToast("Username dan password wajib diisi.");
+          return;
+        }
+        showToast("Memproses login...");
+        try {
+          const response = await fetch(apiBase + "/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            showToast(data.message || "Login gagal.");
+            return;
+          }
+          if (data.otpRequired) {
+            sessionId = data.sessionId;
+            if (otpModal) otpModal.classList.add("active");
+            showToast("OTP dikirim.");
+          }
+        } catch (error) {
+          showToast("Gagal konek ke server.");
+        }
+      });
+
+      if (otpForm) {
+        otpForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (!sessionId) return;
+          const code = otpInput.value.trim();
+          if (!code) return;
+          try {
+            const response = await fetch(apiBase + "/auth/otp/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ sessionId, code }),
+            });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+              showToast(data.message || "OTP salah.");
+              return;
+            }
+            if (data.user && data.user.role && data.user.role !== "admin") {
+              showToast("Akun ini bukan admin.");
+              return;
+            }
+            localStorage.setItem("jp_auth_token", data.token);
+            localStorage.setItem("jp_refresh_token", data.refreshToken || "");
+            document.cookie = "jp_auth_token=" + encodeURIComponent(data.token) + "; path=/; max-age=604800";
+            document.cookie = "jp_refresh_token=" + encodeURIComponent(data.refreshToken || "") + "; path=/; max-age=604800";
+            showToast("Login berhasil.");
+            const adminSection = document.getElementById("admin");
+            const adminGuard = document.getElementById("adminGuard");
+            if (adminSection) adminSection.classList.remove("hidden");
+            if (adminGuard) adminGuard.style.display = "none";
+            if (otpModal) otpModal.classList.remove("active");
+            window.dispatchEvent(new Event("admin:login"));
+          } catch (error) {
+            showToast("Gagal verifikasi OTP.");
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

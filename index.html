@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Joestar Peptide | Premium Research Peptides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="bg-wrap" aria-hidden="true"></div>
+
+  <div class="promo-banner">
+    <span>Setiap pembelian akan mendapatkan promo untuk pembelian berikutnya.</span>
+  </div>
+
+  <header class="site-header">
+    <div class="nav-wrap">
+      <div class="logo">
+        <span class="logo-mark">
+          <img src="WhatsApp Image 2026-01-30 at 22.00.09.jpeg" alt="Joestar Peptides Logo" />
+        </span>
+        <div>
+          <p class="logo-title">Joestar Peptide</p>
+          <p class="logo-sub">Premium Research Collection</p>
+        </div>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu">
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#shop">Shop All</a>
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button">Peptides</button>
+            <div class="dropdown-menu">
+              <a href="#shop" data-tag="Fat Loss">Fat Loss</a>
+              <a href="#shop" data-tag="Healing">Healing</a>
+              <a href="#shop" data-tag="Muscle Growth">Muscle Growth</a>
+              <a href="#shop" data-tag="Cognitive">Cognitive</a>
+              <a href="#shop" data-tag="Skin">Skin</a>
+            </div>
+          </div>
+          <a href="#coa">Lab Tests/COA</a>
+          <a href="#faq">FAQ</a>
+          <a href="#affiliate">Affiliate</a>
+          <a href="#contact">Contact Us</a>
+        </nav>
+
+        <div class="nav-actions">
+          <button class="ghost" id="openCart" type="button">
+            Cart <span id="cartCount">0</span>
+          </button>
+          <a class="primary" href="#shop">Shop Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Clean Medical Aesthetic</p>
+        <h1>Premium Peptide Collection for Research Excellence</h1>
+        <p class="lead">
+          Joestar Peptide menghadirkan formulasi riset terbaik dengan transparansi lab testing, kualitas konsisten,
+          dan dukungan konsultasi profesional.
+        </p>
+        <div class="hero-actions">
+          <a class="primary" href="#shop">Shop All Products</a>
+          <a class="ghost" href="https://wa.me/6287732013193" target="_blank" rel="noopener">Chat WhatsApp</a>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <h4>COA Ready</h4>
+            <p>Hasil uji lab tersedia untuk tiap batch.</p>
+          </div>
+          <div>
+            <h4>Cold Chain</h4>
+            <p>Penyimpanan terkontrol demi stabilitas optimal.</p>
+          </div>
+          <div>
+            <h4>Discreet Delivery</h4>
+            <p>Pengiriman aman ke seluruh Indonesia.</p>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-header">
+          <span>Featured Price</span>
+          <span class="tag">Retatrutide</span>
+        </div>
+        <div class="price-lines">
+          <div>
+            <h3>10mg</h3>
+            <p>Rp 1.800.000</p>
+          </div>
+          <div>
+            <h3>30mg</h3>
+            <p>Rp 5.100.000</p>
+          </div>
+        </div>
+        <p class="small">Harga dapat berubah mengikuti ketersediaan batch.</p>
+      </div>
+      <div class="molecule" aria-hidden="true">
+        <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="90" cy="90" r="70" stroke="currentColor" stroke-width="1.4" />
+          <circle cx="36" cy="52" r="6" fill="currentColor" />
+          <circle cx="140" cy="58" r="6" fill="currentColor" />
+          <circle cx="90" cy="144" r="6" fill="currentColor" />
+          <line x1="42" y1="52" x2="90" y2="90" stroke="currentColor" stroke-width="1.2" />
+          <line x1="138" y1="60" x2="90" y2="90" stroke="currentColor" stroke-width="1.2" />
+          <line x1="90" y1="140" x2="90" y2="90" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+      </div>
+    </section>
+
+    <section id="shop" class="shop">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Shop All</p>
+          <h2>Produk & Pricing</h2>
+        </div>
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Cari peptide, kategori, atau fungsi" />
+        </div>
+      </div>
+
+      <div class="filter-tags" id="tagFilters">
+        <button class="chip active" data-tag="all">All</button>
+        <button class="chip" data-tag="Fat Loss">Fat Loss</button>
+        <button class="chip" data-tag="Healing">Healing</button>
+        <button class="chip" data-tag="Muscle Growth">Muscle Growth</button>
+        <button class="chip" data-tag="Cognitive">Cognitive</button>
+        <button class="chip" data-tag="Skin">Skin</button>
+        <button class="chip" data-tag="Supplies">Supplies</button>
+      </div>
+
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section id="coa" class="trust">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Lab Tests/COA</p>
+          <h2>Transparansi & Kepercayaan</h2>
+        </div>
+        <p class="lead">Setiap batch dilengkapi sertifikat analisis (COA) untuk memastikan kemurnian dan konsistensi.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-card">
+          <h3>COA per Batch</h3>
+          <p>Unduh atau minta COA untuk tiap produk sebelum pembelian.</p>
+        </div>
+        <div class="trust-card">
+          <h3>Quality Assurance</h3>
+          <p>Proses validasi internal dengan standar penyimpanan medis.</p>
+        </div>
+        <div class="trust-card">
+          <h3>Customer Stories</h3>
+          <p>Testimoni terverifikasi menyoroti hasil dan layanan premium kami.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="details">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Product Detail</p>
+          <h2>Informasi Detail & Penyimpanan</h2>
+        </div>
+        <p class="lead">Klik detail pada setiap produk untuk membaca manfaat, penyimpanan, serta disclaimer medis.</p>
+      </div>
+      <div class="detail-panels">
+        <div>
+          <h3>Storage Guide</h3>
+          <p>Simpan produk dalam suhu 2-8°C dan hindari paparan cahaya langsung. Gunakan segera setelah reconstitusi.</p>
+        </div>
+        <div>
+          <h3>Medical Disclaimer</h3>
+          <p>Produk hanya untuk tujuan riset. Selalu konsultasikan dengan tenaga profesional sebelum penggunaan.</p>
+        </div>
+        <div>
+          <h3>Shipping</h3>
+          <p>Pengiriman dengan kemasan thermal khusus untuk menjaga stabilitas rantai dingin.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">FAQ</p>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Apakah produk Joestar Peptide memiliki COA?</summary>
+          <p>Ya. Kami menyediakan COA untuk setiap batch agar Anda dapat memverifikasi kemurnian produk.</p>
+        </details>
+        <details>
+          <summary>Bagaimana cara penyimpanan peptide?</summary>
+          <p>Produk disimpan pada suhu 2-8°C. Setelah dibuka, gunakan sesuai panduan penyimpanan.</p>
+        </details>
+        <details>
+          <summary>Bagaimana proses pemesanan & checkout?</summary>
+          <p>Anda dapat menambahkan produk ke keranjang dan checkout via WhatsApp. Integrasi Midtrans/Xendit akan tersedia.</p>
+        </details>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Contact Us</p>
+          <h2>Hubungi Tim Joestar Peptide</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <h3>WhatsApp</h3>
+          <p>+62 877-3201-3193</p>
+          <a class="primary" href="https://wa.me/6287732013193" target="_blank" rel="noopener">Chat with Us</a>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <p>support@joestarpeptide.id</p>
+          <span class="small">(Placeholder, dapat diganti.)</span>
+        </div>
+        <div>
+          <h3>Operational Hours</h3>
+          <p>Senin - Sabtu, 09.00 - 18.00 WIB</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="affiliate" class="account">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Affiliate</p>
+          <h2>Program Afiliasi Joestar</h2>
+        </div>
+        <p class="lead">Program afiliasi segera hadir dengan dashboard penjualan yang lebih lengkap.</p>
+      </div>
+
+      <div class="account-grid">
+        <div class="account-card">
+          <span class="badge">COMING SOON</span>
+          <h3>Program Afiliasi</h3>
+          <p class="lead">
+            Fitur afiliasi sedang dalam tahap pengembangan agar lebih stabil dan aman digunakan.
+          </p>
+          <p class="small">
+            Pantau pembaruan di sini atau hubungi tim kami untuk informasi lebih lanjut.
+          </p>
+          <a class="primary" href="https://wa.me/6287732013193" target="_blank" rel="noopener">
+            Hubungi Admin
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="newsletter">
+      <div>
+        <h3>Newsletter Promo</h3>
+        <p>Dapatkan info promo terbaru & peluncuran peptide baru.</p>
+      </div>
+      <form id="newsletterForm">
+        <input type="email" placeholder="Email aktif Anda" required />
+        <button class="primary" type="submit">Berlangganan</button>
+      </form>
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <img class="footer-logo" src="WhatsApp Image 2026-01-30 at 22.00.09.jpeg" alt="Joestar Peptides Logo" />
+        <h4>Joestar Peptide</h4>
+        <p>Premium peptide research platform dengan transparansi & kualitas terbaik.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <p><a href="#shop">Shop All</a> · <a href="#coa">COA</a> · <a href="#faq">FAQ</a></p>
+      </div>
+      <div>
+        <h4>Legal Disclaimer</h4>
+        <p>
+          Informasi yang disediakan di situs ini hanya untuk tujuan edukasi dan informasi. Penggunaan produk harus
+          dilakukan di bawah pengawasan tenaga ahli atau profesional kesehatan. Joestar Peptide tidak bertanggung jawab
+          atas penyalahgunaan produk di luar panduan yang diberikan. Dengan membeli, Anda dianggap telah memahami
+          karakteristik produk kami.
+        </p>
+      </div>
+    </div>
+    <p class="small">© 2026 Joestar Peptide. All rights reserved.</p>
+  </footer>
+
+  <div class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Keranjang Belanja</h3>
+      <button id="closeCart" type="button">✕</button>
+    </div>
+    <div id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <strong id="cartTotal">Rp 0</strong>
+      </div>
+      <button class="primary" id="checkoutBtn" type="button">Checkout via WhatsApp</button>
+      <button class="ghost" id="gatewayBtn" type="button">Midtrans/Xendit (Coming Soon)</button>
+    </div>
+  </div>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal" type="button">✕</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="newsletterModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeNewsletter" type="button">✕</button>
+      <h3>Promo Eksklusif Joestar</h3>
+      <p>Dapatkan promo dan info batch terbaru langsung ke email Anda.</p>
+      <form id="newsletterPopupForm">
+        <input type="email" placeholder="Email aktif Anda" required />
+        <button class="primary" type="submit">Join Newsletter</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="otpModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeOtpModal" type="button">âœ•</button>
+      <h3>Verifikasi OTP WhatsApp</h3>
+      <p>Masukkan kode OTP yang dikirim ke WhatsApp Anda.</p>
+      <form id="otpForm">
+        <input type="text" id="otpInput" placeholder="Kode OTP" required />
+        <div class="modal-actions">
+          <button class="primary" type="submit">Verifikasi</button>
+          <button class="ghost" id="resendOtpBtn" type="button">Kirim ulang OTP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="forgotModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeForgotModal" type="button">âœ•</button>
+      <h3>Lupa Password</h3>
+      <p>Masukkan username Anda untuk menerima token reset via WhatsApp.</p>
+      <form id="forgotForm">
+        <input type="text" id="forgotUsername" placeholder="Username" required />
+        <button class="primary" type="submit">Kirim Token</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="resetModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeResetModal" type="button">âœ•</button>
+      <h3>Reset Password</h3>
+      <p>Masukkan token reset dan password baru.</p>
+      <form id="resetForm">
+        <input type="text" id="resetToken" placeholder="Token reset" required />
+        <input type="password" id="resetPassword" placeholder="Password baru" required />
+        <button class="primary" type="submit">Reset</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <a class="whatsapp-float" href="https://wa.me/6287732013193" target="_blank" rel="noopener">
+    Chat with Us
+  </a>
+
+  <script src="app.js?v=11"></script>
+  <script>
+    (function () {
+      const form = document.getElementById("signupForm");
+      if (!form || form.dataset.bound) return;
+
+      const toast = document.getElementById("toast");
+      const showToast = (message) => {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2400);
+      };
+
+      const apiBase =
+        location.hostname === "localhost" || location.hostname === "127.0.0.1"
+          ? "http://localhost:3000/api"
+          : "/api";
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const name = document.getElementById("signupName").value.trim();
+        const username = document.getElementById("signupUsername").value.trim();
+        const phone = document.getElementById("signupPhone").value.trim();
+        const password = document.getElementById("signupPassword").value.trim();
+        const code = document.getElementById("signupCode").value.trim().toUpperCase();
+
+        if (!name || !username || !phone || !password || !code) {
+          showToast("Lengkapi semua field signup.");
+          return;
+        }
+
+        showToast("Memproses signup...");
+        try {
+          const response = await fetch(apiBase + "/auth/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name, username, phone, password, redeemCode: code }),
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            showToast(data.message || "Gagal signup.");
+            return;
+          }
+          showToast("Akun berhasil dibuat. Silakan login.");
+          form.reset();
+        } catch (error) {
+          showToast("Gagal konek ke server.");
+        }
+      });
+    })();
+  </script>
+  <script>
+    (function () {
+      const form = document.getElementById("loginForm");
+      if (!form || form.dataset.bound) return;
+
+      const toast = document.getElementById("toast");
+      const showToast = (message) => {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2400);
+      };
+
+      const apiBase =
+        location.hostname === "localhost" || location.hostname === "127.0.0.1"
+          ? "http://localhost:3000/api"
+          : "/api";
+
+      let sessionId = null;
+      const otpModal = document.getElementById("otpModal");
+      const otpForm = document.getElementById("otpForm");
+      const otpInput = document.getElementById("otpInput");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const username = document.getElementById("loginUsername").value.trim();
+        const password = document.getElementById("loginPassword").value.trim();
+        if (!username || !password) {
+          showToast("Username dan password wajib diisi.");
+          return;
+        }
+        showToast("Memproses login...");
+        try {
+          const response = await fetch(apiBase + "/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            showToast(data.message || "Login gagal.");
+            return;
+          }
+          if (data.otpRequired) {
+            sessionId = data.sessionId;
+            if (otpModal) otpModal.classList.add("active");
+            showToast("OTP dikirim.");
+          }
+        } catch (error) {
+          showToast("Gagal konek ke server.");
+        }
+      });
+
+      if (otpForm) {
+        otpForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          if (!sessionId) return;
+          const code = otpInput.value.trim();
+          if (!code) return;
+          try {
+            const response = await fetch(apiBase + "/auth/otp/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ sessionId, code }),
+            });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) {
+              showToast(data.message || "OTP salah.");
+              return;
+            }
+            localStorage.setItem("jp_auth_token", data.token);
+            localStorage.setItem("jp_refresh_token", data.refreshToken || "");
+            document.cookie = "jp_auth_token=" + encodeURIComponent(data.token) + "; path=/; max-age=604800";
+            document.cookie = "jp_refresh_token=" + encodeURIComponent(data.refreshToken || "") + "; path=/; max-age=604800";
+            showToast("Login berhasil.");
+            if (otpModal) otpModal.classList.remove("active");
+            try {
+              const meResp = await fetch(apiBase + "/affiliate/me", {
+                headers: { Authorization: "Bearer " + data.token },
+              });
+              if (!meResp.ok) {
+                showToast("Login berhasil, tapi akun gagal dimuat.");
+                return;
+              }
+            } catch (error) {
+              showToast("Login berhasil, tapi akun gagal dimuat.");
+              return;
+            }
+            setTimeout(() => location.reload(), 300);
+          } catch (error) {
+            showToast("Gagal verifikasi OTP.");
+          }
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
