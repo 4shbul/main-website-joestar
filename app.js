@@ -219,6 +219,15 @@ const cartCount = document.getElementById("cartCount");
 const openCartBtn = document.getElementById("openCart");
 const closeCartBtn = document.getElementById("closeCart");
 const checkoutBtn = document.getElementById("checkoutBtn");
+const checkoutModal = document.getElementById("checkoutModal");
+const closeCheckoutModal = document.getElementById("closeCheckoutModal");
+const checkoutForm = document.getElementById("checkoutForm");
+const checkoutName = document.getElementById("checkoutName");
+const checkoutPhone = document.getElementById("checkoutPhone");
+const checkoutCity = document.getElementById("checkoutCity");
+const checkoutPostal = document.getElementById("checkoutPostal");
+const checkoutAddress = document.getElementById("checkoutAddress");
+const checkoutNotes = document.getElementById("checkoutNotes");
 const detailModal = document.getElementById("detailModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
@@ -416,7 +425,7 @@ const openDetail = (id) => {
   detailModal.classList.add("active");
 };
 
-const checkoutWhatsApp = () => {
+const checkoutWhatsApp = (details) => {
   const items = Object.values(cart);
   if (!items.length) {
     showToast("Keranjang masih kosong. Silakan pilih produk terlebih dahulu.");
@@ -428,9 +437,22 @@ const checkoutWhatsApp = () => {
   const lines = items.map(
     (item) => `- ${item.name} ${item.variant} x${item.qty} (${item.price ? formatIDR(item.price) : "Hubungi"})`
   );
+  const detailLines = details
+    ? [
+        `Nama: ${details.name}`,
+        `WhatsApp: ${details.phone}`,
+        `Kota: ${details.city}`,
+        `Kode pos: ${details.postal}`,
+        `Alamat: ${details.address}`,
+        details.notes ? `Catatan: ${details.notes}` : "",
+      ].filter(Boolean)
+    : [];
   const message = [
     "Halo Joestar Peptide, saya ingin order:",
     ...lines,
+    "",
+    "Data pengiriman:",
+    ...detailLines,
     affiliateLine,
     "\nMohon info total dan pembayaran. Terima kasih.",
   ].join("\n");
@@ -455,10 +477,21 @@ if (tagFilters) tagFilters.addEventListener("click", (event) => {
   setActiveTag(tag === "Supplies" ? "Supplies" : tag);
 });
 
+const openCheckoutModal = () => {
+  const items = Object.values(cart);
+  if (!items.length) {
+    showToast("Keranjang masih kosong. Silakan pilih produk terlebih dahulu.");
+    return;
+  }
+  if (!checkoutModal) return;
+  checkoutModal.classList.add("active");
+};
+
 if (openCartBtn) openCartBtn.addEventListener("click", () => cartDrawer.classList.add("active"));
 if (closeCartBtn) closeCartBtn.addEventListener("click", () => cartDrawer.classList.remove("active"));
 if (closeModal) closeModal.addEventListener("click", () => detailModal.classList.remove("active"));
-if (checkoutBtn) checkoutBtn.addEventListener("click", checkoutWhatsApp);
+if (checkoutBtn) checkoutBtn.addEventListener("click", openCheckoutModal);
+if (closeCheckoutModal) closeCheckoutModal.addEventListener("click", () => checkoutModal.classList.remove("active"));
 if (closeNewsletter) closeNewsletter.addEventListener("click", () => newsletterModal.classList.remove("active"));
 if (closeOtpModal) closeOtpModal.addEventListener("click", closeOtp);
 if (closeForgotModal) closeForgotModal.addEventListener("click", closeForgot);
@@ -482,10 +515,19 @@ if (resendOtpBtn) {
   });
 }
 
-if (navToggle) navToggle.addEventListener("click", () => {
-  const isOpen = navMenu.classList.toggle("open");
-  navToggle.setAttribute("aria-expanded", String(isOpen));
-});
+if (navToggle && navMenu) {
+  navMenu.classList.remove("open");
+  navToggle.setAttribute("aria-expanded", "false");
+
+  const toggleNav = (event) => {
+    event.preventDefault();
+    const isOpen = navMenu.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
+  };
+
+  navToggle.addEventListener("click", toggleNav);
+  navToggle.addEventListener("touchstart", toggleNav, { passive: false });
+}
 
 if (grid) grid.addEventListener("click", (event) => {
   const addBtn = event.target.closest("[data-add]");
@@ -1125,6 +1167,28 @@ const handleNewsletter = (event) => {
 
 if (newsletterForm) newsletterForm.addEventListener("submit", handleNewsletter);
 if (newsletterPopupForm) newsletterPopupForm.addEventListener("submit", handleNewsletter);
+if (checkoutForm) {
+  checkoutForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const details = {
+      name: checkoutName?.value.trim(),
+      phone: checkoutPhone?.value.trim(),
+      city: checkoutCity?.value.trim(),
+      postal: checkoutPostal?.value.trim(),
+      address: checkoutAddress?.value.trim(),
+      notes: checkoutNotes?.value.trim(),
+    };
+
+    if (!details.name || !details.phone || !details.city || !details.postal || !details.address) {
+      showToast("Lengkapi nama, nomor WhatsApp, kota, kode pos, dan alamat.");
+      return;
+    }
+
+    checkoutWhatsApp(details);
+    checkoutModal.classList.remove("active");
+    checkoutForm.reset();
+  });
+}
 if (loginForm) {
   loginForm.addEventListener("submit", handleLogin);
   loginForm.dataset.bound = "app";
