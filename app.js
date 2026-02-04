@@ -527,7 +527,24 @@ if (navToggle && navMenu) {
 
   navToggle.addEventListener("click", toggleNav);
   navToggle.addEventListener("touchstart", toggleNav, { passive: false });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1200) {
+      navMenu.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
 }
+
+const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
+dropdownToggles.forEach((toggle) => {
+  toggle.addEventListener("click", (event) => {
+    event.preventDefault();
+    const parent = toggle.closest(".dropdown");
+    if (!parent) return;
+    parent.classList.toggle("open");
+  });
+});
 
 if (grid) grid.addEventListener("click", (event) => {
   const addBtn = event.target.closest("[data-add]");
