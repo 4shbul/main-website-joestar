@@ -162,7 +162,7 @@ img {
 }
 
 h1, h2, h3, h4 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Manrope", sans-serif;
   letter-spacing: 0.02em;
 }
 
@@ -1315,3 +1315,15 @@ summary {
     aspect-ratio: 1 / 1;
   }
 }
+
+.shop,
+.trust,
+.details,
+.faq,
+.contact,
+.account,
+.site-footer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
