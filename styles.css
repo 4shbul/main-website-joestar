@@ -695,6 +695,8 @@ summary {
   background: white;
   display: grid;
   gap: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .account-details {
