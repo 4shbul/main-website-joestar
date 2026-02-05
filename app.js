@@ -608,7 +608,7 @@ const smoothScrollTo = (target) => {
   requestAnimationFrame(step);
 };
 
-const NAV_BREAKPOINT = 900;
+const NAV_BREAKPOINT = 1100;
 
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("click", (event) => {
