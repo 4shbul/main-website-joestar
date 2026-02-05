@@ -1176,11 +1176,6 @@ summary {
 }
 
 @media (max-width: 1200px) {
-  .nav-wrap {
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
   .hero {
     padding-top: 3.5rem;
   }
@@ -1191,6 +1186,11 @@ summary {
 }
 
 @media (max-width: 900px) {
+  .nav-wrap {
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
   .nav-toggle {
     display: inline-flex;
   }
