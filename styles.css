@@ -209,6 +209,12 @@ h1, h2, h3, h4 {
   z-index: 40;
 }
 
+.nav-toggle-input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .nav-toggle span {
   display: block;
   width: 20px;
@@ -216,6 +222,18 @@ h1, h2, h3, h4 {
   background: var(--charcoal);
   border-radius: 999px;
   transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-toggle-input:checked + .nav-toggle span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle-input:checked + .nav-toggle span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle-input:checked + .nav-toggle span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .nav-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -1217,7 +1235,9 @@ summary {
   }
 
   .nav-toggle {
-    display: inline-flex;
+    display: inline-flex !important;
+    width: 48px;
+    height: 48px;
   }
 
   .nav-menu {
@@ -1239,6 +1259,10 @@ summary {
   }
 
   .nav-menu.open {
+    display: flex;
+  }
+
+  .nav-toggle-input:checked ~ .nav-menu {
     display: flex;
   }
 
