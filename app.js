@@ -1547,3 +1547,5 @@ if (window.location.hash.startsWith("#reset-")) {
     openReset(token);
   }
 }
+
+window.__JP_APP_READY = true;

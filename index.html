@@ -414,6 +414,14 @@
   <script src="app.js?v=11"></script>
   <script>
     (function () {
+      if (window.__JP_APP_READY) return;
+      const script = document.createElement("script");
+      script.src = "app.js?v=" + Date.now();
+      document.body.appendChild(script);
+    })();
+  </script>
+  <script>
+    (function () {
       const form = document.getElementById("signupForm");
       if (!form || form.dataset.bound) return;
 
