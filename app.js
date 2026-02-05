@@ -529,7 +529,7 @@ if (navToggle && navMenu) {
   navToggle.addEventListener("touchstart", toggleNav, { passive: false });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 1200) {
+    if (window.innerWidth > NAV_BREAKPOINT) {
       navMenu.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     }
@@ -608,6 +608,8 @@ const smoothScrollTo = (target) => {
   requestAnimationFrame(step);
 };
 
+const NAV_BREAKPOINT = 900;
+
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("click", (event) => {
     const href = link.getAttribute("href") || "";
@@ -616,7 +618,7 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
       const target = document.querySelector(href);
       smoothScrollTo(target);
     }
-    if (window.innerWidth <= 1200 && navMenu && navToggle) {
+    if (window.innerWidth <= NAV_BREAKPOINT && navMenu && navToggle) {
       navMenu.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     }

@@ -1181,6 +1181,16 @@ summary {
     align-items: center;
   }
 
+  .hero {
+    padding-top: 3.5rem;
+  }
+
+  .hero-card {
+    order: 2;
+  }
+}
+
+@media (max-width: 900px) {
   .nav-toggle {
     display: inline-flex;
   }
@@ -1238,16 +1248,6 @@ summary {
     flex-wrap: wrap;
   }
 
-  .hero {
-    padding-top: 3.5rem;
-  }
-
-  .hero-card {
-    order: 2;
-  }
-}
-
-@media (max-width: 720px) {
   .promo-banner {
     font-size: 0.8rem;
   }
