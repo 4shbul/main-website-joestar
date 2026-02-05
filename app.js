@@ -518,10 +518,14 @@ if (resendOtpBtn) {
 const NAV_BREAKPOINT = 992;
 
 if (navToggle && navMenu) {
-  navToggle.addEventListener("click", () => {
+  const toggleNav = (event) => {
+    event.preventDefault();
     const isOpen = navMenu.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
-  });
+  };
+
+  navToggle.addEventListener("click", toggleNav);
+  navToggle.addEventListener("touchstart", toggleNav, { passive: false });
 
   window.addEventListener("resize", () => {
     if (window.innerWidth > NAV_BREAKPOINT) {
