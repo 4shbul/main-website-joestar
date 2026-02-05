@@ -515,36 +515,12 @@ if (resendOtpBtn) {
   });
 }
 
-if (navToggle && navMenu) {
-  navMenu.classList.remove("open");
-  navToggle.setAttribute("aria-expanded", "false");
-
-  const toggleNav = (event) => {
-    event.preventDefault();
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
     const isOpen = navMenu.classList.toggle("open");
     navToggle.setAttribute("aria-expanded", String(isOpen));
-  };
-
-  navToggle.addEventListener("click", toggleNav);
-  navToggle.addEventListener("touchstart", toggleNav, { passive: false });
-
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > NAV_BREAKPOINT) {
-      navMenu.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-    }
   });
 }
-
-const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
-dropdownToggles.forEach((toggle) => {
-  toggle.addEventListener("click", (event) => {
-    event.preventDefault();
-    const parent = toggle.closest(".dropdown");
-    if (!parent) return;
-    parent.classList.toggle("open");
-  });
-});
 
 if (grid) grid.addEventListener("click", (event) => {
   const addBtn = event.target.closest("[data-add]");
@@ -608,8 +584,6 @@ const smoothScrollTo = (target) => {
   requestAnimationFrame(step);
 };
 
-const NAV_BREAKPOINT = 1100;
-
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("click", (event) => {
     const href = link.getAttribute("href") || "";
@@ -618,7 +592,7 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
       const target = document.querySelector(href);
       smoothScrollTo(target);
     }
-    if (window.innerWidth <= NAV_BREAKPOINT && navMenu && navToggle) {
+    if (window.innerWidth <= 1200 && navMenu && navToggle) {
       navMenu.classList.remove("open");
       navToggle.setAttribute("aria-expanded", "false");
     }
