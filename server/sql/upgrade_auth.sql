@@ -16,7 +16,7 @@ BEGIN
     SELECT 1 FROM pg_indexes WHERE tablename = 'users' AND indexname = 'users_username_key'
   ) THEN
     ALTER TABLE users ADD CONSTRAINT users_username_key UNIQUE (username);
-  END IF;
+  END IF;o
 END $$;
 
 ALTER TABLE otp_sessions ADD COLUMN IF NOT EXISTS requested_at TIMESTAMPTZ NOT NULL DEFAULT NOW();

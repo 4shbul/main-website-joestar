@@ -343,6 +343,12 @@ const renderProducts = () => {
     `;
 
     grid.appendChild(card);
+
+    const addBtn = card.querySelector("[data-add]");
+    if (addBtn) addBtn.addEventListener("click", () => addToCart(product.id));
+
+    const detailBtns = card.querySelectorAll("[data-detail]");
+    detailBtns.forEach((btn) => btn.addEventListener("click", () => openDetail(product.id)));
   });
 };
 
