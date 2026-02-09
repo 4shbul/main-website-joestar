@@ -422,6 +422,154 @@
   </script>
   <script>
     (function () {
+      const WA_NUMBER = "6287732013193";
+      const formatIDR = (value) =>
+        new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(value);
+
+      const parsePrice = (text) => {
+        const digits = (text || "").replace(/[^\d]/g, "");
+        return digits ? Number(digits) : 0;
+      };
+
+      const buildFallbackCart = () => {
+        if (window.__JP_APP_READY || window.__JP_CART_FALLBACK) return;
+        window.__JP_CART_FALLBACK = true;
+
+        const cart = {};
+        const cartDrawer = document.getElementById("cartDrawer");
+        const cartItemsEl = document.getElementById("cartItems");
+        const cartTotalEl = document.getElementById("cartTotal");
+        const cartCount = document.getElementById("cartCount");
+        const checkoutBtn = document.getElementById("checkoutBtn");
+        const checkoutModal = document.getElementById("checkoutModal");
+        const closeCheckoutModal = document.getElementById("closeCheckoutModal");
+        const checkoutForm = document.getElementById("checkoutForm");
+
+        const updateCartUI = () => {
+          if (!cartItemsEl || !cartTotalEl || !cartCount) return;
+          cartItemsEl.innerHTML = "";
+          const items = Object.values(cart);
+          let total = 0;
+
+          if (!items.length) {
+            cartItemsEl.innerHTML = "<p class=\"product-meta\">Keranjang masih kosong.</p>";
+          }
+
+          items.forEach((item) => {
+            const itemTotal = (item.price || 0) * item.qty;
+            total += itemTotal;
+            const el = document.createElement("div");
+            el.className = "cart-item";
+            el.innerHTML = `
+              <strong>${item.name} ${item.variant}</strong>
+              <span class="product-meta">${item.priceText || "Hubungi kami"}</span>
+              <div class="cart-item-actions">
+                <button data-dec="${item.id}">-</button>
+                <span>${item.qty}</span>
+                <button data-inc="${item.id}">+</button>
+              </div>
+            `;
+            cartItemsEl.appendChild(el);
+          });
+
+          cartTotalEl.textContent = total ? formatIDR(total) : "Rp 0";
+          cartCount.textContent = items.reduce((sum, item) => sum + item.qty, 0);
+        };
+
+        document.addEventListener("click", (event) => {
+          const addBtn = event.target.closest("[data-add]");
+          if (addBtn) {
+            const card = addBtn.closest(".product-card");
+            if (!card) return;
+            const id = addBtn.dataset.add || card.dataset.productId || Math.random().toString(36).slice(2);
+            const name = card.querySelector("h3")?.textContent?.trim() || "Produk";
+            const variant = card.querySelector(".product-meta")?.textContent?.split("·")[0]?.trim() || "";
+            const priceText = card.querySelector(".price")?.textContent?.trim() || "Hubungi Kami";
+            const price = parsePrice(priceText);
+
+            if (!cart[id]) {
+              cart[id] = { id, name, variant, price, priceText, qty: 1 };
+            } else {
+              cart[id].qty += 1;
+            }
+            updateCartUI();
+            if (cartDrawer) cartDrawer.classList.add("active");
+            return;
+          }
+
+          const inc = event.target.dataset.inc;
+          const dec = event.target.dataset.dec;
+          if (inc && cart[inc]) {
+            cart[inc].qty += 1;
+            updateCartUI();
+            return;
+          }
+          if (dec && cart[dec]) {
+            cart[dec].qty -= 1;
+            if (cart[dec].qty <= 0) delete cart[dec];
+            updateCartUI();
+          }
+        });
+
+        if (checkoutBtn) {
+          checkoutBtn.addEventListener("click", () => {
+            if (!Object.keys(cart).length) return;
+            if (checkoutModal) checkoutModal.classList.add("active");
+          });
+        }
+
+        if (closeCheckoutModal) {
+          closeCheckoutModal.addEventListener("click", () => {
+            if (checkoutModal) checkoutModal.classList.remove("active");
+          });
+        }
+
+        if (checkoutForm) {
+          checkoutForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const name = document.getElementById("checkoutName")?.value.trim();
+            const phone = document.getElementById("checkoutPhone")?.value.trim();
+            const city = document.getElementById("checkoutCity")?.value.trim();
+            const postal = document.getElementById("checkoutPostal")?.value.trim();
+            const address = document.getElementById("checkoutAddress")?.value.trim();
+            const notes = document.getElementById("checkoutNotes")?.value.trim();
+
+            if (!name || !phone || !city || !postal || !address) return;
+
+            const lines = Object.values(cart).map(
+              (item) => `- ${item.name} ${item.variant} x${item.qty} (${item.priceText || "Hubungi"})`
+            );
+            const message = [
+              "Halo Joestar Peptide, saya ingin order:",
+              ...lines,
+              "",
+              "Data pengiriman:",
+              `Nama: ${name}`,
+              `WhatsApp: ${phone}`,
+              `Kota: ${city}`,
+              `Kode pos: ${postal}`,
+              `Alamat: ${address}`,
+              notes ? `Catatan: ${notes}` : "",
+              "",
+              "Mohon info total dan pembayaran. Terima kasih.",
+            ]
+              .filter(Boolean)
+              .join("\n");
+
+            const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
+            window.open(url, "_blank");
+            if (checkoutModal) checkoutModal.classList.remove("active");
+          });
+        }
+
+        updateCartUI();
+      };
+
+      setTimeout(buildFallbackCart, 800);
+    })();
+  </script>
+  <script>
+    (function () {
       const form = document.getElementById("signupForm");
       if (!form || form.dataset.bound) return;
 
