@@ -616,6 +616,15 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+document.querySelectorAll(".nav-actions a, .nav-actions button").forEach((item) => {
+  item.addEventListener("click", () => {
+    if (window.innerWidth <= NAV_BREAKPOINT) {
+      if (navToggleInput) navToggleInput.checked = false;
+      if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+});
+
 const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
 dropdownToggles.forEach((toggle) => {
   toggle.addEventListener("click", (event) => {
