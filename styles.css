@@ -674,12 +674,14 @@ h1, h2, h3, h4 {
   padding: 0.8rem;
   display: grid;
   place-items: center;
+  min-height: 220px;
 }
 
 .coa-card img {
   width: 100%;
   height: auto;
   border-radius: 12px;
+  display: block;
 }
 
 .detail-panels {
