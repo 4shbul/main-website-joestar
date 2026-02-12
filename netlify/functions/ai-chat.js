@@ -29,6 +29,15 @@ exports.handler = async (event) => {
   }
 
   try {
+    if (!process.env.OPENAI_API_KEY) {
+      console.error("OPENAI_API_KEY is missing");
+      return {
+        statusCode: 500,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ error: "Missing OPENAI_API_KEY" }),
+      };
+    }
+
     const body = JSON.parse(event.body || "{}");
     const messages = normalizeMessages(body.messages);
 
@@ -48,6 +57,7 @@ exports.handler = async (event) => {
 
     const data = await response.json();
     if (!response.ok) {
+      console.error("OpenAI error", response.status, data);
       return {
         statusCode: response.status,
         headers: { "Content-Type": "application/json" },
@@ -66,6 +76,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({ reply }),
     };
   } catch (error) {
+    console.error("AI chat server error", error);
     return {
       statusCode: 500,
       headers: { "Content-Type": "application/json" },

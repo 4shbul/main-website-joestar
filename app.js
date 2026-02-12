@@ -1633,6 +1633,7 @@ if (chatForm) {
           data?.reply ||
           "Maaf, saya belum bisa menjawab. Silakan coba lagi atau hubungi admin lewat WhatsApp.";
         if (typing) typing.textContent = reply;
+        if (data?.error) console.error("AI chat error:", data.error);
         pushChatHistory("assistant", reply);
       })
       .catch(() => {
