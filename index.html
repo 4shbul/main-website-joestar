@@ -260,8 +260,7 @@
         </div>
         <div>
           <h3>Email</h3>
-          <p>support@joestarpeptide.id</p>
-          <span class="small">(Placeholder, dapat diganti.)</span>
+          <p>joestarpeptides@gmail.com</p>
         </div>
         <div>
           <h3>Operational Hours</h3>
@@ -322,9 +321,8 @@
       </div>
       <div class="footer-social">
         <h4>Social Media</h4>
-        <a href="https://instagram.com/joestarpeptide" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://tiktok.com/@joestarpeptide" target="_blank" rel="noopener">TikTok</a>
-        <a href="https://www.youtube.com/@joestarpeptide" target="_blank" rel="noopener">YouTube</a>
+        <a href="https://instagram.com/joestarpeptides" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://tiktok.com/@joestarpeptidess" target="_blank" rel="noopener">TikTok</a>o
         <a href="https://wa.me/6287732013193" target="_blank" rel="noopener">WhatsApp</a>
       </div>
       <div>
@@ -383,12 +381,13 @@
   <div class="modal" id="newsletterModal" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" id="closeNewsletter" type="button">✕</button>
-      <h3>Promo Eksklusif Joestar</h3>
-      <p>Dapatkan promo dan info batch terbaru langsung ke email Anda.</p>
-      <form id="newsletterPopupForm">
-        <input type="email" placeholder="Email aktif Anda" required />
-        <button class="primary" type="submit">Join Newsletter</button>
-      </form>
+      <h3>Disclaimer</h3>
+      <p>
+        Informasi di situs ini hanya untuk tujuan edukasi dan riset. Produk bukan untuk penggunaan manusia, bukan obat,
+        dan tidak dimaksudkan untuk mendiagnosis, mengobati, menyembuhkan, atau mencegah penyakit. Dengan melanjutkan,
+        Anda menyatakan memahami dan menyetujui ketentuan ini.
+      </p>
+      <button class="primary" type="button" id="closeDisclaimerBtn">Saya Mengerti</button>
     </div>
   </div>
 
@@ -434,11 +433,31 @@
 
   <div class="toast" id="toast"></div>
 
+  <div class="chat-widget" id="aiChat" aria-live="polite">
+    <button class="chat-toggle" id="chatToggle" type="button" aria-expanded="false">
+      AI Konsultasi
+    </button>
+    <div class="chat-panel" id="chatPanel" aria-hidden="true">
+      <div class="chat-header">
+        <div>
+          <strong>AI Konsultasi Peptide</strong>
+          <p class="small">Info umum & riset, bukan nasihat medis.</p>
+        </div>
+        <button class="chat-close" id="chatClose" type="button">✕</button>
+      </div>
+      <div class="chat-body" id="chatBody"></div>
+      <form class="chat-input" id="chatForm">
+        <input type="text" id="chatMessage" placeholder="Tanya soal produk, COA, penyimpanan..." required />
+        <button class="primary" type="submit">Kirim</button>
+      </form>
+    </div>
+  </div>
+
   <a class="whatsapp-float" href="https://wa.me/6287732013193" target="_blank" rel="noopener">
     Chat with Us
   </a>
 
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=12"></script>
   <script>
     (function () {
       if (window.__JP_APP_READY) return;
@@ -488,12 +507,20 @@
             const el = document.createElement("div");
             el.className = "cart-item";
             el.innerHTML = `
-              <strong>${item.name} ${item.variant}</strong>
-              <span class="product-meta">${item.priceText || "Hubungi kami"}</span>
+              <div class="cart-item-main">
+                <div class="cart-item-thumb">
+                  <img src="${item.image || ""}" alt="${item.name} ${item.variant}" loading="lazy" />
+                </div>
+                <div class="cart-item-info">
+                  <strong>${item.name} ${item.variant}</strong>
+                  <span class="product-meta">${item.priceText || "Hubungi kami"}</span>
+                </div>
+              </div>
               <div class="cart-item-actions">
                 <button data-dec="${item.id}">-</button>
                 <span>${item.qty}</span>
                 <button data-inc="${item.id}">+</button>
+                <button class="remove" data-remove="${item.id}" type="button">Hapus</button>
               </div>
             `;
             cartItemsEl.appendChild(el);
@@ -513,9 +540,10 @@
             const variant = card.querySelector(".product-meta")?.textContent?.split("·")[0]?.trim() || "";
             const priceText = card.querySelector(".price")?.textContent?.trim() || "Hubungi Kami";
             const price = parsePrice(priceText);
+            const image = card.querySelector("img")?.getAttribute("src") || "";
 
             if (!cart[id]) {
-              cart[id] = { id, name, variant, price, priceText, qty: 1 };
+              cart[id] = { id, name, variant, price, priceText, image, qty: 1 };
             } else {
               cart[id].qty += 1;
             }
@@ -526,6 +554,7 @@
 
           const inc = event.target.dataset.inc;
           const dec = event.target.dataset.dec;
+          const remove = event.target.dataset.remove;
           if (inc && cart[inc]) {
             cart[inc].qty += 1;
             updateCartUI();
@@ -534,6 +563,11 @@
           if (dec && cart[dec]) {
             cart[dec].qty -= 1;
             if (cart[dec].qty <= 0) delete cart[dec];
+            updateCartUI();
+            return;
+          }
+          if (remove && cart[remove]) {
+            delete cart[remove];
             updateCartUI();
           }
         });

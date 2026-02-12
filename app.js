@@ -4,7 +4,7 @@ const products = [
     name: "Retatrutide",
     variant: "5mg",
     price: 1200000,
-    image: "img/RETATRUIDE%205MG.png",
+    image: "img/RETA%205MG.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
     description: "Peptide riset metabolik dengan fokus pada regulasi berat badan.",
@@ -16,7 +16,7 @@ const products = [
     name: "Retatrutide",
     variant: "10mg",
     price: 2000000,
-    image: "img/RETATRUIDE%2010MG.png",
+    image: "img/RETA%2010MG.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
     description: "Peptide riset metabolik dengan fokus pada regulasi berat badan.",
@@ -28,7 +28,7 @@ const products = [
     name: "Retatrutide",
     variant: "30mg",
     price: 5300000,
-    image: "img/RETATRUIDE%2030MG.png",
+    image: "img/RETA%2030MG.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
     description: "Konsentrasi lebih tinggi untuk kebutuhan riset intensif.",
@@ -113,7 +113,7 @@ const products = [
     name: "BPC-157",
     variant: "10mg",
     price: 1100000,
-    image: "img/BPC%20-%20157.png",
+    image: "img/BPC-157.png",
     category: "Peptide",
     tags: ["Healing"],
     description: "Peptide untuk riset pemulihan jaringan.",
@@ -208,6 +208,7 @@ const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
 const newsletterModal = document.getElementById("newsletterModal");
 const closeNewsletter = document.getElementById("closeNewsletter");
+const closeDisclaimerBtn = document.getElementById("closeDisclaimerBtn");
 const otpModal = document.getElementById("otpModal");
 const closeOtpModal = document.getElementById("closeOtpModal");
 const otpForm = document.getElementById("otpForm");
@@ -325,11 +326,7 @@ const renderProducts = () => {
 
     grid.appendChild(card);
 
-    const addBtn = card.querySelector("[data-add]");
-    if (addBtn) addBtn.addEventListener("click", () => addToCart(product.id));
-
-    const detailBtns = card.querySelectorAll("[data-detail]");
-    detailBtns.forEach((btn) => btn.addEventListener("click", () => openDetail(product.id)));
+    // Event handlers are delegated on the grid to avoid double-firing.
   });
 };
 
@@ -350,12 +347,20 @@ const updateCartUI = () => {
     const el = document.createElement("div");
     el.className = "cart-item";
     el.innerHTML = `
-      <strong>${item.name} ${item.variant}</strong>
-      <span class="product-meta">${item.price ? formatIDR(item.price) : "Hubungi kami"}</span>
+      <div class="cart-item-main">
+        <div class="cart-item-thumb">
+          <img src="${item.image}" alt="${item.name} ${item.variant}" loading="lazy" />
+        </div>
+        <div class="cart-item-info">
+          <strong>${item.name} ${item.variant}</strong>
+          <span class="product-meta">${item.price ? formatIDR(item.price) : "Hubungi kami"}</span>
+        </div>
+      </div>
       <div class="cart-item-actions">
         <button data-dec="${item.id}">-</button>
         <span>${item.qty}</span>
         <button data-inc="${item.id}">+</button>
+        <button class="remove" data-remove="${item.id}" type="button">Hapus</button>
       </div>
     `;
     cartItemsEl.appendChild(el);
@@ -456,6 +461,11 @@ const setActiveTag = (tag) => {
   renderProducts();
 };
 
+const initShop = () => {
+  if (searchInput) searchInput.value = "";
+  setActiveTag("all");
+};
+
 if (searchInput) searchInput.addEventListener("input", renderProducts);
 
 if (tagFilters) tagFilters.addEventListener("click", (event) => {
@@ -479,7 +489,8 @@ if (closeCartBtn) closeCartBtn.addEventListener("click", () => cartDrawer.classL
 if (closeModal) closeModal.addEventListener("click", () => detailModal.classList.remove("active"));
 if (checkoutBtn) checkoutBtn.addEventListener("click", openCheckoutModal);
 if (closeCheckoutModal) closeCheckoutModal.addEventListener("click", () => checkoutModal.classList.remove("active"));
-if (closeNewsletter) closeNewsletter.addEventListener("click", () => newsletterModal.classList.remove("active"));
+if (closeNewsletter) closeNewsletter.addEventListener("click", closeDisclaimer);
+if (closeDisclaimerBtn) closeDisclaimerBtn.addEventListener("click", closeDisclaimer);
 if (closeOtpModal) closeOtpModal.addEventListener("click", closeOtp);
 if (closeForgotModal) closeForgotModal.addEventListener("click", closeForgot);
 if (closeResetModal) closeResetModal.addEventListener("click", closeReset);
@@ -546,8 +557,13 @@ if (grid) grid.addEventListener("click", (event) => {
 if (cartItemsEl) cartItemsEl.addEventListener("click", (event) => {
   const inc = event.target.dataset.inc;
   const dec = event.target.dataset.dec;
+  const remove = event.target.dataset.remove;
   if (inc) changeQty(inc, 1);
   if (dec) changeQty(dec, -1);
+  if (remove) {
+    delete cart[remove];
+    updateCartUI();
+  }
 });
 
 const dropdownLinks = document.querySelectorAll(".dropdown-menu a");
@@ -834,43 +850,43 @@ const apiFetch = async (path, options = {}) => {
   return data;
 };
 
-const showToast = (message) => {
+function showToast(message) {
   if (!toast) return;
   toast.textContent = message;
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show"), 2400);
-};
+}
 
-const openOtpModal = (sessionId) => {
+function openOtpModal(sessionId) {
   if (!otpModal) return;
   pendingOtpSessionId = sessionId;
   otpInput.value = "";
   otpModal.classList.add("active");
-};
+}
 
-const closeOtp = () => {
+function closeOtp() {
   if (!otpModal) return;
   otpModal.classList.remove("active");
   pendingOtpSessionId = null;
-};
+}
 
-const openForgot = () => {
+function openForgot() {
   if (!forgotModal) return;
   if (forgotUsername) forgotUsername.value = "";
   forgotModal.classList.add("active");
-};
+}
 
-const closeForgot = () => {
+function closeForgot() {
   if (!forgotModal) return;
   forgotModal.classList.remove("active");
-};
+}
 
-const openReset = (token) => {
+function openReset(token) {
   if (!resetModal) return;
   resetToken.value = token || "";
   resetPassword.value = "";
   resetModal.classList.add("active");
-};
+}
 
 const renderAffiliateList = (affiliates) => {
   if (!affiliateList) return;
@@ -974,10 +990,10 @@ const verifyAdminToken = async () => {
   return false;
 };
 
-const closeReset = () => {
+function closeReset() {
   if (!resetModal) return;
   resetModal.classList.remove("active");
-};
+}
 
 
 const updateAffiliateUI = async () => {
@@ -1504,18 +1520,21 @@ if (orderForm) {
   });
 }
 
-const maybeShowNewsletter = () => {
+function closeDisclaimer() {
   if (!newsletterModal) return;
-  if (storage.get("jp_newsletter") === "hidden") return;
+  newsletterModal.classList.remove("active");
+}
+
+function maybeShowDisclaimer() {
+  if (!newsletterModal) return;
   setTimeout(() => {
     newsletterModal.classList.add("active");
-    storage.set("jp_newsletter", "hidden");
-  }, 2200);
-};
+  }, 300);
+}
 
-renderProducts();
+initShop();
 updateCartUI();
-maybeShowNewsletter();
+maybeShowDisclaimer();
 updateAffiliateUI();
 if (adminGuard) {
   if (getToken()) {
@@ -1545,4 +1564,83 @@ if (window.location.hash.startsWith("#reset-")) {
 }
 
 window.__JP_APP_READY = true;
+
+const chatToggle = document.getElementById("chatToggle");
+const chatPanel = document.getElementById("chatPanel");
+const chatClose = document.getElementById("chatClose");
+const chatBody = document.getElementById("chatBody");
+const chatForm = document.getElementById("chatForm");
+const chatMessage = document.getElementById("chatMessage");
+
+const chatHistory = [];
+
+const addChatBubble = (text, type) => {
+  if (!chatBody) return;
+  const bubble = document.createElement("div");
+  bubble.className = `chat-bubble ${type}`;
+  bubble.textContent = text;
+  chatBody.appendChild(bubble);
+  chatBody.scrollTop = chatBody.scrollHeight;
+  return bubble;
+};
+
+const pushChatHistory = (role, content) => {
+  chatHistory.push({ role, content });
+  if (chatHistory.length > 8) chatHistory.shift();
+};
+
+const openChat = () => {
+  if (!chatPanel) return;
+  chatPanel.classList.add("active");
+  chatPanel.setAttribute("aria-hidden", "false");
+  if (chatToggle) chatToggle.setAttribute("aria-expanded", "true");
+  if (chatBody && !chatBody.dataset.seeded) {
+    chatBody.dataset.seeded = "1";
+    const seed =
+      "Halo! Saya AI Konsultasi. Tanyakan seputar produk, COA, penyimpanan, atau cara order. (Bukan nasihat medis).";
+    addChatBubble(seed, "ai");
+    pushChatHistory("assistant", seed);
+  }
+};
+
+const closeChat = () => {
+  if (!chatPanel) return;
+  chatPanel.classList.remove("active");
+  chatPanel.setAttribute("aria-hidden", "true");
+  if (chatToggle) chatToggle.setAttribute("aria-expanded", "false");
+};
+
+if (chatToggle) chatToggle.addEventListener("click", openChat);
+if (chatClose) chatClose.addEventListener("click", closeChat);
+
+if (chatForm) {
+  chatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const message = chatMessage?.value.trim();
+    if (!message) return;
+    addChatBubble(message, "user");
+    chatMessage.value = "";
+    pushChatHistory("user", message);
+    const typing = addChatBubble("...", "ai");
+    fetch("/.netlify/functions/ai-chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: chatHistory }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const reply =
+          data?.reply ||
+          "Maaf, saya belum bisa menjawab. Silakan coba lagi atau hubungi admin lewat WhatsApp.";
+        if (typing) typing.textContent = reply;
+        pushChatHistory("assistant", reply);
+      })
+      .catch(() => {
+        const fallback =
+          "Maaf, koneksi sedang bermasalah. Coba lagi atau hubungi admin lewat WhatsApp.";
+        if (typing) typing.textContent = fallback;
+      });
+  });
+}
+
 
