@@ -13,10 +13,14 @@ const normalizeMessages = (messages) => {
   return messages
     .filter((item) => item && typeof item.content === "string")
     .slice(-8)
-    .map((item) => ({
-      role: item.role === "assistant" ? "assistant" : "user",
-      content: [{ type: "input_text", text: item.content }],
-    }));
+    .map((item) => {
+      const role = item.role === "assistant" ? "assistant" : "user";
+      const type = role === "assistant" ? "output_text" : "input_text";
+      return {
+        role,
+        content: [{ type, text: item.content }],
+      };
+    });
 };
 
 exports.handler = async (event) => {
