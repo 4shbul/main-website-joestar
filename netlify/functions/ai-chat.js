@@ -15,7 +15,7 @@ const normalizeMessages = (messages) => {
     .slice(-8)
     .map((item) => ({
       role: item.role === "assistant" ? "assistant" : "user",
-      content: [{ type: "text", text: item.content }],
+      content: [{ type: "input_text", text: item.content }],
     }));
 };
 
@@ -75,7 +75,7 @@ exports.handler = async (event) => {
 
     const reply =
       data.output_text ||
-      data.output?.[0]?.content?.map((item) => item.text).join("") ||
+      data.output?.[0]?.content?.map((item) => item.text || item.output_text || "").join("") ||
       "Maaf, terjadi kendala. Coba lagi.";
 
     return {
