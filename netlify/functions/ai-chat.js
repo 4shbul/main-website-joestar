@@ -41,6 +41,10 @@ exports.handler = async (event) => {
     const body = JSON.parse(event.body || "{}");
     const messages = normalizeMessages(body.messages);
 
+    const inputMessages = messages.length
+      ? messages
+      : [{ role: "user", content: [{ type: "text", text: "Hi" }] }];
+
     const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: {
@@ -49,7 +53,8 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         model: "gpt-4.1-mini",
-        input: [{ role: "system", content: [{ type: "text", text: buildPrompt() }] }, ...messages],
+        instructions: buildPrompt(),
+        input: inputMessages,
         temperature: 0.4,
         max_output_tokens: 400,
       }),
@@ -61,7 +66,10 @@ exports.handler = async (event) => {
       return {
         statusCode: response.status,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: data?.error?.message || "OpenAI request failed" }),
+        body: JSON.stringify({
+          error: data?.error?.message || "OpenAI request failed",
+          detail: data?.error || data,
+        }),
       };
     }
 
