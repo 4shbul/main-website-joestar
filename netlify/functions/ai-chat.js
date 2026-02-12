@@ -1,26 +1,22 @@
-const buildPrompt = () =>
-  [
-    "You are a bilingual (Indonesian + English) assistant for Joestar Peptide.",
-    "Provide general, non-medical, research-oriented information only.",
-    "Do NOT provide medical advice, dosing, usage instructions, diagnosis, or treatment.",
-    "If asked for medical guidance, refuse briefly and suggest consulting a qualified professional.",
-    "Keep answers concise, helpful, and polite.",
-    "Format: Indonesian first, then a short English summary.",
-  ].join(" ");
+const SYSTEM_PROMPT = [
+  "You are a bilingual (Indonesian + English) assistant for Joestar Peptide.",
+  "Provide general, non-medical, research-oriented information only.",
+  "Do NOT provide medical advice, dosing, usage instructions, diagnosis, or treatment.",
+  "If asked for medical guidance, refuse briefly and suggest consulting a qualified professional.",
+  "Keep answers concise, helpful, and polite.",
+  "Format: Indonesian first, then a short English summary.",
+].join(" ");
 
 const normalizeMessages = (messages) => {
   if (!Array.isArray(messages)) return [];
-  return messages
+  const cleaned = messages
     .filter((item) => item && typeof item.content === "string")
     .slice(-8)
-    .map((item) => {
-      const role = item.role === "assistant" ? "assistant" : "user";
-      const type = role === "assistant" ? "output_text" : "input_text";
-      return {
-        role,
-        content: [{ type, text: item.content }],
-      };
-    });
+    .map((item) => ({
+      role: item.role === "assistant" ? "assistant" : "user",
+      content: item.content,
+    }));
+  return [{ role: "system", content: SYSTEM_PROMPT }, ...cleaned];
 };
 
 exports.handler = async (event) => {
@@ -33,53 +29,50 @@ exports.handler = async (event) => {
   }
 
   try {
-    if (!process.env.OPENAI_API_KEY) {
-      console.error("OPENAI_API_KEY is missing");
+    if (!process.env.CLOUDFLARE_ACCOUNT_ID || !process.env.CLOUDFLARE_API_TOKEN) {
+      console.error("Cloudflare env is missing");
       return {
         statusCode: 500,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: "Missing OPENAI_API_KEY" }),
+        body: JSON.stringify({ error: "Missing Cloudflare credentials" }),
       };
     }
 
     const body = JSON.parse(event.body || "{}");
     const messages = normalizeMessages(body.messages);
 
-    const inputMessages = messages.length
-      ? messages
-      : [{ role: "user", content: [{ type: "text", text: "Hi" }] }];
-
-    const response = await fetch("https://api.openai.com/v1/responses", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: "gpt-4.1-mini",
-        instructions: buildPrompt(),
-        input: inputMessages,
-        temperature: 0.4,
-        max_output_tokens: 400,
-      }),
-    });
+    const response = await fetch(
+      `https://api.cloudflare.com/client/v4/accounts/${process.env.CLOUDFLARE_ACCOUNT_ID}/ai/run/@cf/meta/llama-3.1-8b-instruct`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${process.env.CLOUDFLARE_API_TOKEN}`,
+        },
+        body: JSON.stringify({
+          messages,
+          max_tokens: 400,
+          temperature: 0.4,
+        }),
+      }
+    );
 
     const data = await response.json();
-    if (!response.ok) {
-      console.error("OpenAI error", response.status, data);
+    if (!response.ok || data?.success === false) {
+      console.error("Cloudflare error", response.status, data);
       return {
-        statusCode: response.status,
+        statusCode: response.status || 500,
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          error: data?.error?.message || "OpenAI request failed",
-          detail: data?.error || data,
+          error: data?.errors?.[0]?.message || "Cloudflare request failed",
+          detail: data,
         }),
       };
     }
 
     const reply =
-      data.output_text ||
-      data.output?.[0]?.content?.map((item) => item.text || item.output_text || "").join("") ||
+      data?.result?.response ||
+      data?.result?.message ||
       "Maaf, terjadi kendala. Coba lagi.";
 
     return {
