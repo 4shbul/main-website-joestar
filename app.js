@@ -353,17 +353,23 @@ const API_BASE =
 const formatIDR = (value) =>
   new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(value);
 
+const normalizeText = (value) =>
+  String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+
 const renderProducts = () => {
   if (!grid) return;
-  const query = searchInput.value.toLowerCase();
+  const query = normalizeText(searchInput ? searchInput.value : "");
   const filtered = products.filter((product) => {
     const matchesTag =
       activeTag === "all" || product.tags.includes(activeTag) || product.category === activeTag;
-    const matchesQuery =
-      product.name.toLowerCase().includes(query) ||
-      product.variant.toLowerCase().includes(query) ||
-      product.tags.join(" ").toLowerCase().includes(query);
-    return matchesTag && matchesQuery;
+    if (!query) return matchesTag;
+    const haystack = normalizeText(
+      [product.name, product.variant, product.category, product.tags.join(" "), product.id].join(" ")
+    );
+    return matchesTag && haystack.includes(query);
   });
 
   grid.innerHTML = "";
