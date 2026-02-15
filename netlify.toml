@@ -3,5 +3,5 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "https://YOUR-RAILWAY-URL/api/:splat"
+  to = "https://api.joestarpeptides.com/api/:splat"
   status = 200
