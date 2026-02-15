@@ -182,6 +182,18 @@ const products = [
     benefits: ["Sterile", "Reconstitution"],
     comingSoon: false,
   },
+  {
+    id: "disposable-syringe-insulin",
+    name: "Disposable Syringe Insulin",
+    variant: "1 biji",
+    price: 5000,
+    image: "img/disposable%20syringe%20insulin.png",
+    category: "Supplies",
+    tags: ["Supplies"],
+    description: "Syringe insulin sekali pakai untuk kebutuhan riset.",
+    storage: "Simpan suhu ruang sejuk dan kering.",
+    benefits: ["Single use", "Sterile", "Practical"],
+  },
 ];
 
 const grid = document.getElementById("productGrid");
@@ -206,6 +218,10 @@ const checkoutNotes = document.getElementById("checkoutNotes");
 const detailModal = document.getElementById("detailModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
+const coaModal = document.getElementById("coaModal");
+const coaModalImage = document.getElementById("coaModalImage");
+const coaModalCaption = document.getElementById("coaModalCaption");
+const closeCoaModal = document.getElementById("closeCoaModal");
 const newsletterModal = document.getElementById("newsletterModal");
 const closeNewsletter = document.getElementById("closeNewsletter");
 const closeDisclaimerBtn = document.getElementById("closeDisclaimerBtn");
@@ -417,6 +433,14 @@ const openDetail = (id) => {
   detailModal.classList.add("active");
 };
 
+const openCoaPreview = (src, altText) => {
+  if (!coaModal || !coaModalImage) return;
+  coaModalImage.src = src;
+  coaModalImage.alt = altText || "Preview COA";
+  if (coaModalCaption) coaModalCaption.textContent = altText || "COA";
+  coaModal.classList.add("active");
+};
+
 const checkoutWhatsApp = (details) => {
   const items = Object.values(cart);
   if (!items.length) {
@@ -487,6 +511,7 @@ const openCheckoutModal = () => {
 if (openCartBtn) openCartBtn.addEventListener("click", () => cartDrawer.classList.add("active"));
 if (closeCartBtn) closeCartBtn.addEventListener("click", () => cartDrawer.classList.remove("active"));
 if (closeModal) closeModal.addEventListener("click", () => detailModal.classList.remove("active"));
+if (closeCoaModal) closeCoaModal.addEventListener("click", () => coaModal.classList.remove("active"));
 if (checkoutBtn) checkoutBtn.addEventListener("click", openCheckoutModal);
 if (closeCheckoutModal) closeCheckoutModal.addEventListener("click", () => checkoutModal.classList.remove("active"));
 if (closeNewsletter) closeNewsletter.addEventListener("click", closeDisclaimer);
@@ -565,6 +590,18 @@ if (cartItemsEl) cartItemsEl.addEventListener("click", (event) => {
     updateCartUI();
   }
 });
+
+document.querySelectorAll("[data-coa-image]").forEach((img) => {
+  img.addEventListener("click", () => {
+    openCoaPreview(img.getAttribute("src") || "", img.getAttribute("alt") || "COA");
+  });
+});
+
+if (coaModal) {
+  coaModal.addEventListener("click", (event) => {
+    if (event.target === coaModal) coaModal.classList.remove("active");
+  });
+}
 
 const dropdownLinks = document.querySelectorAll(".dropdown-menu a");
 dropdownLinks.forEach((link) => {

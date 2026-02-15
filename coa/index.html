@@ -65,10 +65,10 @@
       </div>
 
       <div class="coa-grid">
-        <figure class="coa-card"><img src="/img-optimized/coa-01.jpg" alt="COA Batch 01 Joestar Peptide" loading="lazy" /></figure>
-        <figure class="coa-card"><img src="/img-optimized/coa-02.jpg" alt="COA Batch 02 Joestar Peptide" loading="lazy" /></figure>
-        <figure class="coa-card"><img src="/img-optimized/coa-03.jpg" alt="COA Batch 03 Joestar Peptide" loading="lazy" /></figure>
-        <figure class="coa-card"><img src="/img-optimized/coa-04.jpg" alt="COA Batch 04 Joestar Peptide" loading="lazy" /></figure>
+        <figure class="coa-card"><img src="/img-optimized/coa-01.jpg" alt="COA Batch 01 Joestar Peptide" loading="lazy" data-coa-image /></figure>
+        <figure class="coa-card"><img src="/img-optimized/coa-02.jpg" alt="COA Batch 02 Joestar Peptide" loading="lazy" data-coa-image /></figure>
+        <figure class="coa-card"><img src="/img-optimized/coa-03.jpg" alt="COA Batch 03 Joestar Peptide" loading="lazy" data-coa-image /></figure>
+        <figure class="coa-card"><img src="/img-optimized/coa-04.jpg" alt="COA Batch 04 Joestar Peptide" loading="lazy" data-coa-image /></figure>
       </div>
 
       <div class="hero-actions">
@@ -87,5 +87,44 @@
     </div>
     <p class="small">Copyright 2026 Joestar Peptide</p>
   </footer>
+
+  <div class="modal coa-modal" id="coaModal" aria-hidden="true">
+    <div class="modal-content coa-modal-content">
+      <button class="modal-close" id="closeCoaModal" type="button" aria-label="Tutup">&times;</button>
+      <img id="coaModalImage" class="coa-modal-image" src="" alt="Preview COA" />
+      <p id="coaModalCaption" class="small"></p>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const coaModal = document.getElementById("coaModal");
+      const coaModalImage = document.getElementById("coaModalImage");
+      const coaModalCaption = document.getElementById("coaModalCaption");
+      const closeCoaModal = document.getElementById("closeCoaModal");
+      const coaImages = document.querySelectorAll("[data-coa-image]");
+
+      if (!coaModal || !coaModalImage || !coaImages.length) return;
+
+      coaImages.forEach((img) => {
+        img.addEventListener("click", () => {
+          const src = img.getAttribute("src") || "";
+          const alt = img.getAttribute("alt") || "COA";
+          coaModalImage.src = src;
+          coaModalImage.alt = alt;
+          if (coaModalCaption) coaModalCaption.textContent = alt;
+          coaModal.classList.add("active");
+        });
+      });
+
+      if (closeCoaModal) {
+        closeCoaModal.addEventListener("click", () => coaModal.classList.remove("active"));
+      }
+
+      coaModal.addEventListener("click", (event) => {
+        if (event.target === coaModal) coaModal.classList.remove("active");
+      });
+    })();
+  </script>
 </body>
 </html>

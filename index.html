@@ -235,28 +235,28 @@
       </div>
       <div class="coa-grid">
         <figure class="coa-card">
-          <img src="img-optimized/coa-01.jpg" alt="COA 1" loading="lazy" />
+          <img src="img-optimized/coa-01.jpg" alt="COA 1" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-02.jpg" alt="COA 2" loading="lazy" />
+          <img src="img-optimized/coa-02.jpg" alt="COA 2" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-03.jpg" alt="COA 3" loading="lazy" />
+          <img src="img-optimized/coa-03.jpg" alt="COA 3" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-04.jpg" alt="COA 4" loading="lazy" />
+          <img src="img-optimized/coa-04.jpg" alt="COA 4" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-05.jpg" alt="COA 5" loading="lazy" />
+          <img src="img-optimized/coa-05.jpg" alt="COA 5" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-06.jpg" alt="COA 6" loading="lazy" />
+          <img src="img-optimized/coa-06.jpg" alt="COA 6" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-07.jpg" alt="COA 7" loading="lazy" />
+          <img src="img-optimized/coa-07.jpg" alt="COA 7" loading="lazy" data-coa-image />
         </figure>
         <figure class="coa-card">
-          <img src="img-optimized/coa-08.jpg" alt="COA 8" loading="lazy" />
+          <img src="img-optimized/coa-08.jpg" alt="COA 8" loading="lazy" data-coa-image />
         </figure>
       </div>
     </section>
@@ -444,6 +444,14 @@
     <div class="modal-content">
       <button class="modal-close" id="closeModal" type="button">&times;</button>
       <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="modal coa-modal" id="coaModal" aria-hidden="true">
+    <div class="modal-content coa-modal-content">
+      <button class="modal-close" id="closeCoaModal" type="button" aria-label="Tutup">&times;</button>
+      <img id="coaModalImage" class="coa-modal-image" src="" alt="Preview COA" />
+      <p id="coaModalCaption" class="small"></p>
     </div>
   </div>
 
