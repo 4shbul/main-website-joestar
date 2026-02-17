@@ -3,7 +3,7 @@ const products = [
     id: "ret-5",
     name: "Retatrutide",
     variant: "5mg",
-    price: 1200000,
+    price: 1000000,
     image: "img/RETA%205MG.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
@@ -15,7 +15,7 @@ const products = [
     id: "ret-10",
     name: "Retatrutide",
     variant: "10mg",
-    price: 2000000,
+    price: 1800000,
     image: "img/RETA%2010MG.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
@@ -27,7 +27,7 @@ const products = [
     id: "ret-30",
     name: "Retatrutide",
     variant: "30mg",
-    price: 5300000,
+    price: 5000000,
     image: "img/RETA%2030MG.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
@@ -39,7 +39,7 @@ const products = [
     id: "cjc-ipa",
     name: "CJC (no dac) + IPA",
     variant: "10mg",
-    price: 1500000,
+    price: 1300000,
     image: "img/CJC+IPA.png",
     category: "Peptide",
     tags: ["Muscle Growth", "Healing"],
@@ -52,7 +52,7 @@ const products = [
     id: "ghk-cu",
     name: "GHK-Cu",
     variant: "100mg",
-    price: 1400000,
+    price: 1200000,
     image: "img/GHK-CU.png",
     category: "Peptide",
     tags: ["Skin", "Healing"],
@@ -64,7 +64,7 @@ const products = [
     id: "semax",
     name: "Semax",
     variant: "10mg",
-    price: 1300000,
+    price: 1000000,
     image: "img/SEMAX.png",
     category: "Peptide",
     tags: ["Cognitive"],
@@ -76,7 +76,7 @@ const products = [
     id: "motsc",
     name: "MOTS-c",
     variant: "10mg",
-    price: 1000000,
+    price: 900000,
     image: "img/MOTS-C.png",
     category: "Peptide",
     tags: ["Fat Loss", "Healing"],
@@ -88,7 +88,7 @@ const products = [
     id: "dsip",
     name: "DSIP",
     variant: "10mg",
-    price: 1400000,
+    price: 1200000,
     image: "img/DSIP.png",
     category: "Peptide",
     tags: ["Healing"],
@@ -100,7 +100,7 @@ const products = [
     id: "wolverine",
     name: "Wolverine",
     variant: "10mg",
-    price: 2300000,
+    price: 2100000,
     image: "img/WOLVERINE.png",
     category: "Peptide",
     tags: ["Healing", "Muscle Growth"],
@@ -112,7 +112,7 @@ const products = [
     id: "bpc-157",
     name: "BPC-157",
     variant: "10mg",
-    price: 1100000,
+    price: 900000,
     image: "img/BPC-157.png",
     category: "Peptide",
     tags: ["Healing"],
@@ -124,7 +124,7 @@ const products = [
     id: "pt-141",
     name: "PT-141",
     variant: "10mg",
-    price: 1300000,
+    price: 1000000,
     image: "img/PT-141.png",
     category: "Peptide",
     tags: ["Healing"],
@@ -136,7 +136,7 @@ const products = [
     id: "glutathione",
     name: "Glutathione",
     variant: "1500mg",
-    price: 3000000,
+    price: 2700000,
     image: "img/GLUTATHIONE.png",
     category: "Peptide",
     tags: ["Healing", "Skin"],
@@ -148,7 +148,7 @@ const products = [
     id: "klow",
     name: "Klow",
     variant: "80mg",
-    price: 3400000,
+    price: 3200000,
     image: "img/KLOW.png",
     category: "Peptide",
     tags: ["Healing"],
@@ -186,7 +186,7 @@ const products = [
     id: "disposable-syringe-insulin",
     name: "Disposable Syringe Insulin",
     variant: "1 biji",
-    price: 5000,
+    price: 7000,
     image: "img/disposable%20syringe%20insulin.png",
     category: "Supplies",
     tags: ["Supplies"],
@@ -319,12 +319,12 @@ const renderProducts = () => {
   grid.innerHTML = "";
   filtered.forEach((product) => {
     const card = document.createElement("article");
-    card.className = "product-card";
+    card.className = "product-card ramadan-promo";
     card.dataset.productId = product.id;
 
     const priceLabel = product.price ? formatIDR(product.price) : "Hubungi Kami";
     card.innerHTML = `
-      ${product.comingSoon ? '<span class="badge">COMING SOON</span>' : ""}
+      ${product.comingSoon ? '<span class="badge">COMING SOON</span>' : '<span class="promo-ramadan-badge">Promo Ramadhan</span>'}
       <div class="product-image" data-detail="${product.id}">
         <img src="${product.image}" alt="${product.name} ${product.variant}" loading="lazy" />
       </div>
