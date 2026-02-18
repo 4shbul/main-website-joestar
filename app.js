@@ -197,6 +197,22 @@ const products = [
   },
 ];
 
+const promoOriginalPrices = Object.freeze({
+  "ret-5": 1200000,
+  "ret-10": 2000000,
+  "ret-30": 5300000,
+  "cjc-ipa": 1500000,
+  "ghk-cu": 1400000,
+  semax: 1300000,
+  motsc: 1000000,
+  dsip: 1400000,
+  wolverine: 2300000,
+  "bpc-157": 1100000,
+  "pt-141": 1300000,
+  glutathione: 3000000,
+  klow: 3400000,
+});
+
 const grid = document.getElementById("productGrid");
 const searchInput = document.getElementById("searchInput");
 const tagFilters = document.getElementById("tagFilters");
@@ -325,6 +341,12 @@ const renderProducts = () => {
     card.dataset.productId = product.id;
 
     const priceLabel = product.price ? formatIDR(product.price) : "Hubungi Kami";
+    const originalPrice = promoOriginalPrices[product.id];
+    const hasPromoPrice =
+      Number.isFinite(originalPrice) && Number.isFinite(product.price) && originalPrice > product.price;
+    const priceHtml = hasPromoPrice
+      ? `<span class="old-price">${formatIDR(originalPrice)}</span><span class="promo-price">${priceLabel}</span>`
+      : `<span class="promo-price">${priceLabel}</span>`;
     card.innerHTML = `
       ${product.soldOut ? '<span class="badge">SOLD OUT</span>' : product.comingSoon ? '<span class="badge">COMING SOON</span>' : '<span class="promo-ramadan-badge">Promo Ramadhan</span>'}
       <div class="product-image" data-detail="${product.id}">
@@ -334,7 +356,7 @@ const renderProducts = () => {
         <h3>${product.name}</h3>
         <p class="product-meta">${product.variant} · ${product.category}</p>
       </div>
-      <p class="price">${priceLabel}</p>
+      <p class="price ${hasPromoPrice ? "has-discount" : ""}">${priceHtml}</p>
       <p class="product-meta">${product.tags.join(" · ")}</p>
       <button class="ghost" type="button" data-detail="${product.id}">View Details</button>
       <button class="primary" type="button" data-add="${product.id}" ${isUnavailable ? "disabled" : ""}>

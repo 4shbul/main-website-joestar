@@ -738,6 +738,23 @@ h1, h2, h3, h4 {
   font-size: 1.2rem;
 }
 
+.price.has-discount {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.price .old-price {
+  font-size: 0.82rem;
+  color: #7b7f86;
+  text-decoration: line-through;
+  font-weight: 600;
+}
+
+.price .promo-price {
+  font-size: 1em;
+  font-weight: 800;
+}
+
 .product-card .ghost,
 .product-card .primary {
   width: 100%;
