@@ -46,6 +46,7 @@ const products = [
     description: "Blend untuk riset hormon pertumbuhan dan pemulihan.",
     storage: "Simpan 2-8°C.",
     benefits: ["Recovery support", "Muscle research", "Sleep quality"],
+    soldOut: true,
     comingSoon: false,
   },
   {
@@ -318,13 +319,14 @@ const renderProducts = () => {
 
   grid.innerHTML = "";
   filtered.forEach((product) => {
+    const isUnavailable = Boolean(product.comingSoon || product.soldOut);
     const card = document.createElement("article");
     card.className = "product-card ramadan-promo";
     card.dataset.productId = product.id;
 
     const priceLabel = product.price ? formatIDR(product.price) : "Hubungi Kami";
     card.innerHTML = `
-      ${product.comingSoon ? '<span class="badge">COMING SOON</span>' : '<span class="promo-ramadan-badge">Promo Ramadhan</span>'}
+      ${product.soldOut ? '<span class="badge">SOLD OUT</span>' : product.comingSoon ? '<span class="badge">COMING SOON</span>' : '<span class="promo-ramadan-badge">Promo Ramadhan</span>'}
       <div class="product-image" data-detail="${product.id}">
         <img src="${product.image}" alt="${product.name} ${product.variant}" loading="lazy" />
       </div>
@@ -335,8 +337,8 @@ const renderProducts = () => {
       <p class="price">${priceLabel}</p>
       <p class="product-meta">${product.tags.join(" · ")}</p>
       <button class="ghost" type="button" data-detail="${product.id}">View Details</button>
-      <button class="primary" type="button" data-add="${product.id}" ${product.comingSoon ? "disabled" : ""}>
-        ${product.comingSoon ? "Coming Soon" : "Add to Cart"}
+      <button class="primary" type="button" data-add="${product.id}" ${isUnavailable ? "disabled" : ""}>
+        ${product.soldOut ? "Sold Out" : product.comingSoon ? "Coming Soon" : "Add to Cart"}
       </button>
     `;
 
@@ -388,7 +390,7 @@ const updateCartUI = () => {
 
 const addToCart = (id) => {
   const product = products.find((item) => item.id === id);
-  if (!product || product.comingSoon) return;
+  if (!product || product.comingSoon || product.soldOut) return;
 
   if (!cart[id]) {
     cart[id] = { ...product, qty: 1 };
