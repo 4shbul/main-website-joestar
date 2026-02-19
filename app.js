@@ -6,10 +6,10 @@ const products = [
     price: 1000000,
     image: "img/RETA%205MG.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Peptide riset metabolik dengan fokus pada regulasi berat badan.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Peptide riset untuk studi jalur metabolik di laboratorium.",
     storage: "Simpan 2-8Â°C. Hindari cahaya langsung.",
-    benefits: ["Metabolic support", "Appetite modulation", "Energy balance"],
+    benefits: ["For laboratory research only", "Metabolic pathway research reference", "Refer to COA per batch"],
   },
   {
     id: "ret-10",
@@ -18,10 +18,10 @@ const products = [
     price: 1800000,
     image: "img/RETA%2010MG.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Peptide riset metabolik dengan fokus pada regulasi berat badan.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Peptide riset untuk studi jalur metabolik di laboratorium.",
     storage: "Simpan 2-8°C. Hindari cahaya langsung.",
-    benefits: ["Metabolic support", "Appetite modulation", "Energy balance"],
+    benefits: ["For laboratory research only", "Metabolic pathway research reference", "Refer to COA per batch"],
   },
   {
     id: "ret-30",
@@ -30,10 +30,10 @@ const products = [
     price: 5000000,
     image: "img/RETA%2030MG.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Konsentrasi lebih tinggi untuk kebutuhan riset intensif.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Konsentrasi lebih tinggi untuk protokol studi laboratorium.",
     storage: "Simpan 2-8°C. Gunakan segera setelah reconstitusi.",
-    benefits: ["Metabolic support", "Weight research", "Sustained protocol"],
+    benefits: ["For laboratory research only", "Metabolic pathway research reference", "Refer to COA per batch"],
   },
   {
     id: "cjc-ipa",
@@ -42,10 +42,10 @@ const products = [
     price: 1300000,
     image: "img/CJC+IPA.png",
     category: "Peptide",
-    tags: ["Muscle Growth", "Healing"],
-    description: "Blend untuk riset hormon pertumbuhan dan pemulihan.",
+    tags: ["Peptide Blend", "General Research"],
+    description: "Blend peptide untuk riset karakterisasi senyawa di laboratorium.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Recovery support", "Muscle research", "Sleep quality"],
+    benefits: ["For laboratory research only", "Peptide blend research reference", "Refer to COA per batch"],
     soldOut: true,
     comingSoon: false,
   },
@@ -56,10 +56,10 @@ const products = [
     price: 1200000,
     image: "img/GHK-CU.png",
     category: "Peptide",
-    tags: ["Skin", "Healing"],
-    description: "Copper peptide untuk riset peremajaan kulit.",
+    tags: ["Dermal Research", "General Research"],
+    description: "Copper peptide untuk studi karakterisasi molekul.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Skin renewal", "Collagen support", "Healing"],
+    benefits: ["For laboratory research only", "Copper peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "semax",
@@ -68,10 +68,10 @@ const products = [
     price: 1000000,
     image: "img/SEMAX.png",
     category: "Peptide",
-    tags: ["Cognitive"],
-    description: "Peptide neuromodulator untuk riset kognitif.",
+    tags: ["Neuro Research"],
+    description: "Peptide neuromodulator untuk studi laboratorium.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Focus", "Neuro support", "Memory"],
+    benefits: ["For laboratory research only", "Neuropeptide research reference", "Refer to COA per batch"],
   },
   {
     id: "motsc",
@@ -80,10 +80,10 @@ const products = [
     price: 900000,
     image: "img/MOTS-C.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Peptide mitokondria untuk riset energi selular.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Peptide mitokondria untuk studi proses seluler.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Energy balance", "Metabolic support", "Recovery"],
+    benefits: ["For laboratory research only", "Mitochondrial research reference", "Refer to COA per batch"],
   },
   {
     id: "dsip",
@@ -92,10 +92,10 @@ const products = [
     price: 1200000,
     image: "img/DSIP.png",
     category: "Peptide",
-    tags: ["Healing"],
-    description: "Delta Sleep-Inducing Peptide untuk riset tidur.",
+    tags: ["General Research"],
+    description: "Delta Sleep-Inducing Peptide untuk studi protokol laboratorium.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Sleep quality", "Recovery", "Relaxation"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "wolverine",
@@ -104,10 +104,10 @@ const products = [
     price: 2100000,
     image: "img/WOLVERINE.png",
     category: "Peptide",
-    tags: ["Healing", "Muscle Growth"],
-    description: "Peptide riset regenerasi jaringan.",
+    tags: ["General Research", "Peptide Blend"],
+    description: "Peptide riset untuk studi karakterisasi formulasi.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Tissue repair", "Recovery", "Performance"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "bpc-157",
@@ -116,10 +116,10 @@ const products = [
     price: 900000,
     image: "img/BPC-157.png",
     category: "Peptide",
-    tags: ["Healing"],
-    description: "Peptide untuk riset pemulihan jaringan.",
+    tags: ["General Research"],
+    description: "Peptide untuk studi laboratorium dan dokumentasi protokol.",
     storage: "Simpan 2-8Â°C.",
-    benefits: ["Recovery", "Repair", "Research"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "pt-141",
@@ -128,10 +128,10 @@ const products = [
     price: 1000000,
     image: "img/PT-141.png",
     category: "Peptide",
-    tags: ["Healing"],
-    description: "Peptide untuk riset regulasi hormonal.",
+    tags: ["General Research"],
+    description: "Peptide untuk studi karakterisasi formula.",
     storage: "Simpan 2-8Â°C.",
-    benefits: ["Research", "Protocol support"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "glutathione",
@@ -140,10 +140,10 @@ const products = [
     price: 2700000,
     image: "img/GLUTATHIONE.png",
     category: "Peptide",
-    tags: ["Healing", "Skin"],
-    description: "Antioksidan untuk riset detoksifikasi.",
+    tags: ["General Research", "Dermal Research"],
+    description: "Antioksidan untuk studi stabilitas dan karakterisasi.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Detox", "Skin clarity", "Recovery"],
+    benefits: ["For laboratory research only", "Antioxidant research reference", "Refer to COA per batch"],
   },
   {
     id: "klow",
@@ -152,10 +152,10 @@ const products = [
     price: 3200000,
     image: "img/KLOW.png",
     category: "Peptide",
-    tags: ["Healing"],
+    tags: ["General Research"],
     description: "Produk riset khusus (detail menyusul).",
     storage: "Simpan 2-8°C.",
-    benefits: ["Custom protocol", "Research only"],
+    benefits: ["For laboratory research only", "Custom protocol documentation", "Refer to COA per batch"],
     comingSoon: false,
   },
   {
@@ -168,7 +168,7 @@ const products = [
     tags: ["Supplies"],
     description: "Bacteriostatic water untuk reconstitusi.",
     storage: "Simpan suhu ruang sejuk.",
-    benefits: ["Sterile", "Reconstitution"],
+    benefits: ["Laboratory use only", "Sterile handling required", "Use according to protocol"],
   },
   {
     id: "bac-10",
@@ -180,7 +180,7 @@ const products = [
     tags: ["Supplies"],
     description: "Bacteriostatic water untuk reconstitusi.",
     storage: "Simpan suhu ruang sejuk.",
-    benefits: ["Sterile", "Reconstitution"],
+    benefits: ["Laboratory use only", "Sterile handling required", "Use according to protocol"],
     comingSoon: false,
   },
   {
@@ -193,7 +193,7 @@ const products = [
     tags: ["Supplies"],
     description: "Syringe insulin sekali pakai untuk kebutuhan riset.",
     storage: "Simpan suhu ruang sejuk dan kering.",
-    benefits: ["Single use", "Sterile", "Practical"],
+    benefits: ["Laboratory use only", "Single-use tool", "Use according to protocol"],
   },
 ];
 
@@ -445,14 +445,16 @@ const openDetail = (id) => {
     <h3>${product.name} · ${product.variant}</h3>
     <p>${product.description}</p>
     <div>
-      <h4>Benefits</h4>
+      <h4>Research Notes</h4>
       <ul>${product.benefits.map((b) => `<li>${b}</li>`).join("")}</ul>
     </div>
     <div>
       <h4>Storage</h4>
       <p>${product.storage}</p>
     </div>
-    <p class="small">Disclaimer: Produk hanya untuk tujuan riset dan edukasi.</p>
+    <p class="small">For laboratory research purposes only.</p>
+    <p class="small">Not for human consumption.</p>
+    <p class="small">Not intended to diagnose, treat, cure, or prevent any disease.</p>
   `;
   detailModal.classList.add("active");
 };
