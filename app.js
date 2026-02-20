@@ -370,6 +370,33 @@ const renderProducts = () => {
   });
 };
 
+const supportsHoverZoom =
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+let activeZoomImage = null;
+
+const resetProductImageZoom = (imageWrap) => {
+  if (!imageWrap) return;
+  imageWrap.style.removeProperty("--zoom-x");
+  imageWrap.style.removeProperty("--zoom-y");
+  imageWrap.classList.remove("is-zooming");
+};
+
+const updateProductImageZoom = (imageWrap, event) => {
+  if (!imageWrap || !event) return;
+  const rect = imageWrap.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+
+  const x = ((event.clientX - rect.left) / rect.width) * 100;
+  const y = ((event.clientY - rect.top) / rect.height) * 100;
+  const clamp = (value) => Math.max(0, Math.min(100, value));
+
+  imageWrap.style.setProperty("--zoom-x", `${clamp(x)}%`);
+  imageWrap.style.setProperty("--zoom-y", `${clamp(y)}%`);
+  imageWrap.classList.add("is-zooming");
+};
+
 const updateCartUI = () => {
   if (!cartItemsEl || !cartTotalEl || !cartCount) return;
   cartItemsEl.innerHTML = "";
@@ -604,6 +631,31 @@ if (grid) grid.addEventListener("click", (event) => {
     }
   }
 });
+
+if (grid && supportsHoverZoom) {
+  grid.addEventListener("pointermove", (event) => {
+    const imageWrap = event.target.closest(".product-image");
+    if (!imageWrap || !grid.contains(imageWrap)) {
+      if (activeZoomImage) {
+        resetProductImageZoom(activeZoomImage);
+        activeZoomImage = null;
+      }
+      return;
+    }
+
+    if (activeZoomImage && activeZoomImage !== imageWrap) {
+      resetProductImageZoom(activeZoomImage);
+    }
+    activeZoomImage = imageWrap;
+    updateProductImageZoom(imageWrap, event);
+  });
+
+  grid.addEventListener("pointerleave", () => {
+    if (!activeZoomImage) return;
+    resetProductImageZoom(activeZoomImage);
+    activeZoomImage = null;
+  });
+}
 
 if (cartItemsEl) cartItemsEl.addEventListener("click", (event) => {
   const inc = event.target.dataset.inc;

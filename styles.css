@@ -702,6 +702,10 @@ h1, h2, h3, h4 {
   place-items: center;
   padding: 0.6rem;
   border: 1px solid rgba(38, 35, 38, 0.12);
+  position: relative;
+  --zoom-x: 50%;
+  --zoom-y: 50%;
+  cursor: zoom-in;
 }
 
 .product-image img {
@@ -710,6 +714,21 @@ h1, h2, h3, h4 {
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 12px 20px rgba(38, 35, 38, 0.22));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  transform-origin: var(--zoom-x) var(--zoom-y);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-image:hover img,
+  .product-image.is-zooming img {
+    transform: scale(1.75);
+    filter: drop-shadow(0 16px 26px rgba(38, 35, 38, 0.26));
+  }
+
+  .product-image.is-zooming {
+    cursor: move;
+  }
 }
 
 .product-card:hover {
@@ -777,13 +796,20 @@ h1, h2, h3, h4 {
 
 .badge {
   position: absolute;
-  top: 1.1rem;
-  right: -3.1rem;
+  top: 0.85rem;
+  left: 0.85rem;
   background: #a0333a;
   color: white;
-  font-size: 0.7rem;
-  padding: 0.25rem 3.4rem;
-  transform: rotate(45deg);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  z-index: 3;
+  transform: none;
+  pointer-events: none;
 }
 
 .promo-ramadan-badge {
