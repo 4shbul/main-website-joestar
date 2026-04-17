@@ -882,6 +882,31 @@ if (grid) grid.addEventListener("click", (event) => {
   }
 });
 
+if (grid && supportsHoverZoom) {
+  grid.addEventListener("pointermove", (event) => {
+    const imageWrap = event.target.closest(".product-image");
+    if (!imageWrap || !grid.contains(imageWrap)) {
+      if (activeZoomImage) {
+        resetProductImageZoom(activeZoomImage);
+        activeZoomImage = null;
+      }
+      return;
+    }
+
+    if (activeZoomImage && activeZoomImage !== imageWrap) {
+      resetProductImageZoom(activeZoomImage);
+    }
+    activeZoomImage = imageWrap;
+    updateProductImageZoom(imageWrap, event);
+  });
+
+  grid.addEventListener("pointerleave", () => {
+    if (!activeZoomImage) return;
+    resetProductImageZoom(activeZoomImage);
+    activeZoomImage = null;
+  });
+}
+
 if (cartItemsEl) cartItemsEl.addEventListener("click", (event) => {
   const inc = event.target.dataset.inc;
   const dec = event.target.dataset.dec;
