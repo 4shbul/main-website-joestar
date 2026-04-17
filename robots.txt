@@ -2,7 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /server/
-Disallow: /.netlify/
-Disallow: /netlify/
+Disallow: /api/
 
 Sitemap: https://www.joestarpeptides.com/sitemap.xml

@@ -34,9 +34,9 @@
     content="Premium research peptides dengan transparansi COA per batch, quality assurance, dan layanan profesional."
   />
   <meta name="twitter:image" content="https://www.joestarpeptides.com/img-optimized/logo.jpeg" />
-  <link rel="icon" type="image/jpeg" sizes="48x48" href="/favicon.jpg" />
-  <link rel="shortcut icon" type="image/jpeg" href="/favicon.jpg" />
-  <link rel="apple-touch-icon" href="/favicon.jpg" />
+  <link rel="icon" type="image/jpeg" sizes="48x48" href="favicon.jpg" />
+  <link rel="shortcut icon" type="image/jpeg" href="favicon.jpg" />
+  <link rel="apple-touch-icon" href="favicon.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -122,23 +122,23 @@
 
       <div class="nav-menu" id="navMenu">
         <nav class="nav-links">
-          <a href="/">Home</a>
-          <a href="/#shop">Shop All</a>
+          <a href="index.html">Home</a>
+          <a href="#shop">Shop All</a>
           <div class="dropdown">
             <input class="dropdown-input" id="navPeptides" type="checkbox" aria-hidden="true" />
             <label class="dropdown-toggle" for="navPeptides">Peptides</label>
             <div class="dropdown-menu">
-              <a href="#shop" data-tag="Fat Loss">Fat Loss</a>
-              <a href="#shop" data-tag="Healing">Healing</a>
-              <a href="#shop" data-tag="Muscle Growth">Muscle Growth</a>
-              <a href="#shop" data-tag="Cognitive">Cognitive</a>
-              <a href="#shop" data-tag="Skin">Skin</a>
+              <a href="#shop" data-tag="Metabolic Research">Metabolic Research</a>
+              <a href="#shop" data-tag="General Research">General Research</a>
+              <a href="#shop" data-tag="Peptide Blend">Peptide Blend</a>
+              <a href="#shop" data-tag="Neuro Research">Neuro Research</a>
+              <a href="#shop" data-tag="Dermal Research">Dermal Research</a>
             </div>
           </div>
-          <a href="/coa/">Lab Tests/COA</a>
-          <a href="/faq/">FAQ</a>
-          <a href="/affiliate/">Affiliate</a>
-          <a href="/contact/">Contact Us</a>
+          <a href="coa/index.html">Lab Tests/COA</a>
+          <a href="faq/index.html">FAQ</a>
+          <a href="affiliate/index.html">Affiliate</a>
+          <a href="contact/index.html">Contact Us</a>
         </nav>
 
         <div class="nav-actions">
@@ -216,17 +216,17 @@
           <h2>Produk & Pricing</h2>
         </div>
         <div class="search-wrap">
-          <input id="searchInput" type="search" placeholder="Cari peptide, kategori, atau fungsi" />
+          <input id="searchInput" type="search" placeholder="Cari peptide, kategori, atau produk" />
         </div>
       </div>
 
       <div class="filter-tags" id="tagFilters">
         <button class="chip active" data-tag="all">All</button>
-        <button class="chip" data-tag="Fat Loss">Fat Loss</button>
-        <button class="chip" data-tag="Healing">Healing</button>
-        <button class="chip" data-tag="Muscle Growth">Muscle Growth</button>
-        <button class="chip" data-tag="Cognitive">Cognitive</button>
-        <button class="chip" data-tag="Skin">Skin</button>
+        <button class="chip" data-tag="Metabolic Research">Metabolic Research</button>
+        <button class="chip" data-tag="General Research">General Research</button>
+        <button class="chip" data-tag="Peptide Blend">Peptide Blend</button>
+        <button class="chip" data-tag="Neuro Research">Neuro Research</button>
+        <button class="chip" data-tag="Dermal Research">Dermal Research</button>
         <button class="chip" data-tag="Supplies">Supplies</button>
       </div>
 
@@ -289,7 +289,7 @@
           <p class="eyebrow">Product Detail</p>
           <h2>Informasi Detail & Penyimpanan</h2>
         </div>
-        <p class="lead">Klik detail pada setiap produk untuk membaca manfaat, penyimpanan, serta disclaimer medis.</p>
+        <p class="lead">Klik detail pada setiap produk untuk membaca catatan riset, penyimpanan, serta disclaimer legal.</p>
       </div>
       <div class="detail-panels">
         <div>
@@ -297,8 +297,8 @@
           <p>Simpan produk dalam suhu 2-8&deg;C dan hindari paparan cahaya langsung. Gunakan segera setelah reconstitusi.</p>
         </div>
         <div>
-          <h3>Medical Disclaimer</h3>
-          <p>Produk hanya untuk tujuan riset. Selalu konsultasikan dengan tenaga profesional sebelum penggunaan.</p>
+          <h3>Research Disclaimer</h3>
+          <p>For laboratory research purposes only. Not for human consumption. Not intended to diagnose, treat, cure, or prevent any disease.</p>
         </div>
         <div>
           <h3>Shipping</h3>
@@ -325,7 +325,7 @@
         </details>
         <details>
           <summary>Bagaimana proses pemesanan & checkout?</summary>
-          <p>Anda dapat menambahkan produk ke keranjang dan checkout via WhatsApp. Integrasi Midtrans/Xendit akan tersedia.</p>
+          <p>Anda dapat menambahkan produk ke keranjang, isi data checkout, bayar via QRIS, lalu konfirmasi pembayaran ke admin.</p>
         </details>
       </div>
     </section>
@@ -360,22 +360,105 @@
           <p class="eyebrow">Affiliate</p>
           <h2>Program Afiliasi Joestar</h2>
         </div>
-        <p class="lead">Program afiliasi segera hadir dengan dashboard penjualan yang lebih lengkap.</p>
+        <p class="lead">Daftar akun, pilih opsi menjadi affiliate, lalu pantau kode dan performa penjualan langsung dari dashboard.</p>
       </div>
 
       <div class="account-grid">
         <div class="account-card">
-          <span class="badge">COMING SOON</span>
-          <h3>Program Afiliasi</h3>
-          <p class="lead">
-            Fitur afiliasi sedang dalam tahap pengembangan agar lebih stabil dan aman digunakan.
-          </p>
+          <h3>Sign Up</h3>
+          <form id="signupForm" class="admin-login">
+            <input type="text" id="signupName" placeholder="Nama lengkap" required />
+            <input type="text" id="signupUsername" placeholder="Username" required />
+            <input type="tel" id="signupPhone" placeholder="Nomor WhatsApp" required />
+            <input type="password" id="signupPassword" placeholder="Password" required />
+            <label class="product-meta" for="signupAsAffiliate">
+              <input type="checkbox" id="signupAsAffiliate" />
+              Daftar sebagai affiliate
+            </label>
+            <button class="primary" type="submit">Buat Akun</button>
+          </form>
           <p class="small">
-            Pantau pembaruan di sini atau hubungi tim kami untuk informasi lebih lanjut.
+            Jika opsi affiliate dicentang, sistem akan membuat kode affiliate unik otomatis.
           </p>
-          <a class="primary" href="https://wa.me/6287732013193" target="_blank" rel="noopener">
-            Hubungi Admin
-          </a>
+        </div>
+
+        <div class="account-card">
+          <h3>Login</h3>
+          <form id="loginForm" class="admin-login">
+            <input type="text" id="loginUsername" placeholder="Username" required />
+            <input type="password" id="loginPassword" placeholder="Password" required />
+            <button class="primary" type="submit">Login</button>
+          </form>
+          <div class="account-links">
+            <button class="link-button" type="button" id="forgotPasswordBtn">Lupa password</button>
+            <button class="link-button" type="button" id="resetPasswordBtn">Punya token reset</button>
+          </div>
+          <button class="ghost" type="button" id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="account-card account-dashboard">
+          <div class="dashboard-header">
+            <div>
+              <h3>Affiliate Dashboard</h3>
+              <p class="small">Status akun, kode affiliate, dan ringkasan komisi.</p>
+            </div>
+          </div>
+
+          <div class="account-details">
+            <div><strong id="accountName">-</strong></div>
+            <div>Username: <strong id="accountUsername">-</strong></div>
+            <div>Status: <strong id="accountStatus">-</strong></div>
+            <div>Role: <strong id="accountRole">-</strong></div>
+            <div>Last login: <strong id="accountLastLogin">-</strong></div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div>
+              <p class="small">Status Affiliate</p>
+              <h4 id="affiliateStatus">Guest</h4>
+            </div>
+            <div>
+              <p class="small">Kode Affiliate</p>
+              <h4 id="affiliateCode">-</h4>
+            </div>
+            <div>
+              <p class="small">Total Sales</p>
+              <h4 id="salesTotal">Rp 0</h4>
+            </div>
+            <div>
+              <p class="small">Estimasi Komisi</p>
+              <h4 id="commissionTotal">Rp 0</h4>
+            </div>
+          </div>
+
+          <div class="affiliate-tools">
+            <div class="share-row">
+              <input
+                id="affiliateLinkInput"
+                type="text"
+                placeholder="Link affiliate akan muncul setelah akun aktif"
+                readonly
+              />
+              <button class="ghost" type="button" id="copyAffiliateLinkBtn">Copy Link</button>
+            </div>
+            <button class="primary" type="button" id="becomeAffiliateBtn" hidden>Aktifkan Affiliate</button>
+            <p id="affiliateJoinHint" class="small"></p>
+          </div>
+
+          <form id="redeemForm" class="redeem-form">
+            <input
+              id="redeemInput"
+              type="text"
+              placeholder="Masukkan kode affiliate untuk checkout"
+            />
+            <button class="ghost" type="submit">Simpan Kode</button>
+          </form>
+          <p id="redeemHint" class="small">Kode referral valid akan otomatis dipakai saat checkout.</p>
+
+          <div id="salesList" class="sales-list">
+            <p class="product-meta">Silakan login untuk melihat penjualan.</p>
+          </div>
+          <p id="authDebug" class="small"></p>
         </div>
       </div>
     </section>
@@ -404,10 +487,10 @@
         <h4>Quick Links</h4>
         <p><a href="#shop">Shop All</a> · <a href="#coa">COA</a> · <a href="#faq">FAQ</a></p>
         <p>
-          <a href="/faq/">Halaman FAQ</a> ·
-          <a href="/coa/">Halaman COA</a> ·
-          <a href="/affiliate/">Halaman Affiliate</a> ·
-          <a href="/contact/">Kontak</a>
+          <a href="faq/index.html">Halaman FAQ</a> ·
+          <a href="coa/index.html">Halaman COA</a> ·
+          <a href="affiliate/index.html">Halaman Affiliate</a> ·
+          <a href="contact/index.html">Kontak</a>
         </p>
       </div>
       <div class="footer-social">
@@ -419,10 +502,8 @@
       <div>
         <h4>Legal Disclaimer</h4>
         <p>
-          Informasi yang disediakan di situs ini hanya untuk tujuan edukasi dan informasi. Penggunaan produk harus
-          dilakukan di bawah pengawasan tenaga ahli atau profesional kesehatan. Joestar Peptide tidak bertanggung jawab
-          atas penyalahgunaan produk di luar panduan yang diberikan. Dengan membeli, Anda dianggap telah memahami
-          karakteristik produk kami.
+          For laboratory research purposes only. Not for human consumption. Not intended to diagnose, treat, cure, or prevent any disease.
+          Seluruh informasi produk ditujukan untuk kebutuhan riset laboratorium.
         </p>
       </div>
     </div>
@@ -440,8 +521,7 @@
         <span>Total</span>
         <strong id="cartTotal">Rp 0</strong>
       </div>
-      <button class="primary" id="checkoutBtn" type="button">Checkout via WhatsApp</button>
-      <button class="ghost" id="gatewayBtn" type="button">Midtrans/Xendit (Coming Soon)</button>
+      <button class="primary" id="checkoutBtn" type="button">Checkout QRIS</button>
     </div>
   </div>
 
@@ -449,16 +529,51 @@
     <div class="modal-content">
       <button class="modal-close" id="closeCheckoutModal" type="button">&times;</button>
       <h3>Data Pengiriman</h3>
-      <p class="small">Lengkapi data berikut agar proses checkout via WhatsApp lebih cepat.</p>
+      <p class="small">Lengkapi data berikut untuk membuat order lalu tampilkan QRIS pembayaran di halaman ini.</p>
       <form id="checkoutForm" class="checkout-form">
         <input type="text" id="checkoutName" placeholder="Nama lengkap" required />
         <input type="tel" id="checkoutPhone" placeholder="Nomor WhatsApp" required />
         <input type="text" id="checkoutCity" placeholder="Kota / Kabupaten" required />
         <input type="text" id="checkoutPostal" placeholder="Kode pos" required />
         <textarea id="checkoutAddress" rows="3" placeholder="Alamat lengkap" required></textarea>
+        <input
+          type="text"
+          id="checkoutAffiliateCode"
+          placeholder="Kode affiliate (opsional, contoh: JPAB12CD34)"
+        />
         <textarea id="checkoutNotes" rows="2" placeholder="Catatan tambahan (opsional)"></textarea>
-        <button class="primary" type="submit">Lanjutkan ke WhatsApp</button>
+        <button class="primary" type="submit">Tampilkan QRIS</button>
       </form>
+    </div>
+  </div>
+
+  <div class="modal qris-payment-modal" id="qrisPaymentModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeQrisPaymentModal" type="button">&times;</button>
+      <h3>Pembayaran QRIS</h3>
+      <p class="small" id="qrisPaymentLabel">Scan QRIS, lalu konfirmasi pembayaran ke admin.</p>
+      <div class="qris-payment-image-wrap">
+        <img id="qrisPaymentImage" class="qris-payment-image" src="" alt="QRIS" hidden />
+      </div>
+      <p class="small" id="qrisPaymentImageHint">QRIS belum tersedia.</p>
+      <div class="qris-payment-meta">
+        <div>
+          <span class="small">Order Number</span>
+          <strong id="qrisPaymentOrderNumber">-</strong>
+        </div>
+        <div>
+          <span class="small">Total</span>
+          <strong id="qrisPaymentTotal">Rp 0</strong>
+        </div>
+        <div>
+          <span class="small">Merchant</span>
+          <strong id="qrisPaymentMerchant">Joestar Peptide</strong>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="primary" id="qrisPaymentConfirmBtn" type="button">Konfirmasi via WhatsApp</button>
+        <button class="ghost" id="qrisPaymentDoneBtn" type="button">Tutup</button>
+      </div>
     </div>
   </div>
 
@@ -556,7 +671,7 @@
     Chat with Us
   </a>
 
-  <script src="app.js?v=12"></script>
+  <script src="app.js?v=13"></script>
   <script>
     (function () {
       if (window.__JP_APP_READY) return;
@@ -634,7 +749,8 @@
           if (addBtn) {
             const card = addBtn.closest(".product-card");
             if (!card) return;
-            const id = addBtn.dataset.add || card.dataset.productId || Math.random().toString(36).slice(2);
+            const id = addBtn.dataset.add || card.dataset.productId;
+            if (!id) return;
             const name = card.querySelector("h3")?.textContent?.trim() || "Produk";
             const variant = card.querySelector(".product-meta")?.textContent?.split("·")[0]?.trim() || "";
             const priceText = card.querySelector(".price")?.textContent?.trim() || "Hubungi Kami";
@@ -685,40 +801,67 @@
         }
 
         if (checkoutForm) {
-          checkoutForm.addEventListener("submit", (event) => {
+          checkoutForm.addEventListener("submit", async (event) => {
             event.preventDefault();
             const name = document.getElementById("checkoutName")?.value.trim();
             const phone = document.getElementById("checkoutPhone")?.value.trim();
             const city = document.getElementById("checkoutCity")?.value.trim();
             const postal = document.getElementById("checkoutPostal")?.value.trim();
             const address = document.getElementById("checkoutAddress")?.value.trim();
+            const affiliateCode = document
+              .getElementById("checkoutAffiliateCode")
+              ?.value.trim()
+              .toUpperCase();
             const notes = document.getElementById("checkoutNotes")?.value.trim();
 
             if (!name || !phone || !city || !postal || !address) return;
+            const items = Object.values(cart).map((item) => ({
+              id: item.id,
+              name: `${item.name} ${item.variant}`.trim(),
+              quantity: Number(item.qty || 0),
+              unitPrice: Number(item.price || 0),
+            }));
+            if (!items.length) return;
 
-            const lines = Object.values(cart).map(
-              (item) => `- ${item.name} ${item.variant} x${item.qty} (${item.priceText || "Hubungi"})`
-            );
-            const message = [
-              "Halo Joestar Peptide, saya ingin order:",
-              ...lines,
-              "",
-              "Data pengiriman:",
-              `Nama: ${name}`,
-              `WhatsApp: ${phone}`,
-              `Kota: ${city}`,
-              `Kode pos: ${postal}`,
-              `Alamat: ${address}`,
-              notes ? `Catatan: ${notes}` : "",
-              "",
-              "Mohon info total dan pembayaran. Terima kasih.",
-            ]
-              .filter(Boolean)
-              .join("\n");
+            const apiBase =
+              location.hostname === "localhost" || location.hostname === "127.0.0.1"
+                ? "http://localhost:3000/api"
+                : "/api";
 
-            const url = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(message);
-            window.open(url, "_blank");
-            if (checkoutModal) checkoutModal.classList.remove("active");
+            try {
+              const response = await fetch(apiBase + "/payments/checkout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name,
+                  phone,
+                  city,
+                  postal,
+                  address,
+                  affiliateCode,
+                  notes,
+                  items,
+                }),
+              });
+              const data = await response.json().catch(() => ({}));
+              if (!response.ok || !data?.ok) {
+                throw new Error(data.message || "Gagal menyiapkan pembayaran QRIS.");
+              }
+              const total = Number(data.totalAmount || 0);
+              const qrisUrl = String(data?.qris?.imageUrl || "");
+              const isDemo = Boolean(data?.qris?.isDemo);
+              const summary = [
+                "Order QRIS berhasil dibuat.",
+                "Order: " + (data.orderNumber || "-"),
+                "Total: " + formatIDR(total),
+                isDemo ? "Mode: DEMO (jangan transfer dana real)" : "Mode: LIVE",
+                qrisUrl ? "Buka QRIS: " + qrisUrl : "QRIS belum dikonfigurasi.",
+              ].join("\n");
+              if (window.alert) window.alert(summary);
+              if (qrisUrl) window.open(qrisUrl, "_blank");
+            } catch (error) {
+              if (window.alert) window.alert(error.message || "Checkout QRIS gagal.");
+            }
           });
         }
 
@@ -752,26 +895,31 @@
         const username = document.getElementById("signupUsername").value.trim();
         const phone = document.getElementById("signupPhone").value.trim();
         const password = document.getElementById("signupPassword").value.trim();
-        const code = document.getElementById("signupCode").value.trim().toUpperCase();
+        const isAffiliate = Boolean(document.getElementById("signupAsAffiliate")?.checked);
 
-        if (!name || !username || !phone || !password || !code) {
+        if (!name || !username || !phone || !password) {
           showToast("Lengkapi semua field signup.");
           return;
         }
 
         showToast("Memproses signup...");
         try {
+          const payload = { name, username, phone, password, isAffiliate };
           const response = await fetch(apiBase + "/auth/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name, username, phone, password, redeemCode: code }),
+            body: JSON.stringify(payload),
           });
           const data = await response.json().catch(() => ({}));
           if (!response.ok) {
             showToast(data.message || "Gagal signup.");
             return;
           }
-          showToast("Akun berhasil dibuat. Silakan login.");
+          showToast(
+            data.affiliateCode
+              ? "Akun berhasil dibuat. Kode affiliate: " + data.affiliateCode
+              : "Akun customer berhasil dibuat. Silakan login."
+          );
           form.reset();
         } catch (error) {
           showToast("Gagal konek ke server.");
@@ -877,3 +1025,4 @@
   </script>
 </body>
 </html>
+

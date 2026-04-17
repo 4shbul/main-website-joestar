@@ -14,8 +14,33 @@ const OTP_TTL_MS = 5 * 60 * 1000;
 const OTP_RESEND_COOLDOWN_MS = 60 * 1000;
 const ACCESS_TTL = "15m";
 const REFRESH_TTL_DAYS = 30;
+const USERNAME_REGEX = /^[a-z0-9._-]{4,32}$/;
+const PHONE_REGEX = /^\+?\d{8,16}$/;
+const DB_DOWN_CODES = new Set(["ECONNREFUSED", "ENOTFOUND", "ETIMEDOUT"]);
 
 const hashToken = (token) => crypto.createHash("sha256").update(token).digest("hex");
+const normalizeUsername = (value) => String(value || "").trim().toLowerCase();
+const normalizePhone = (value) => String(value || "").trim().replace(/[\s()-]+/g, "");
+const isDbUnavailableError = (error) => {
+  if (DB_DOWN_CODES.has(String(error?.code || ""))) return true;
+  if (!Array.isArray(error?.errors)) return false;
+  return error.errors.some((item) => DB_DOWN_CODES.has(String(item?.code || "")));
+};
+
+const generateUniqueAffiliateCode = async (client) => {
+  for (let attempt = 0; attempt < 12; attempt += 1) {
+    const code = `JP${crypto.randomBytes(4).toString("hex").toUpperCase()}`;
+    const exists = await client.query(
+      `SELECT 1 FROM users WHERE affiliate_code = $1
+       UNION
+       SELECT 1 FROM affiliate_codes WHERE code = $1
+       LIMIT 1`,
+      [code]
+    );
+    if (!exists.rows.length) return code;
+  }
+  throw new Error("AFFILIATE_CODE_GENERATION_FAILED");
+};
 
 const signAccessToken = (user) =>
   jwt.sign({ id: user.id, username: user.username, role: user.role }, process.env.JWT_SECRET, {
@@ -45,55 +70,87 @@ const revokeRefreshToken = async (rawToken) => {
 };
 
 router.post("/signup", async (req, res) => {
-  const { name, username, password, redeemCode, phone } = req.body || {};
-  if (!name || !username || !password || !redeemCode || !phone) {
+  const { name, username, password, phone, isAffiliate } = req.body || {};
+  const normalizedName = String(name || "").trim();
+  const normalizedUsername = normalizeUsername(username);
+  const normalizedPhone = normalizePhone(phone);
+  const rawPassword = String(password || "");
+
+  if (!normalizedName || !normalizedUsername || !rawPassword || !normalizedPhone) {
     return res.status(400).json({ message: "Data signup tidak lengkap." });
   }
+  if (normalizedName.length < 2 || normalizedName.length > 80) {
+    return res.status(400).json({ message: "Nama harus 2-80 karakter." });
+  }
+  if (!USERNAME_REGEX.test(normalizedUsername)) {
+    return res.status(400).json({
+      message: "Username hanya boleh huruf kecil, angka, titik, garis bawah, atau minus (4-32 karakter).",
+    });
+  }
+  if (!PHONE_REGEX.test(normalizedPhone)) {
+    return res.status(400).json({ message: "Nomor WhatsApp tidak valid." });
+  }
+  if (rawPassword.length < 8 || rawPassword.length > 72) {
+    return res.status(400).json({ message: "Password harus 8-72 karakter." });
+  }
 
-  const client = await pool.connect();
+  let client;
   try {
+    client = await pool.connect();
     await client.query("BEGIN");
 
-    const existing = await client.query("SELECT id FROM users WHERE username = $1", [username]);
+    const existing = await client.query("SELECT id FROM users WHERE LOWER(username) = LOWER($1)", [
+      normalizedUsername,
+    ]);
     if (existing.rows.length) {
       await client.query("ROLLBACK");
       return res.status(400).json({ message: "Username sudah terdaftar." });
     }
-
-    const codeCheck = await client.query(
-      "SELECT code FROM affiliate_codes WHERE code = $1 AND assigned_user_id IS NULL AND is_active = true",
-      [redeemCode]
-    );
-    if (!codeCheck.rows.length) {
+    const existingPhone = await client.query("SELECT id FROM users WHERE phone = $1 LIMIT 1", [normalizedPhone]);
+    if (existingPhone.rows.length) {
       await client.query("ROLLBACK");
-      return res.status(400).json({ message: "Kode redeem tidak valid atau sudah dipakai." });
+      return res.status(400).json({ message: "Nomor WhatsApp sudah terdaftar." });
     }
 
     const status = process.env.REQUIRE_APPROVAL === "true" ? "pending" : "active";
-    const passwordHash = await bcrypt.hash(password, 10);
+    const passwordHash = await bcrypt.hash(rawPassword, 10);
+    const wantsAffiliate =
+      isAffiliate === true || isAffiliate === "true" || isAffiliate === 1 || isAffiliate === "1";
+    const role = wantsAffiliate ? "affiliate" : "customer";
+    const affiliateCode = wantsAffiliate ? await generateUniqueAffiliateCode(client) : null;
     const userResult = await client.query(
-      "INSERT INTO users (name, username, phone, password_hash, affiliate_code, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id",
-      [name, username, phone, passwordHash, redeemCode, status]
+      "INSERT INTO users (name, username, phone, password_hash, affiliate_code, role, status) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id",
+      [normalizedName, normalizedUsername, normalizedPhone, passwordHash, affiliateCode, role, status]
     );
 
-    await client.query(
-      "UPDATE affiliate_codes SET assigned_user_id = $1 WHERE code = $2",
-      [userResult.rows[0].id, redeemCode]
-    );
+    if (affiliateCode) {
+      await client.query(
+        "INSERT INTO affiliate_codes (code, assigned_user_id, is_active) VALUES ($1, $2, false) ON CONFLICT (code) DO UPDATE SET assigned_user_id = EXCLUDED.assigned_user_id, is_active = false",
+        [affiliateCode, userResult.rows[0].id]
+      );
+    }
 
     await client.query("COMMIT");
-    return res.json({ ok: true });
+    return res.json({ ok: true, affiliateCode, role });
   } catch (error) {
-    await client.query("ROLLBACK");
+    console.log("[AUTH signup] Failed.", error.code || error.message);
+    if (client) {
+      await client.query("ROLLBACK").catch(() => {});
+    }
+    if (isDbUnavailableError(error)) {
+      return res.status(503).json({ message: "Database lokal belum aktif. Jalankan PostgreSQL dulu." });
+    }
     return res.status(500).json({ message: "Gagal membuat akun." });
   } finally {
-    client.release();
+    if (client) client.release();
   }
 });
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body || {};
-  if (!username || !password) {
+  const normalizedUsername = normalizeUsername(username);
+  const rawPassword = String(password || "");
+  if (!normalizedUsername || !rawPassword) {
     return res.status(400).json({ message: "Username dan password wajib diisi." });
   }
 
@@ -101,14 +158,14 @@ router.post("/login", async (req, res) => {
 
   try {
     const result = await pool.query(
-      "SELECT id, username, phone, password_hash, status, failed_attempts, locked_until, role FROM users WHERE username = $1",
-      [username]
+      "SELECT id, username, phone, password_hash, status, failed_attempts, locked_until, role FROM users WHERE LOWER(username) = LOWER($1)",
+      [normalizedUsername]
     );
     const user = result.rows[0];
     if (!user) {
       await pool.query(
         "INSERT INTO login_attempts (email, ip_address, success) VALUES ($1, $2, false)",
-        [username, ip]
+        [normalizedUsername, ip]
       );
       return res.status(401).json({ message: "Username atau password salah." });
     }
@@ -125,7 +182,7 @@ router.post("/login", async (req, res) => {
       return res.status(429).json({ message: "Akun sementara terkunci. Coba lagi nanti." });
     }
 
-    const match = await bcrypt.compare(password, user.password_hash);
+    const match = await bcrypt.compare(rawPassword, user.password_hash);
     if (!match) {
       const failed = (user.failed_attempts || 0) + 1;
       const lock = failed >= MAX_ATTEMPTS ? new Date(Date.now() + LOCK_MINUTES * 60000) : null;
@@ -135,7 +192,7 @@ router.post("/login", async (req, res) => {
       );
       await pool.query(
         "INSERT INTO login_attempts (user_id, email, ip_address, success) VALUES ($1, $2, $3, false)",
-        [user.id, username, ip]
+        [user.id, normalizedUsername, ip]
       );
       return res.status(401).json({ message: "Username atau password salah." });
     }
@@ -158,6 +215,10 @@ router.post("/login", async (req, res) => {
 
     return res.json({ otpRequired: true, sessionId });
   } catch (error) {
+    console.log("[AUTH login] Failed.", error.code || error.message);
+    if (isDbUnavailableError(error)) {
+      return res.status(503).json({ message: "Database lokal belum aktif. Jalankan PostgreSQL dulu." });
+    }
     return res.status(500).json({ message: "Gagal login." });
   }
 });
@@ -201,7 +262,8 @@ router.post("/otp/resend", async (req, res) => {
 
 router.post("/otp/verify", async (req, res) => {
   const { sessionId, code } = req.body || {};
-  if (!sessionId || !code) {
+  const normalizedCode = String(code || "").trim();
+  if (!sessionId || !normalizedCode) {
     return res.status(400).json({ message: "OTP tidak valid." });
   }
 
@@ -219,7 +281,7 @@ router.post("/otp/verify", async (req, res) => {
       return res.status(400).json({ message: "OTP sudah kedaluwarsa." });
     }
 
-    if (session.code !== code) {
+    if (session.code !== normalizedCode) {
       return res.status(400).json({ message: "OTP salah." });
     }
 
@@ -299,12 +361,15 @@ router.post("/logout", async (req, res) => {
 
 router.post("/password/forgot", async (req, res) => {
   const { username } = req.body || {};
-  if (!username) {
+  const normalizedUsername = normalizeUsername(username);
+  if (!normalizedUsername) {
     return res.status(400).json({ message: "Username wajib diisi." });
   }
 
   try {
-    const result = await pool.query("SELECT id, phone FROM users WHERE username = $1", [username]);
+    const result = await pool.query("SELECT id, phone FROM users WHERE LOWER(username) = LOWER($1)", [
+      normalizedUsername,
+    ]);
     const user = result.rows[0];
     if (!user) {
       return res.json({ ok: true });
@@ -328,12 +393,17 @@ router.post("/password/forgot", async (req, res) => {
 
 router.post("/password/reset", async (req, res) => {
   const { token, password } = req.body || {};
-  if (!token || !password) {
+  const rawToken = String(token || "").trim();
+  const rawPassword = String(password || "");
+  if (!rawToken || !rawPassword) {
     return res.status(400).json({ message: "Token dan password wajib diisi." });
+  }
+  if (rawPassword.length < 8 || rawPassword.length > 72) {
+    return res.status(400).json({ message: "Password harus 8-72 karakter." });
   }
 
   try {
-    const hashed = hashToken(token);
+    const hashed = hashToken(rawToken);
     const result = await pool.query(
       "SELECT id, user_id, expires_at, used_at FROM password_reset_tokens WHERE token_hash = $1",
       [hashed]
@@ -346,7 +416,7 @@ router.post("/password/reset", async (req, res) => {
       return res.status(400).json({ message: "Token reset kadaluarsa." });
     }
 
-    const passwordHash = await bcrypt.hash(password, 10);
+    const passwordHash = await bcrypt.hash(rawPassword, 10);
     await pool.query("UPDATE users SET password_hash = $1 WHERE id = $2", [
       passwordHash,
       row.user_id,

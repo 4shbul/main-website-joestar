@@ -7,14 +7,16 @@ CREATE TABLE IF NOT EXISTS users (
   email TEXT UNIQUE,
   phone TEXT NOT NULL,
   password_hash TEXT NOT NULL,
-  affiliate_code TEXT UNIQUE NOT NULL,
-  role TEXT NOT NULL DEFAULT 'affiliate',
+  affiliate_code TEXT UNIQUE,
+  role TEXT NOT NULL DEFAULT 'customer',
   status TEXT NOT NULL DEFAULT 'active',
   failed_attempts INTEGER NOT NULL DEFAULT 0,
   locked_until TIMESTAMPTZ,
   last_login TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS users_username_lower_key ON users ((LOWER(username)));
 
 CREATE TABLE IF NOT EXISTS affiliate_codes (
   code TEXT PRIMARY KEY,
@@ -29,10 +31,41 @@ CREATE TABLE IF NOT EXISTS orders (
   total_amount NUMERIC(12, 2) NOT NULL,
   order_date DATE NOT NULL,
   affiliate_code TEXT,
+  checkout_channel TEXT NOT NULL DEFAULT 'manual',
+  customer_name TEXT,
+  customer_phone TEXT,
+  customer_city TEXT,
+  customer_postal TEXT,
+  customer_address TEXT,
+  notes TEXT,
+  payment_gateway TEXT,
+  payment_status TEXT NOT NULL DEFAULT 'paid',
+  payment_reference TEXT,
+  payment_redirect_url TEXT,
+  payment_token TEXT,
+  payment_method TEXT,
+  payment_transaction_status TEXT,
+  payment_fraud_status TEXT,
+  payment_payload JSONB,
+  paid_at TIMESTAMPTZ,
+  cancelled_at TIMESTAMPTZ,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS orders_affiliate_code_idx ON orders (affiliate_code);
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1
+    FROM information_schema.columns
+    WHERE table_schema = 'public'
+      AND table_name = 'orders'
+      AND column_name = 'payment_status'
+  ) THEN
+    CREATE INDEX IF NOT EXISTS orders_payment_status_idx ON orders (payment_status);
+  END IF;
+END $$;
 
 CREATE TABLE IF NOT EXISTS otp_sessions (
   id UUID PRIMARY KEY,

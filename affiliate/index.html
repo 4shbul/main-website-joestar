@@ -15,53 +15,132 @@
   <meta property="og:description" content="Program kemitraan Joestar Peptide untuk pertumbuhan bersama." />
   <meta property="og:url" content="https://www.joestarpeptides.com/affiliate/" />
   <meta property="og:image" content="https://www.joestarpeptides.com/img-optimized/logo.jpeg" />
-  <link rel="icon" type="image/jpeg" sizes="48x48" href="/favicon.jpg" />
-  <link rel="shortcut icon" type="image/jpeg" href="/favicon.jpg" />
-  <link rel="apple-touch-icon" href="/favicon.jpg" />
+  <link rel="icon" type="image/jpeg" sizes="48x48" href="../favicon.jpg" />
+  <link rel="shortcut icon" type="image/jpeg" href="../favicon.jpg" />
+  <link rel="apple-touch-icon" href="../favicon.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="../styles.css" />
 </head>
 <body>
   <div class="bg-wrap" aria-hidden="true"></div>
   <header class="site-header">
     <div class="nav-wrap">
       <div class="logo">
-        <span class="logo-mark"><img src="/img-optimized/logo.jpeg" alt="Joestar Peptide Logo" /></span>
+        <span class="logo-mark"><img src="../img-optimized/logo.jpeg" alt="Joestar Peptide Logo" /></span>
         <div>
           <p class="logo-title">Joestar Peptide</p>
           <p class="logo-sub">Affiliate</p>
         </div>
       </div>
       <div class="nav-actions">
-        <a class="ghost" href="/">Home</a>
-        <a class="primary" href="/#shop">Shop</a>
+        <a class="ghost" href="../index.html">Home</a>
+        <a class="primary" href="../index.html#shop">Shop</a>
       </div>
     </div>
   </header>
 
   <main>
-    <section class="account">
+    <section id="affiliate" class="account">
       <div class="section-title">
         <div>
           <p class="eyebrow">Affiliate Program</p>
           <h1>Program Kemitraan Joestar Peptide</h1>
         </div>
-        <p class="lead">Kolaborasi dengan sistem tracking, dukungan materi promosi, dan pengembangan dashboard affiliate.</p>
+        <p class="lead">Daftar akun, pilih opsi menjadi affiliate, lalu pantau kode dan performa penjualan langsung dari dashboard.</p>
       </div>
 
       <div class="account-grid">
         <div class="account-card">
-          <h3>Benefit Program</h3>
-          <p class="small">Partner mendapatkan kode affiliate unik untuk pelacakan penjualan dan evaluasi performa.</p>
-          <p class="small">Tim kami menyiapkan dukungan komunikasi, materi promosi, dan pembaruan berkala.</p>
-          <a class="primary" href="https://wa.me/6287732013193" target="_blank" rel="noopener">Daftar Affiliate</a>
+          <h3>Sign Up</h3>
+          <form id="signupForm" class="admin-login">
+            <input type="text" id="signupName" placeholder="Nama lengkap" required />
+            <input type="text" id="signupUsername" placeholder="Username" required />
+            <input type="tel" id="signupPhone" placeholder="Nomor WhatsApp" required />
+            <input type="password" id="signupPassword" placeholder="Password" required />
+            <label class="product-meta" for="signupAsAffiliate">
+              <input type="checkbox" id="signupAsAffiliate" />
+              Daftar sebagai affiliate
+            </label>
+            <button class="primary" type="submit">Buat Akun</button>
+          </form>
+          <p class="small">Jika opsi affiliate dicentang, sistem akan membuat kode affiliate unik otomatis.</p>
         </div>
+
         <div class="account-card">
-          <h3>Roadmap Dashboard</h3>
-          <p class="small">Dashboard akan terus dikembangkan untuk laporan penjualan, histori order, dan insight komisi.</p>
-          <a class="ghost" href="/faq/">Baca FAQ</a>
+          <h3>Login</h3>
+          <form id="loginForm" class="admin-login">
+            <input type="text" id="loginUsername" placeholder="Username" required />
+            <input type="password" id="loginPassword" placeholder="Password" required />
+            <button class="primary" type="submit">Login</button>
+          </form>
+          <div class="account-links">
+            <button class="link-button" type="button" id="forgotPasswordBtn">Lupa password</button>
+            <button class="link-button" type="button" id="resetPasswordBtn">Punya token reset</button>
+          </div>
+          <button class="ghost" type="button" id="logoutBtn">Logout</button>
+        </div>
+
+        <div class="account-card account-dashboard">
+          <div class="dashboard-header">
+            <div>
+              <h3>Affiliate Dashboard</h3>
+              <p class="small">Status akun, kode affiliate, dan ringkasan komisi.</p>
+            </div>
+          </div>
+
+          <div class="account-details">
+            <div><strong id="accountName">-</strong></div>
+            <div>Username: <strong id="accountUsername">-</strong></div>
+            <div>Status: <strong id="accountStatus">-</strong></div>
+            <div>Role: <strong id="accountRole">-</strong></div>
+            <div>Last login: <strong id="accountLastLogin">-</strong></div>
+          </div>
+
+          <div class="dashboard-stats">
+            <div>
+              <p class="small">Status Affiliate</p>
+              <h4 id="affiliateStatus">Guest</h4>
+            </div>
+            <div>
+              <p class="small">Kode Affiliate</p>
+              <h4 id="affiliateCode">-</h4>
+            </div>
+            <div>
+              <p class="small">Total Sales</p>
+              <h4 id="salesTotal">Rp 0</h4>
+            </div>
+            <div>
+              <p class="small">Estimasi Komisi</p>
+              <h4 id="commissionTotal">Rp 0</h4>
+            </div>
+          </div>
+
+          <div class="affiliate-tools">
+            <div class="share-row">
+              <input
+                id="affiliateLinkInput"
+                type="text"
+                placeholder="Link affiliate akan muncul setelah akun aktif"
+                readonly
+              />
+              <button class="ghost" type="button" id="copyAffiliateLinkBtn">Copy Link</button>
+            </div>
+            <button class="primary" type="button" id="becomeAffiliateBtn" hidden>Aktifkan Affiliate</button>
+            <p id="affiliateJoinHint" class="small"></p>
+          </div>
+
+          <form id="redeemForm" class="redeem-form">
+            <input id="redeemInput" type="text" placeholder="Masukkan kode affiliate untuk checkout" />
+            <button class="ghost" type="submit">Simpan Kode</button>
+          </form>
+          <p id="redeemHint" class="small">Kode referral valid akan otomatis dipakai saat checkout.</p>
+
+          <div id="salesList" class="sales-list">
+            <p class="product-meta">Silakan login untuk melihat penjualan.</p>
+          </div>
+          <p id="authDebug" class="small"></p>
         </div>
       </div>
     </section>
@@ -71,10 +150,59 @@
     <div class="footer-grid">
       <div>
         <h4>Navigasi</h4>
-        <p><a href="/">Home</a> | <a href="/faq/">FAQ</a> | <a href="/coa/">COA</a> | <a href="/contact/">Kontak</a></p>
+        <p><a href="../index.html">Home</a> | <a href="../faq/index.html">FAQ</a> | <a href="../coa/index.html">COA</a> | <a href="../contact/index.html">Kontak</a></p>
       </div>
     </div>
     <p class="small">Copyright 2026 Joestar Peptide</p>
   </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <div class="modal" id="otpModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeOtpModal" type="button" aria-label="Tutup">&times;</button>
+      <h3>Verifikasi OTP WhatsApp</h3>
+      <p>Masukkan kode OTP yang dikirim ke WhatsApp Anda.</p>
+      <form id="otpForm">
+        <input type="text" id="otpInput" placeholder="Kode OTP" required />
+        <div class="modal-actions">
+          <button class="primary" type="submit">Verifikasi</button>
+          <button class="ghost" id="resendOtpBtn" type="button">Kirim ulang OTP</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="forgotModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeForgotModal" type="button" aria-label="Tutup">&times;</button>
+      <h3>Lupa Password</h3>
+      <p>Masukkan username. Token reset akan dikirim ke WhatsApp terdaftar.</p>
+      <form id="forgotForm">
+        <input type="text" id="forgotUsername" placeholder="Username" required />
+        <div class="modal-actions">
+          <button class="primary" type="submit">Kirim Token</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="resetModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="closeResetModal" type="button" aria-label="Tutup">&times;</button>
+      <h3>Reset Password</h3>
+      <p>Masukkan token reset dari WhatsApp dan password baru.</p>
+      <form id="resetForm">
+        <input type="text" id="resetToken" placeholder="Token reset" required />
+        <input type="password" id="resetPassword" placeholder="Password baru" required />
+        <div class="modal-actions">
+          <button class="primary" type="submit">Simpan Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../app.js?v=13"></script>
 </body>
 </html>
+

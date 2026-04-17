@@ -7,6 +7,12 @@ const SYSTEM_PROMPT = [
   "Format: Indonesian first, then a short English summary.",
 ].join(" ");
 
+const jsonResponse = (body, status = 200) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: { "Content-Type": "application/json" },
+  });
+
 const normalizeMessages = (messages) => {
   if (!Array.isArray(messages)) return [];
   const cleaned = messages
@@ -16,29 +22,18 @@ const normalizeMessages = (messages) => {
       role: item.role === "assistant" ? "assistant" : "user",
       content: item.content,
     }));
+
   return [{ role: "system", content: SYSTEM_PROMPT }, ...cleaned];
 };
 
-exports.handler = async (event) => {
-  if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ error: "Method not allowed" }),
-    };
-  }
-
+export async function POST(request) {
   try {
     if (!process.env.CLOUDFLARE_ACCOUNT_ID || !process.env.CLOUDFLARE_API_TOKEN) {
       console.error("Cloudflare env is missing");
-      return {
-        statusCode: 500,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: "Missing Cloudflare credentials" }),
-      };
+      return jsonResponse({ error: "Missing Cloudflare credentials" }, 500);
     }
 
-    const body = JSON.parse(event.body || "{}");
+    const body = await request.json().catch(() => ({}));
     const messages = normalizeMessages(body.messages);
 
     const response = await fetch(
@@ -60,14 +55,13 @@ exports.handler = async (event) => {
     const data = await response.json();
     if (!response.ok || data?.success === false) {
       console.error("Cloudflare error", response.status, data);
-      return {
-        statusCode: response.status || 500,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
+      return jsonResponse(
+        {
           error: data?.errors?.[0]?.message || "Cloudflare request failed",
           detail: data,
-        }),
-      };
+        },
+        response.status || 500
+      );
     }
 
     const reply =
@@ -75,17 +69,13 @@ exports.handler = async (event) => {
       data?.result?.message ||
       "Maaf, terjadi kendala. Coba lagi.";
 
-    return {
-      statusCode: 200,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ reply }),
-    };
+    return jsonResponse({ reply });
   } catch (error) {
     console.error("AI chat server error", error);
-    return {
-      statusCode: 500,
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ error: "Server error" }),
-    };
+    return jsonResponse({ error: "Server error" }, 500);
   }
-};
+}
+
+export function GET() {
+  return jsonResponse({ error: "Method not allowed" }, 405);
+}

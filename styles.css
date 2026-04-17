@@ -672,6 +672,7 @@ h1, h2, h3, h4 {
   display: grid;
   gap: 0.8rem;
   position: relative;
+  isolation: isolate;
   overflow: hidden;
   box-shadow: 0 16px 36px rgba(38, 35, 38, 0.12);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -702,6 +703,11 @@ h1, h2, h3, h4 {
   place-items: center;
   padding: 0.6rem;
   border: 1px solid rgba(38, 35, 38, 0.12);
+  position: relative;
+  --zoom-x: 50%;
+  --zoom-y: 50%;
+  z-index: 1;
+  cursor: zoom-in;
 }
 
 .product-image img {
@@ -710,6 +716,21 @@ h1, h2, h3, h4 {
   object-fit: contain;
   object-position: center;
   filter: drop-shadow(0 12px 20px rgba(38, 35, 38, 0.22));
+  transition: transform 0.3s ease, filter 0.3s ease;
+  transform-origin: var(--zoom-x) var(--zoom-y);
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .product-image:hover img,
+  .product-image.is-zooming img {
+    transform: scale(1.75);
+    filter: drop-shadow(0 16px 26px rgba(38, 35, 38, 0.26));
+  }
+
+  .product-image.is-zooming {
+    cursor: move;
+  }
 }
 
 .product-card:hover {
@@ -775,22 +796,11 @@ h1, h2, h3, h4 {
   background: rgba(15, 107, 75, 0.1);
 }
 
-.badge {
-  position: absolute;
-  top: 1.1rem;
-  right: -3.1rem;
-  background: #a0333a;
-  color: white;
-  font-size: 0.7rem;
-  padding: 0.25rem 3.4rem;
-  transform: rotate(45deg);
-}
-
 .promo-ramadan-badge {
   position: absolute;
   top: 0.9rem;
   left: 0.9rem;
-  z-index: 2;
+  z-index: 4;
   background: linear-gradient(135deg, #f2d48a, #d8b25f);
   color: #1d2f25;
   font-size: 0.68rem;
@@ -800,6 +810,30 @@ h1, h2, h3, h4 {
   padding: 0.28rem 0.62rem;
   border-radius: 999px;
   border: 1px solid rgba(29, 47, 37, 0.18);
+}
+
+.badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: linear-gradient(135deg, #a0333a, #7d252d);
+  color: white;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 0.28rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 10px 20px rgba(125, 37, 45, 0.28);
+  z-index: 5;
+  transform: none;
+  pointer-events: none;
+}
+
+.badge-comingsoon {
+  background: linear-gradient(135deg, #ac7a22, #7d5612);
+  box-shadow: 0 10px 20px rgba(125, 86, 18, 0.28);
 }
 
 .trust-grid {
@@ -1011,6 +1045,15 @@ summary {
   padding: 0.75rem 1rem;
 }
 
+.admin-card select,
+.admin-card textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.75rem 1rem;
+  font-family: inherit;
+}
+
 .admin-wide {
   grid-column: 1 / -1;
 }
@@ -1052,12 +1095,17 @@ summary {
   font-size: 0.85rem;
 }
 
+.affiliate-row {
+  grid-template-columns: 1.2fr 1fr 0.7fr 0.7fr 0.8fr 1.5fr;
+}
+
 .admin-row strong {
   color: var(--charcoal);
 }
 
 .admin-row select,
-.admin-row button {
+.admin-row button,
+.admin-row input {
   font-size: 0.8rem;
 }
 
@@ -1078,6 +1126,38 @@ summary {
   display: flex;
   gap: 0.6rem;
   flex-wrap: wrap;
+}
+
+.admin-actions input {
+  min-width: 130px;
+  max-width: 180px;
+  padding: 0.45rem 0.65rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.status-ok {
+  background: #e8f7ef;
+  color: #0e6a3e;
+}
+
+.status-warn {
+  background: #fff4de;
+  color: #9a5b00;
+}
+
+.status-na {
+  background: #f2f4f7;
+  color: #5f6b7a;
 }
 
 .code-list {
@@ -1139,6 +1219,26 @@ summary {
 
 .dashboard-stats h4 {
   font-size: 1.1rem;
+}
+
+.affiliate-tools {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.share-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.share-row input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  background: white;
 }
 
 .redeem-form {
@@ -1515,6 +1615,41 @@ summary {
   gap: 0.8rem;
 }
 
+.qris-payment-modal .modal-content {
+  width: min(560px, 92vw);
+}
+
+.qris-payment-image-wrap {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: white;
+  padding: 0.8rem;
+  display: grid;
+  place-items: center;
+}
+
+.qris-payment-image {
+  width: min(320px, 74vw);
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.qris-payment-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.6rem;
+}
+
+.qris-payment-meta div {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.6rem 0.7rem;
+  background: var(--rose-light);
+  display: grid;
+  gap: 0.2rem;
+}
+
 .modal-actions {
   display: flex;
   gap: 0.8rem;
@@ -1763,6 +1898,10 @@ summary {
   }
 
   .account-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .share-row {
     grid-template-columns: 1fr;
   }
 

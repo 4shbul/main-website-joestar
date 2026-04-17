@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Joestar Peptide | Admin Panel</title>
   <meta name="robots" content="noindex, nofollow, noarchive" />
-  <link rel="icon" type="image/jpeg" sizes="48x48" href="/favicon.jpg" />
-  <link rel="shortcut icon" type="image/jpeg" href="/favicon.jpg" />
-  <link rel="apple-touch-icon" href="/favicon.jpg" />
+  <link rel="icon" type="image/jpeg" sizes="48x48" href="favicon.jpg" />
+  <link rel="shortcut icon" type="image/jpeg" href="favicon.jpg" />
+  <link rel="apple-touch-icon" href="favicon.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
@@ -53,7 +53,7 @@
           <p class="eyebrow">Admin</p>
           <h2>Admin Panel</h2>
         </div>
-        <p class="lead">Kelola kode affiliate, status akun, dan role.</p>
+        <p class="lead">Kelola kode affiliate, verifikasi kode, status akun, dan role.</p>
       </div>
 
       <div class="admin-grid">
@@ -75,6 +75,28 @@
             <button class="primary" type="submit">Simpan Order</button>
           </form>
           <p class="small">Gunakan saat checkout via WhatsApp untuk mencatat penjualan affiliate.</p>
+        </div>
+        <div class="admin-card admin-wide">
+          <h3>Verifikasi Pembayaran</h3>
+          <form id="paymentVerifyForm" class="admin-order">
+            <input
+              type="text"
+              id="paymentOrderNumber"
+              placeholder="Order Number (ex: JPWEB-1740000000000-AB12CD)"
+              required
+            />
+            <select id="paymentStatus" required>
+              <option value="paid">paid</option>
+              <option value="pending">pending</option>
+              <option value="cancelled">cancelled</option>
+              <option value="failed">failed</option>
+            </select>
+            <input type="text" id="paymentMethod" placeholder="Metode (default: QRIS)" value="QRIS" />
+            <input type="text" id="paymentReference" placeholder="Referensi transaksi (opsional)" />
+            <input type="text" id="paymentNote" placeholder="Catatan verifikasi (opsional)" />
+            <button class="primary" type="submit">Update Pembayaran</button>
+          </form>
+          <p class="small">Gunakan setelah pembayaran dicek untuk update status order (pending/paid/cancelled/failed).</p>
         </div>
         <div class="admin-card">
           <h3>Generate Kode Affiliate</h3>
@@ -103,6 +125,7 @@
             </select>
             <select id="roleFilter">
               <option value="all">Semua Role</option>
+              <option value="customer">Customer</option>
               <option value="affiliate">Affiliate</option>
               <option value="admin">Admin</option>
             </select>
@@ -135,7 +158,7 @@
 
   <div class="modal" id="otpModal" aria-hidden="true">
     <div class="modal-content">
-      <button class="modal-close" id="closeOtpModal" type="button">âœ•</button>
+      <button class="modal-close" id="closeOtpModal" type="button" aria-label="Tutup">&times;</button>
       <h3>Verifikasi OTP WhatsApp</h3>
       <p>Masukkan kode OTP yang dikirim ke WhatsApp Anda.</p>
       <form id="otpForm">
@@ -148,7 +171,7 @@
     </div>
   </div>
 
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=13"></script>
   <script>
     (function () {
       const form = document.getElementById("loginForm");

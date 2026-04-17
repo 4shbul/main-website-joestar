@@ -1,0 +1,10 @@
+{
+  "name": "joestar-peptides-web",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
+  "scripts": {
+    "build": "node scripts/build-static.mjs"
+  }
+}

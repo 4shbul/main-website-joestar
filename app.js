@@ -6,10 +6,10 @@ const products = [
     price: 1000000,
     image: "img/RETA%205MG.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Peptide riset metabolik dengan fokus pada regulasi berat badan.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Peptide riset untuk studi jalur metabolik di laboratorium.",
     storage: "Simpan 2-8Â°C. Hindari cahaya langsung.",
-    benefits: ["Metabolic support", "Appetite modulation", "Energy balance"],
+    benefits: ["For laboratory research only", "Metabolic pathway research reference", "Refer to COA per batch"],
   },
   {
     id: "ret-10",
@@ -18,10 +18,10 @@ const products = [
     price: 1800000,
     image: "img/RETA%2010MG.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Peptide riset metabolik dengan fokus pada regulasi berat badan.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Peptide riset untuk studi jalur metabolik di laboratorium.",
     storage: "Simpan 2-8°C. Hindari cahaya langsung.",
-    benefits: ["Metabolic support", "Appetite modulation", "Energy balance"],
+    benefits: ["For laboratory research only", "Metabolic pathway research reference", "Refer to COA per batch"],
   },
   {
     id: "ret-30",
@@ -30,10 +30,10 @@ const products = [
     price: 5000000,
     image: "img/RETA%2030MG.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Konsentrasi lebih tinggi untuk kebutuhan riset intensif.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Konsentrasi lebih tinggi untuk protokol studi laboratorium.",
     storage: "Simpan 2-8°C. Gunakan segera setelah reconstitusi.",
-    benefits: ["Metabolic support", "Weight research", "Sustained protocol"],
+    benefits: ["For laboratory research only", "Metabolic pathway research reference", "Refer to COA per batch"],
   },
   {
     id: "cjc-ipa",
@@ -42,10 +42,10 @@ const products = [
     price: 1300000,
     image: "img/CJC+IPA.png",
     category: "Peptide",
-    tags: ["Muscle Growth", "Healing"],
-    description: "Blend untuk riset hormon pertumbuhan dan pemulihan.",
+    tags: ["Peptide Blend", "General Research"],
+    description: "Blend peptide untuk riset karakterisasi senyawa di laboratorium.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Recovery support", "Muscle research", "Sleep quality"],
+    benefits: ["For laboratory research only", "Peptide blend research reference", "Refer to COA per batch"],
     soldOut: true,
     comingSoon: false,
   },
@@ -56,10 +56,10 @@ const products = [
     price: 1200000,
     image: "img/GHK-CU.png",
     category: "Peptide",
-    tags: ["Skin", "Healing"],
-    description: "Copper peptide untuk riset peremajaan kulit.",
+    tags: ["Dermal Research", "General Research"],
+    description: "Copper peptide untuk studi karakterisasi molekul.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Skin renewal", "Collagen support", "Healing"],
+    benefits: ["For laboratory research only", "Copper peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "semax",
@@ -68,10 +68,10 @@ const products = [
     price: 1000000,
     image: "img/SEMAX.png",
     category: "Peptide",
-    tags: ["Cognitive"],
-    description: "Peptide neuromodulator untuk riset kognitif.",
+    tags: ["Neuro Research"],
+    description: "Peptide neuromodulator untuk studi laboratorium.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Focus", "Neuro support", "Memory"],
+    benefits: ["For laboratory research only", "Neuropeptide research reference", "Refer to COA per batch"],
   },
   {
     id: "motsc",
@@ -80,10 +80,10 @@ const products = [
     price: 900000,
     image: "img/MOTS-C.png",
     category: "Peptide",
-    tags: ["Fat Loss", "Healing"],
-    description: "Peptide mitokondria untuk riset energi selular.",
+    tags: ["Metabolic Research", "General Research"],
+    description: "Peptide mitokondria untuk studi proses seluler.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Energy balance", "Metabolic support", "Recovery"],
+    benefits: ["For laboratory research only", "Mitochondrial research reference", "Refer to COA per batch"],
   },
   {
     id: "dsip",
@@ -92,10 +92,10 @@ const products = [
     price: 1200000,
     image: "img/DSIP.png",
     category: "Peptide",
-    tags: ["Healing"],
-    description: "Delta Sleep-Inducing Peptide untuk riset tidur.",
+    tags: ["General Research"],
+    description: "Delta Sleep-Inducing Peptide untuk studi protokol laboratorium.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Sleep quality", "Recovery", "Relaxation"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "wolverine",
@@ -104,10 +104,10 @@ const products = [
     price: 2100000,
     image: "img/WOLVERINE.png",
     category: "Peptide",
-    tags: ["Healing", "Muscle Growth"],
-    description: "Peptide riset regenerasi jaringan.",
+    tags: ["General Research", "Peptide Blend"],
+    description: "Peptide riset untuk studi karakterisasi formulasi.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Tissue repair", "Recovery", "Performance"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "bpc-157",
@@ -116,10 +116,10 @@ const products = [
     price: 900000,
     image: "img/BPC-157.png",
     category: "Peptide",
-    tags: ["Healing"],
-    description: "Peptide untuk riset pemulihan jaringan.",
+    tags: ["General Research"],
+    description: "Peptide untuk studi laboratorium dan dokumentasi protokol.",
     storage: "Simpan 2-8Â°C.",
-    benefits: ["Recovery", "Repair", "Research"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "pt-141",
@@ -128,10 +128,10 @@ const products = [
     price: 1000000,
     image: "img/PT-141.png",
     category: "Peptide",
-    tags: ["Healing"],
-    description: "Peptide untuk riset regulasi hormonal.",
+    tags: ["General Research"],
+    description: "Peptide untuk studi karakterisasi formula.",
     storage: "Simpan 2-8Â°C.",
-    benefits: ["Research", "Protocol support"],
+    benefits: ["For laboratory research only", "Peptide research reference", "Refer to COA per batch"],
   },
   {
     id: "glutathione",
@@ -140,10 +140,10 @@ const products = [
     price: 2700000,
     image: "img/GLUTATHIONE.png",
     category: "Peptide",
-    tags: ["Healing", "Skin"],
-    description: "Antioksidan untuk riset detoksifikasi.",
+    tags: ["General Research", "Dermal Research"],
+    description: "Antioksidan untuk studi stabilitas dan karakterisasi.",
     storage: "Simpan 2-8°C.",
-    benefits: ["Detox", "Skin clarity", "Recovery"],
+    benefits: ["For laboratory research only", "Antioxidant research reference", "Refer to COA per batch"],
   },
   {
     id: "klow",
@@ -152,10 +152,10 @@ const products = [
     price: 3200000,
     image: "img/KLOW.png",
     category: "Peptide",
-    tags: ["Healing"],
+    tags: ["General Research"],
     description: "Produk riset khusus (detail menyusul).",
     storage: "Simpan 2-8°C.",
-    benefits: ["Custom protocol", "Research only"],
+    benefits: ["For laboratory research only", "Custom protocol documentation", "Refer to COA per batch"],
     comingSoon: false,
   },
   {
@@ -168,7 +168,7 @@ const products = [
     tags: ["Supplies"],
     description: "Bacteriostatic water untuk reconstitusi.",
     storage: "Simpan suhu ruang sejuk.",
-    benefits: ["Sterile", "Reconstitution"],
+    benefits: ["Laboratory use only", "Sterile handling required", "Use according to protocol"],
   },
   {
     id: "bac-10",
@@ -180,7 +180,7 @@ const products = [
     tags: ["Supplies"],
     description: "Bacteriostatic water untuk reconstitusi.",
     storage: "Simpan suhu ruang sejuk.",
-    benefits: ["Sterile", "Reconstitution"],
+    benefits: ["Laboratory use only", "Sterile handling required", "Use according to protocol"],
     comingSoon: false,
   },
   {
@@ -193,7 +193,7 @@ const products = [
     tags: ["Supplies"],
     description: "Syringe insulin sekali pakai untuk kebutuhan riset.",
     storage: "Simpan suhu ruang sejuk dan kering.",
-    benefits: ["Single use", "Sterile", "Practical"],
+    benefits: ["Laboratory use only", "Single-use tool", "Use according to protocol"],
   },
 ];
 
@@ -223,15 +223,28 @@ const cartCount = document.getElementById("cartCount");
 const openCartBtn = document.getElementById("openCart");
 const closeCartBtn = document.getElementById("closeCart");
 const checkoutBtn = document.getElementById("checkoutBtn");
+const gatewayBtn = document.getElementById("gatewayBtn");
 const checkoutModal = document.getElementById("checkoutModal");
 const closeCheckoutModal = document.getElementById("closeCheckoutModal");
 const checkoutForm = document.getElementById("checkoutForm");
+const checkoutSubmitBtn = checkoutForm?.querySelector("button[type=\"submit\"]");
 const checkoutName = document.getElementById("checkoutName");
 const checkoutPhone = document.getElementById("checkoutPhone");
 const checkoutCity = document.getElementById("checkoutCity");
 const checkoutPostal = document.getElementById("checkoutPostal");
 const checkoutAddress = document.getElementById("checkoutAddress");
+const checkoutAffiliateCode = document.getElementById("checkoutAffiliateCode");
 const checkoutNotes = document.getElementById("checkoutNotes");
+const qrisPaymentModal = document.getElementById("qrisPaymentModal");
+const closeQrisPaymentModalBtn = document.getElementById("closeQrisPaymentModal");
+const qrisPaymentOrderNumber = document.getElementById("qrisPaymentOrderNumber");
+const qrisPaymentTotal = document.getElementById("qrisPaymentTotal");
+const qrisPaymentMerchant = document.getElementById("qrisPaymentMerchant");
+const qrisPaymentLabel = document.getElementById("qrisPaymentLabel");
+const qrisPaymentImage = document.getElementById("qrisPaymentImage");
+const qrisPaymentImageHint = document.getElementById("qrisPaymentImageHint");
+const qrisPaymentConfirmBtn = document.getElementById("qrisPaymentConfirmBtn");
+const qrisPaymentDoneBtn = document.getElementById("qrisPaymentDoneBtn");
 const detailModal = document.getElementById("detailModal");
 const modalBody = document.getElementById("modalBody");
 const closeModal = document.getElementById("closeModal");
@@ -269,6 +282,7 @@ const commissionTotalEl = document.getElementById("commissionTotal");
 const affiliateCodeEl = document.getElementById("affiliateCode");
 const salesList = document.getElementById("salesList");
 const redeemInput = document.getElementById("redeemInput");
+const redeemHint = document.getElementById("redeemHint");
 const navToggle = document.getElementById("navToggle");
 const navMenu = document.getElementById("navMenu");
 const accountName = document.getElementById("accountName");
@@ -276,6 +290,10 @@ const accountUsername = document.getElementById("accountUsername");
 const accountStatus = document.getElementById("accountStatus");
 const accountRole = document.getElementById("accountRole");
 const accountLastLogin = document.getElementById("accountLastLogin");
+const becomeAffiliateBtn = document.getElementById("becomeAffiliateBtn");
+const affiliateJoinHint = document.getElementById("affiliateJoinHint");
+const affiliateLinkInput = document.getElementById("affiliateLinkInput");
+const copyAffiliateLinkBtn = document.getElementById("copyAffiliateLinkBtn");
 const authDebug = document.getElementById("authDebug");
 const generateCodesForm = document.getElementById("generateCodesForm");
 const codeCount = document.getElementById("codeCount");
@@ -301,15 +319,59 @@ const orderNumber = document.getElementById("orderNumber");
 const orderTotal = document.getElementById("orderTotal");
 const orderDate = document.getElementById("orderDate");
 const orderAffiliate = document.getElementById("orderAffiliate");
+const paymentVerifyForm = document.getElementById("paymentVerifyForm");
+const paymentOrderNumber = document.getElementById("paymentOrderNumber");
+const paymentStatus = document.getElementById("paymentStatus");
+const paymentMethod = document.getElementById("paymentMethod");
+const paymentReference = document.getElementById("paymentReference");
+const paymentNote = document.getElementById("paymentNote");
 
 const cart = {};
 let activeTag = "all";
+let checkoutFlowMode = "gateway";
 const COMMISSION_RATE = 0.04;
 let pendingOtpSessionId = null;
-const API_BASE =
-  window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-    ? "http://localhost:3000/api"
-    : "/api";
+const hostname = String(window.location.hostname || "").toLowerCase();
+const isLoopbackHost = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1";
+const isPrivateIpv4Host = /^(10\.|192\.168\.|172\.(1[6-9]|2\d|3[0-1])\.)/.test(hostname);
+const isBareHostname = Boolean(hostname) && !hostname.includes(".");
+const IS_LOCAL_DEV =
+  window.location.protocol === "file:" || isLoopbackHost || isPrivateIpv4Host || isBareHostname;
+const API_BASE = IS_LOCAL_DEV ? "http://localhost:3000/api" : "/api";
+const API_REMOTE_BASE = "https://api.joestarpeptides.com/api";
+const NETWORK_ERROR_MESSAGE =
+  IS_LOCAL_DEV
+    ? "Gagal terhubung ke API lokal. Jalankan backend di http://localhost:3000."
+    : "Gagal terhubung ke server API. Pastikan backend aktif atau koneksi internet stabil.";
+const API_BASES = IS_LOCAL_DEV ? [API_BASE] : Array.from(new Set([API_BASE, API_REMOTE_BASE]));
+let activeApiBase = API_BASES[0];
+
+const isNetworkError = (error) => {
+  const message = String(error?.message || "");
+  return error instanceof TypeError || /failed to fetch|networkerror|load failed/i.test(message);
+};
+
+const fetchWithApiFallback = async (path, options = {}) => {
+  const candidates = Array.from(new Set([activeApiBase, ...API_BASES]));
+  let lastError = null;
+
+  for (let index = 0; index < candidates.length; index += 1) {
+    const base = candidates[index];
+    const hasNextCandidate = index < candidates.length - 1;
+    try {
+      const response = await fetch(`${base}${path}`, options);
+      if (hasNextCandidate && [404, 502, 503, 504].includes(response.status)) {
+        continue;
+      }
+      activeApiBase = base;
+      return response;
+    } catch (error) {
+      lastError = error;
+    }
+  }
+
+  throw lastError || new Error("NETWORK_UNREACHABLE");
+};
 
 const formatIDR = (value) =>
   new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR" }).format(value);
@@ -319,6 +381,14 @@ const normalizeText = (value) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
+
+const normalizeAffiliateCode = (value) => String(value || "").trim().toUpperCase();
+const isAffiliateCodeValid = (value) => /^[A-Z0-9-]{6,24}$/.test(normalizeAffiliateCode(value));
+const buildAffiliateLink = (code) => {
+  const normalized = normalizeAffiliateCode(code);
+  if (!normalized) return "";
+  return `${window.location.origin}/?ref=${encodeURIComponent(normalized)}`;
+};
 
 const renderProducts = () => {
   if (!grid) return;
@@ -347,8 +417,13 @@ const renderProducts = () => {
     const priceHtml = hasPromoPrice
       ? `<span class="old-price">${formatIDR(originalPrice)}</span><span class="promo-price">${priceLabel}</span>`
       : `<span class="promo-price">${priceLabel}</span>`;
+    const statusBadgeHtml = product.soldOut
+      ? '<span class="badge badge-soldout">Sold Out</span>'
+      : product.comingSoon
+      ? '<span class="badge badge-comingsoon">Coming Soon</span>'
+      : '<span class="promo-ramadan-badge">Promo Ramadhan</span>';
     card.innerHTML = `
-      ${product.soldOut ? '<span class="badge">SOLD OUT</span>' : product.comingSoon ? '<span class="badge">COMING SOON</span>' : '<span class="promo-ramadan-badge">Promo Ramadhan</span>'}
+      ${statusBadgeHtml}
       <div class="product-image" data-detail="${product.id}">
         <img src="${product.image}" alt="${product.name} ${product.variant}" loading="lazy" />
       </div>
@@ -368,6 +443,49 @@ const renderProducts = () => {
 
     // Event handlers are delegated on the grid to avoid double-firing.
   });
+};
+
+const supportsHoverZoom =
+  typeof window !== "undefined" &&
+  typeof window.matchMedia === "function" &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+let activeZoomImage = null;
+let zoomFrame = null;
+let pendingZoomTarget = null;
+let pendingZoomX = 50;
+let pendingZoomY = 50;
+
+const clampPercent = (value) => Math.max(0, Math.min(100, value));
+
+const flushQueuedProductImageZoom = () => {
+  zoomFrame = null;
+  if (!pendingZoomTarget) return;
+  pendingZoomTarget.style.setProperty("--zoom-x", `${pendingZoomX}%`);
+  pendingZoomTarget.style.setProperty("--zoom-y", `${pendingZoomY}%`);
+  pendingZoomTarget.classList.add("is-zooming");
+};
+
+const resetProductImageZoom = (imageWrap) => {
+  if (!imageWrap) return;
+  if (pendingZoomTarget === imageWrap) {
+    pendingZoomTarget = null;
+  }
+  imageWrap.style.removeProperty("--zoom-x");
+  imageWrap.style.removeProperty("--zoom-y");
+  imageWrap.classList.remove("is-zooming");
+};
+
+const updateProductImageZoom = (imageWrap, event) => {
+  if (!imageWrap || !event) return;
+  const rect = imageWrap.getBoundingClientRect();
+  if (!rect.width || !rect.height) return;
+
+  pendingZoomTarget = imageWrap;
+  pendingZoomX = clampPercent(((event.clientX - rect.left) / rect.width) * 100);
+  pendingZoomY = clampPercent(((event.clientY - rect.top) / rect.height) * 100);
+
+  if (zoomFrame !== null) return;
+  zoomFrame = window.requestAnimationFrame(flushQueuedProductImageZoom);
 };
 
 const updateCartUI = () => {
@@ -445,14 +563,16 @@ const openDetail = (id) => {
     <h3>${product.name} · ${product.variant}</h3>
     <p>${product.description}</p>
     <div>
-      <h4>Benefits</h4>
+      <h4>Research Notes</h4>
       <ul>${product.benefits.map((b) => `<li>${b}</li>`).join("")}</ul>
     </div>
     <div>
       <h4>Storage</h4>
       <p>${product.storage}</p>
     </div>
-    <p class="small">Disclaimer: Produk hanya untuk tujuan riset dan edukasi.</p>
+    <p class="small">For laboratory research purposes only.</p>
+    <p class="small">Not for human consumption.</p>
+    <p class="small">Not intended to diagnose, treat, cure, or prevent any disease.</p>
   `;
   detailModal.classList.add("active");
 };
@@ -472,8 +592,11 @@ const checkoutWhatsApp = (details) => {
     return;
   }
 
-  const affiliate = storage.get("jp_affiliate_code");
-  const affiliateLine = affiliate ? `\nKode afiliasi: ${affiliate}` : "";
+  const affiliateFromInput = normalizeAffiliateCode(details?.affiliateCode);
+  const affiliateFromRef = normalizeAffiliateCode(storage.get("jp_ref_affiliate_code"));
+  const affiliateFromStorage = storage.get("jp_affiliate_code");
+  const affiliate = affiliateFromInput || affiliateFromRef || affiliateFromStorage || "";
+  const affiliateLine = affiliate ? `Kode affiliate: ${affiliate}` : "";
   const lines = items.map(
     (item) => `- ${item.name} ${item.variant} x${item.qty} (${item.price ? formatIDR(item.price) : "Hubungi"})`
   );
@@ -501,6 +624,157 @@ const checkoutWhatsApp = (details) => {
   window.open(url, "_blank");
 };
 
+const setCheckoutFlowMode = (mode = "gateway") => {
+  checkoutFlowMode = mode === "gateway" ? "gateway" : "wa";
+  if (!checkoutSubmitBtn) return;
+  checkoutSubmitBtn.textContent =
+    checkoutFlowMode === "gateway" ? "Tampilkan QRIS" : "Lanjutkan ke WhatsApp";
+};
+
+const getCheckoutDetails = () => ({
+  name: checkoutName?.value.trim(),
+  phone: checkoutPhone?.value.trim(),
+  city: checkoutCity?.value.trim(),
+  postal: checkoutPostal?.value.trim(),
+  address: checkoutAddress?.value.trim(),
+  affiliateCode: normalizeAffiliateCode(checkoutAffiliateCode?.value),
+  notes: checkoutNotes?.value.trim(),
+});
+
+const getCartItemsForGateway = () =>
+  Object.values(cart).map((item) => ({
+    id: item.id,
+    name: `${item.name} ${item.variant}`.trim(),
+    quantity: Number(item.qty || 0),
+    unitPrice: Number(item.price || 0),
+  }));
+
+const closeQrisPaymentModal = () => {
+  if (!qrisPaymentModal) return;
+  qrisPaymentModal.classList.remove("active");
+};
+
+const showQrisPaymentModal = (payload) => {
+  if (!qrisPaymentModal) return;
+
+  const orderNumber = String(payload?.orderNumber || "-");
+  const totalAmount = Number(payload?.totalAmount || 0);
+  const merchant = String(payload?.qris?.merchant || "Joestar Peptide").trim() || "Joestar Peptide";
+  const label =
+    String(payload?.qris?.label || "Scan QRIS, lalu konfirmasi pembayaran ke admin.").trim() ||
+    "Scan QRIS, lalu konfirmasi pembayaran ke admin.";
+  const imageUrl = String(payload?.qris?.imageUrl || "").trim();
+  const isDemo = Boolean(payload?.qris?.isDemo);
+  const whatsappLink = String(payload?.confirmation?.whatsappLink || "").trim();
+
+  if (qrisPaymentOrderNumber) qrisPaymentOrderNumber.textContent = orderNumber;
+  if (qrisPaymentTotal) qrisPaymentTotal.textContent = formatIDR(totalAmount);
+  if (qrisPaymentMerchant) qrisPaymentMerchant.textContent = merchant;
+  if (qrisPaymentLabel) qrisPaymentLabel.textContent = label;
+
+  if (qrisPaymentImage) {
+    if (imageUrl) {
+      qrisPaymentImage.src = imageUrl;
+      qrisPaymentImage.alt = `QRIS ${merchant}`;
+      qrisPaymentImage.hidden = false;
+      if (qrisPaymentImageHint) {
+        qrisPaymentImageHint.textContent = isDemo
+          ? "Ini QRIS DEMO untuk testing tampilan. Jangan transfer uang real."
+          : "Scan QRIS ini menggunakan aplikasi bank/e-wallet.";
+      }
+    } else {
+      qrisPaymentImage.hidden = true;
+      qrisPaymentImage.removeAttribute("src");
+      if (qrisPaymentImageHint) qrisPaymentImageHint.textContent = "QRIS belum tersedia. Hubungi admin.";
+    }
+  }
+
+  if (qrisPaymentConfirmBtn) {
+    qrisPaymentConfirmBtn.disabled = !whatsappLink;
+    qrisPaymentConfirmBtn.onclick = () => {
+      if (!whatsappLink) {
+        showToast("Nomor admin belum dikonfigurasi.");
+        return;
+      }
+      window.open(whatsappLink, "_blank");
+    };
+  }
+  if (qrisPaymentDoneBtn) {
+    qrisPaymentDoneBtn.onclick = closeQrisPaymentModal;
+  }
+
+  qrisPaymentModal.classList.add("active");
+};
+
+const checkoutQris = async (details) => {
+  const items = getCartItemsForGateway();
+  if (!items.length) {
+    throw new Error("Keranjang masih kosong.");
+  }
+
+  const result = await apiFetch("/payments/checkout", {
+    method: "POST",
+    body: JSON.stringify({
+      ...details,
+      items,
+    }),
+  });
+  if (!result?.ok) {
+    throw new Error(result?.message || "Gagal menyiapkan pembayaran QRIS.");
+  }
+
+  Object.keys(cart).forEach((key) => delete cart[key]);
+  updateCartUI();
+  if (checkoutModal) checkoutModal.classList.remove("active");
+  if (checkoutForm) checkoutForm.reset();
+  if (cartDrawer) cartDrawer.classList.remove("active");
+  showQrisPaymentModal(result);
+  showToast(result?.message || "Order dibuat. Silakan scan QRIS.");
+};
+
+const getReturnedOrderNumber = () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    return String(params.get("order") || "").trim();
+  } catch (error) {
+    return "";
+  }
+};
+
+const clearReturnedOrderFromUrl = () => {
+  if (!window.history?.replaceState) return;
+  const params = new URLSearchParams(window.location.search);
+  if (!params.has("order")) return;
+  params.delete("order");
+  const nextQuery = params.toString();
+  const keepHash = /^#reset-/i.test(window.location.hash || "") ? window.location.hash : "";
+  const nextUrl = `${window.location.pathname}${nextQuery ? `?${nextQuery}` : ""}${keepHash}`;
+  window.history.replaceState({}, "", nextUrl);
+};
+
+const handlePaymentReturn = async () => {
+  const orderNumber = getReturnedOrderNumber();
+  if (!orderNumber) return;
+
+  try {
+    const result = await apiFetch(`/payments/status/${encodeURIComponent(orderNumber)}`);
+    const status = String(result?.paymentStatus || "pending");
+    if (status === "paid") {
+      showToast(result.message || "Pembayaran berhasil. Pesanan Anda sedang diproses.");
+    } else if (status === "pending") {
+      showToast(result.message || "Pembayaran masih pending. Silakan selesaikan pembayaran Anda.");
+    } else if (status === "cancelled" || status === "failed") {
+      showToast(result.message || "Pembayaran belum berhasil. Silakan ulangi checkout.");
+    } else {
+      showToast("Status pembayaran sedang diproses.");
+    }
+  } catch (error) {
+    showToast(error.message || "Gagal memuat status pembayaran.");
+  } finally {
+    clearReturnedOrderFromUrl();
+  }
+};
+
 const setActiveTag = (tag) => {
   activeTag = tag;
   document.querySelectorAll(".chip").forEach((chip) => {
@@ -522,13 +796,15 @@ if (tagFilters) tagFilters.addEventListener("click", (event) => {
   setActiveTag(tag === "Supplies" ? "Supplies" : tag);
 });
 
-const openCheckoutModal = () => {
+const openCheckoutModal = (mode = "gateway") => {
   const items = Object.values(cart);
   if (!items.length) {
     showToast("Keranjang masih kosong. Silakan pilih produk terlebih dahulu.");
     return;
   }
   if (!checkoutModal) return;
+  setCheckoutFlowMode(mode);
+  syncCheckoutAffiliateCode();
   checkoutModal.classList.add("active");
 };
 
@@ -536,8 +812,11 @@ if (openCartBtn) openCartBtn.addEventListener("click", () => cartDrawer.classLis
 if (closeCartBtn) closeCartBtn.addEventListener("click", () => cartDrawer.classList.remove("active"));
 if (closeModal) closeModal.addEventListener("click", () => detailModal.classList.remove("active"));
 if (closeCoaModal) closeCoaModal.addEventListener("click", () => coaModal.classList.remove("active"));
-if (checkoutBtn) checkoutBtn.addEventListener("click", openCheckoutModal);
+if (checkoutBtn) checkoutBtn.addEventListener("click", () => openCheckoutModal("gateway"));
+if (gatewayBtn) gatewayBtn.addEventListener("click", () => openCheckoutModal("gateway"));
 if (closeCheckoutModal) closeCheckoutModal.addEventListener("click", () => checkoutModal.classList.remove("active"));
+if (closeQrisPaymentModalBtn) closeQrisPaymentModalBtn.addEventListener("click", closeQrisPaymentModal);
+if (qrisPaymentDoneBtn) qrisPaymentDoneBtn.addEventListener("click", closeQrisPaymentModal);
 if (closeNewsletter) closeNewsletter.addEventListener("click", closeDisclaimer);
 if (closeDisclaimerBtn) closeDisclaimerBtn.addEventListener("click", closeDisclaimer);
 if (closeOtpModal) closeOtpModal.addEventListener("click", closeOtp);
@@ -614,6 +893,38 @@ if (cartItemsEl) cartItemsEl.addEventListener("click", (event) => {
     updateCartUI();
   }
 });
+
+if (grid && supportsHoverZoom) {
+  const clearActiveZoom = () => {
+    if (zoomFrame !== null) {
+      window.cancelAnimationFrame(zoomFrame);
+      zoomFrame = null;
+    }
+    pendingZoomTarget = null;
+    if (!activeZoomImage) return;
+    resetProductImageZoom(activeZoomImage);
+    activeZoomImage = null;
+  };
+
+  grid.addEventListener("pointermove", (event) => {
+    const imageWrap = event.target.closest(".product-image");
+    if (!imageWrap || !grid.contains(imageWrap)) {
+      clearActiveZoom();
+      return;
+    }
+
+    if (activeZoomImage && activeZoomImage !== imageWrap) {
+      resetProductImageZoom(activeZoomImage);
+    }
+    activeZoomImage = imageWrap;
+    updateProductImageZoom(imageWrap, event);
+  });
+
+  grid.addEventListener("pointerleave", clearActiveZoom);
+  grid.addEventListener("pointercancel", clearActiveZoom);
+  window.addEventListener("blur", clearActiveZoom);
+  window.addEventListener("scroll", clearActiveZoom, { passive: true });
+}
 
 document.querySelectorAll("[data-coa-image]").forEach((img) => {
   img.addEventListener("click", () => {
@@ -733,6 +1044,43 @@ const storage = {
   },
 };
 
+const applyReferralFromQuery = () => {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const candidate = params.get("ref") || params.get("aff") || "";
+    const code = normalizeAffiliateCode(candidate);
+    if (!isAffiliateCodeValid(code)) return;
+    storage.set("jp_ref_affiliate_code", code);
+    if (window.history?.replaceState) {
+      params.delete("ref");
+      params.delete("aff");
+      const next = params.toString();
+      const cleanUrl = `${window.location.pathname}${next ? `?${next}` : ""}${window.location.hash}`;
+      window.history.replaceState({}, "", cleanUrl);
+    }
+  } catch (error) {
+    // ignore invalid url params
+  }
+};
+
+const getPreferredAffiliateCode = () => {
+  const fromInput = normalizeAffiliateCode(checkoutAffiliateCode?.value);
+  const fromReferral = normalizeAffiliateCode(storage.get("jp_ref_affiliate_code"));
+  const fromAuth = normalizeAffiliateCode(storage.get("jp_affiliate_code"));
+  const candidates = [fromInput, fromReferral, fromAuth];
+  const preferred = candidates.find((code) => isAffiliateCodeValid(code));
+  return preferred || "";
+};
+
+const syncCheckoutAffiliateCode = () => {
+  if (!checkoutAffiliateCode) return;
+  const code = getPreferredAffiliateCode();
+  checkoutAffiliateCode.value = code || "";
+  if (redeemInput && code && !redeemInput.value.trim()) {
+    redeemInput.value = code;
+  }
+};
+
 const getCookie = (name) => {
   const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
   return match ? decodeURIComponent(match[1]) : "";
@@ -802,8 +1150,11 @@ const decodeJwt = (token) => {
 
 const applyUserToUI = (user) => {
   if (!user) return;
-  affiliateStatus.textContent = user.status || "active";
-  affiliateCodeEl.textContent = user.affiliateCode || "-";
+  if (affiliateStatus) affiliateStatus.textContent = user.status || "active";
+  if (affiliateCodeEl) affiliateCodeEl.textContent = user.affiliateCode || "-";
+  if (affiliateLinkInput) {
+    affiliateLinkInput.value = user.affiliateCode ? buildAffiliateLink(user.affiliateCode) : "";
+  }
   if (accountName) accountName.textContent = user.name || "-";
   if (accountUsername) accountUsername.textContent = user.username || "-";
   if (accountStatus) accountStatus.textContent = user.status || "-";
@@ -812,6 +1163,16 @@ const applyUserToUI = (user) => {
     accountLastLogin.textContent = user.lastLogin
       ? new Date(user.lastLogin).toLocaleString("id-ID")
       : "-";
+  }
+  if (becomeAffiliateBtn) {
+    const canBecome = user.role === "customer" && user.status !== "banned";
+    becomeAffiliateBtn.hidden = !canBecome;
+  }
+  if (affiliateJoinHint) {
+    affiliateJoinHint.textContent =
+      user.role === "customer"
+        ? "Akun Anda masih customer. Klik Aktifkan Affiliate untuk membuat kode affiliate."
+        : "";
   }
 };
 
@@ -834,7 +1195,7 @@ const runSelfCheck = async () => {
   let apiStatus = "unknown";
   let meStatus = "skip";
   try {
-    const health = await fetch(`${API_BASE}/health`);
+    const health = await fetchWithApiFallback("/health");
     apiStatus = health.ok ? "ok" : `err:${health.status}`;
   } catch (error) {
     apiStatus = "down";
@@ -842,7 +1203,7 @@ const runSelfCheck = async () => {
 
   if (token) {
     try {
-      const meResp = await fetch(`${API_BASE}/affiliate/me`, {
+      const meResp = await fetchWithApiFallback("/affiliate/me", {
         headers: { Authorization: `Bearer ${token}` },
       });
       meStatus = meResp.ok ? "ok" : `err:${meResp.status}`;
@@ -851,7 +1212,7 @@ const runSelfCheck = async () => {
     }
   }
 
-  updateAuthDebug({ note: `api:${apiStatus} me:${meStatus}` });
+  updateAuthDebug({ note: `api:${apiStatus} me:${meStatus} base:${activeApiBase}` });
 };
 
 const getStoredUsername = () => {
@@ -872,10 +1233,18 @@ const apiFetch = async (path, options = {}) => {
   const token = getToken();
   if (token) headers.Authorization = `Bearer ${token}`;
 
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    headers,
-  });
+  let response;
+  try {
+    response = await fetchWithApiFallback(path, {
+      ...options,
+      headers,
+    });
+  } catch (error) {
+    if (isNetworkError(error)) {
+      throw new Error(NETWORK_ERROR_MESSAGE);
+    }
+    throw error;
+  }
 
   const text = await response.text();
   let data = {};
@@ -958,8 +1327,15 @@ const renderAffiliateList = (affiliates) => {
 
   affiliateList.innerHTML = affiliates
     .map(
-      (item) => `
-      <div class="admin-row">
+      (item) => {
+        const verified = item.affiliate_code_verified === true;
+        const hasCode = Boolean(item.affiliate_code);
+        const canVerify = hasCode && (item.role === "affiliate" || item.role === "admin");
+        const verificationLabel = !hasCode ? "no-code" : verified ? "verified" : "unverified";
+        const verificationClass = !hasCode ? "status-na" : verified ? "status-ok" : "status-warn";
+
+        return `
+      <div class="admin-row affiliate-row">
         <div>
           <strong>${item.name}</strong>
           <div class="product-meta">${item.username}</div>
@@ -967,6 +1343,7 @@ const renderAffiliateList = (affiliates) => {
         <div>${item.affiliate_code || "-"}</div>
         <div>${item.status}</div>
         <div>${item.role}</div>
+        <div><span class="status-pill ${verificationClass}">${verificationLabel}</span></div>
         <div class="admin-actions">
           <select data-status="${item.id}">
             <option value="active" ${item.status === "active" ? "selected" : ""}>active</option>
@@ -974,15 +1351,30 @@ const renderAffiliateList = (affiliates) => {
             <option value="banned" ${item.status === "banned" ? "selected" : ""}>banned</option>
           </select>
           <select data-role="${item.id}">
+            <option value="customer" ${item.role === "customer" ? "selected" : ""}>customer</option>
             <option value="affiliate" ${item.role === "affiliate" ? "selected" : ""}>affiliate</option>
             <option value="admin" ${item.role === "admin" ? "selected" : ""}>admin</option>
           </select>
+          <input
+            type="text"
+            data-code-input="${item.id}"
+            value="${item.affiliate_code || ""}"
+            placeholder="Custom code"
+          />
           <button class="ghost" data-save="${item.id}">Save</button>
+          <button class="ghost" data-code-save="${item.id}">Set Code</button>
+          <button
+            class="ghost"
+            data-verify="${item.id}"
+            data-verify-state="${verified ? "true" : "false"}"
+            ${canVerify ? "" : "disabled"}
+          >${verified ? "Unverify" : "Verify"}</button>
           <button class="ghost" data-otp="${item.id}">OTP</button>
           <button class="ghost" data-reset="${item.id}">Reset</button>
         </div>
       </div>
-    `
+    `;
+      }
     )
     .join("");
 };
@@ -1063,6 +1455,8 @@ const updateAffiliateUI = async () => {
   if (!token) {
     affiliateStatus.textContent = "Guest";
     affiliateCodeEl.textContent = "-";
+    if (affiliateLinkInput) affiliateLinkInput.value = "";
+    if (redeemHint) redeemHint.textContent = "Masukkan kode affiliate valid untuk dipakai saat checkout.";
     salesTotalEl.textContent = formatIDR(0);
     commissionTotalEl.textContent = formatIDR(0);
     salesList.innerHTML = "<p class=\"product-meta\">Silakan login untuk melihat penjualan.</p>";
@@ -1071,6 +1465,8 @@ const updateAffiliateUI = async () => {
     if (accountStatus) accountStatus.textContent = "-";
     if (accountRole) accountRole.textContent = "-";
     if (accountLastLogin) accountLastLogin.textContent = "-";
+    if (becomeAffiliateBtn) becomeAffiliateBtn.hidden = true;
+    if (affiliateJoinHint) affiliateJoinHint.textContent = "";
     updateAuthDebug({ note: "guest" });
     runSelfCheck();
     return;
@@ -1095,12 +1491,25 @@ const updateAffiliateUI = async () => {
   try {
     const me = await apiFetch("/affiliate/me");
     setCachedUser(me);
-    const code = storage.get("jp_affiliate_code") || me.affiliateCode || "";
+    const code = normalizeAffiliateCode(me.affiliateCode);
+    const codeVerified = me.affiliateCodeVerified === true;
+    storage.set("jp_affiliate_code", code || "");
 
     applyUserToUI(me);
+    if (redeemHint) {
+      redeemHint.textContent =
+        me.role === "customer"
+          ? "Kode referral di sini akan otomatis dipakai saat checkout."
+          : code && !codeVerified
+            ? "Kode affiliate Anda belum diverifikasi admin. Komisi baru aktif setelah verifikasi."
+            : "Dashboard menampilkan penjualan kode affiliate milik akun Anda.";
+    }
 
     if (!code) {
-      salesList.innerHTML = "<p class=\"product-meta\">Masukkan kode redeem untuk melihat penjualan.</p>";
+      salesList.innerHTML =
+        me.role === "customer"
+          ? "<p class=\"product-meta\">Akun Anda masih customer. Daftar sebagai affiliate untuk mendapatkan kode.</p>"
+          : "<p class=\"product-meta\">Kode affiliate belum tersedia. Hubungi admin untuk sinkronisasi kode.</p>";
       salesTotalEl.textContent = formatIDR(0);
       commissionTotalEl.textContent = formatIDR(0);
       updateAuthDebug({ note: `user:${me.username}` });
@@ -1108,7 +1517,7 @@ const updateAffiliateUI = async () => {
       return;
     }
 
-    const salesData = await apiFetch(`/affiliate/sales?code=${encodeURIComponent(code)}`);
+    const salesData = await apiFetch(`/affiliate/sales?code=${encodeURIComponent(code)}&page=1&limit=20`);
     const sales = salesData.sales || [];
     const total = salesData.total || 0;
     const commission = salesData.commissionTotal || Math.round(total * COMMISSION_RATE);
@@ -1142,6 +1551,7 @@ const updateAffiliateUI = async () => {
     if (!getToken()) {
       affiliateStatus.textContent = "Guest";
       affiliateCodeEl.textContent = "-";
+      if (affiliateLinkInput) affiliateLinkInput.value = "";
       salesTotalEl.textContent = formatIDR(0);
       commissionTotalEl.textContent = formatIDR(0);
       if (accountName) accountName.textContent = "-";
@@ -1149,6 +1559,8 @@ const updateAffiliateUI = async () => {
       if (accountStatus) accountStatus.textContent = "-";
       if (accountRole) accountRole.textContent = "-";
       if (accountLastLogin) accountLastLogin.textContent = "-";
+      if (becomeAffiliateBtn) becomeAffiliateBtn.hidden = true;
+      if (affiliateJoinHint) affiliateJoinHint.textContent = "";
     }
     const cached = getCachedUser();
     if (cached) applyUserToUI(cached);
@@ -1199,20 +1611,25 @@ const handleSignup = async (event) => {
   const name = document.getElementById("signupName").value.trim();
   const username = document.getElementById("signupUsername").value.trim();
   const password = document.getElementById("signupPassword").value.trim();
-  const code = document.getElementById("signupCode").value.trim().toUpperCase();
   const phone = document.getElementById("signupPhone").value.trim();
+  const isAffiliate = Boolean(document.getElementById("signupAsAffiliate")?.checked);
 
-  if (!name || !username || !password || !code || !phone) {
+  if (!name || !username || !password || !phone) {
     showToast("Lengkapi semua field signup.");
     return;
   }
   showToast("Memproses signup...");
   try {
-    await apiFetch("/auth/signup", {
+    const payload = { name, username, password, phone, isAffiliate };
+    const result = await apiFetch("/auth/signup", {
       method: "POST",
-      body: JSON.stringify({ name, username, password, redeemCode: code, phone }),
+      body: JSON.stringify(payload),
     });
-    showToast("Akun berhasil dibuat. Silakan login.");
+    showToast(
+      result.affiliateCode
+        ? `Akun berhasil dibuat. Kode affiliate Anda: ${result.affiliateCode}`
+        : "Akun customer berhasil dibuat. Silakan login."
+    );
     signupForm.reset();
   } catch (error) {
     showToast(error.message);
@@ -1221,10 +1638,52 @@ const handleSignup = async (event) => {
 
 const handleRedeem = async (event) => {
   event.preventDefault();
-  const code = redeemInput.value.trim().toUpperCase();
-  if (!code) return;
-  storage.set("jp_affiliate_code", code);
-  await updateAffiliateUI();
+  const code = normalizeAffiliateCode(redeemInput.value);
+  if (!code) {
+    showToast("Masukkan kode affiliate terlebih dahulu.");
+    return;
+  }
+  if (!isAffiliateCodeValid(code)) {
+    showToast("Format kode affiliate tidak valid.");
+    return;
+  }
+
+  try {
+    const result = await apiFetch(`/affiliate/code/${encodeURIComponent(code)}`);
+    if (!result?.valid) {
+      showToast(result?.message || "Kode affiliate tidak ditemukan.");
+      return;
+    }
+
+    storage.set("jp_ref_affiliate_code", code);
+    if (checkoutAffiliateCode) checkoutAffiliateCode.value = code;
+    if (redeemHint) redeemHint.textContent = `Kode ${code} tersimpan untuk checkout berikutnya.`;
+    showToast(`Kode affiliate ${code} siap dipakai untuk checkout.`);
+  } catch (error) {
+    showToast(error.message);
+  }
+};
+
+const handleBecomeAffiliate = async () => {
+  if (!getToken()) {
+    showToast("Silakan login terlebih dahulu.");
+    return;
+  }
+  try {
+    showToast("Mengaktifkan akun affiliate...");
+    const result = await apiFetch("/affiliate/become", { method: "POST" });
+    if (result?.affiliateCode) {
+      storage.set("jp_affiliate_code", normalizeAffiliateCode(result.affiliateCode));
+    }
+    showToast(
+      result?.affiliateCode
+        ? `Akun affiliate aktif. Kode Anda: ${result.affiliateCode}`
+        : "Akun affiliate berhasil diaktifkan."
+    );
+    await updateAffiliateUI();
+  } catch (error) {
+    showToast(error.message);
+  }
 };
 
 const handleLogout = async () => {
@@ -1255,26 +1714,41 @@ const handleNewsletter = (event) => {
 
 if (newsletterForm) newsletterForm.addEventListener("submit", handleNewsletter);
 if (newsletterPopupForm) newsletterPopupForm.addEventListener("submit", handleNewsletter);
+if (checkoutAffiliateCode) {
+  checkoutAffiliateCode.addEventListener("input", () => {
+    checkoutAffiliateCode.value = normalizeAffiliateCode(checkoutAffiliateCode.value);
+  });
+}
 if (checkoutForm) {
-  checkoutForm.addEventListener("submit", (event) => {
+  checkoutForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const details = {
-      name: checkoutName?.value.trim(),
-      phone: checkoutPhone?.value.trim(),
-      city: checkoutCity?.value.trim(),
-      postal: checkoutPostal?.value.trim(),
-      address: checkoutAddress?.value.trim(),
-      notes: checkoutNotes?.value.trim(),
-    };
+    const details = getCheckoutDetails();
 
     if (!details.name || !details.phone || !details.city || !details.postal || !details.address) {
       showToast("Lengkapi nama, nomor WhatsApp, kota, kode pos, dan alamat.");
       return;
     }
+    if (details.affiliateCode && !isAffiliateCodeValid(details.affiliateCode)) {
+      showToast("Format kode affiliate tidak valid.");
+      return;
+    }
+    if (details.affiliateCode) {
+      storage.set("jp_ref_affiliate_code", details.affiliateCode);
+    }
 
-    checkoutWhatsApp(details);
-    checkoutModal.classList.remove("active");
-    checkoutForm.reset();
+    try {
+      if (checkoutFlowMode === "gateway") {
+        showToast("Menyiapkan QRIS...");
+        await checkoutQris(details);
+        return;
+      }
+
+      checkoutWhatsApp(details);
+      checkoutModal.classList.remove("active");
+      checkoutForm.reset();
+    } catch (error) {
+      showToast(error.message || "Checkout pembayaran gagal.");
+    }
   });
 }
 if (loginForm) {
@@ -1287,6 +1761,28 @@ if (signupForm) {
 }
 if (redeemForm) redeemForm.addEventListener("submit", handleRedeem);
 if (logoutBtn) logoutBtn.addEventListener("click", handleLogout);
+if (becomeAffiliateBtn) becomeAffiliateBtn.addEventListener("click", handleBecomeAffiliate);
+if (copyAffiliateLinkBtn) {
+  copyAffiliateLinkBtn.addEventListener("click", async () => {
+    const value = affiliateLinkInput?.value || "";
+    if (!value) {
+      showToast("Link affiliate belum tersedia.");
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(value);
+      showToast("Link affiliate berhasil disalin.");
+    } catch (error) {
+      const temp = document.createElement("textarea");
+      temp.value = value;
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      temp.remove();
+      showToast("Link affiliate berhasil disalin.");
+    }
+  });
+}
 if (otpForm) otpForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   if (!pendingOtpSessionId) {
@@ -1395,6 +1891,8 @@ if (refreshAffiliatesBtn) {
 if (affiliateList) {
   affiliateList.addEventListener("click", async (event) => {
     const saveId = event.target.dataset.save;
+    const setCodeId = event.target.dataset.codeSave;
+    const verifyId = event.target.dataset.verify;
     const otpId = event.target.dataset.otp;
     const resetId = event.target.dataset.reset;
 
@@ -1412,6 +1910,66 @@ if (affiliateList) {
           body: JSON.stringify({ role: roleSelect.value }),
         });
         showToast("Update berhasil.");
+        loadAffiliates();
+      } catch (error) {
+        showToast(error.message);
+      }
+      return;
+    }
+
+    if (setCodeId) {
+      const roleSelect = affiliateList.querySelector(`select[data-role="${setCodeId}"]`);
+      const codeInput = affiliateList.querySelector(`input[data-code-input="${setCodeId}"]`);
+      if (!roleSelect || !codeInput) return;
+      const role = String(roleSelect.value || "").trim();
+      const affiliateCode = normalizeAffiliateCode(codeInput.value);
+      if (!affiliateCode) {
+        showToast("Isi kode affiliate terlebih dahulu.");
+        return;
+      }
+      if (!["affiliate", "admin"].includes(role)) {
+        showToast("Ubah role user ke affiliate/admin sebelum set kode.");
+        return;
+      }
+      try {
+        await apiFetch(`/admin/users/${setCodeId}/affiliate-code`, {
+          method: "PATCH",
+          body: JSON.stringify({ affiliateCode }),
+        });
+        showToast(`Kode affiliate diupdate: ${affiliateCode}`);
+        loadAffiliates();
+      } catch (error) {
+        showToast(error.message);
+      }
+      return;
+    }
+
+    if (verifyId) {
+      const roleSelect = affiliateList.querySelector(`select[data-role="${verifyId}"]`);
+      const codeInput = affiliateList.querySelector(`input[data-code-input="${verifyId}"]`);
+      if (!roleSelect || !codeInput) return;
+      const role = String(roleSelect.value || "").trim();
+      const affiliateCode = normalizeAffiliateCode(codeInput.value);
+      if (!["affiliate", "admin"].includes(role)) {
+        showToast("Role user harus affiliate/admin untuk verifikasi kode.");
+        return;
+      }
+      if (!affiliateCode) {
+        showToast("Set kode affiliate dulu sebelum verifikasi.");
+        return;
+      }
+      const isCurrentlyVerified = String(event.target.dataset.verifyState || "false") === "true";
+      const nextVerifiedState = !isCurrentlyVerified;
+      try {
+        await apiFetch(`/admin/users/${verifyId}/affiliate-verification`, {
+          method: "PATCH",
+          body: JSON.stringify({ verified: nextVerifiedState }),
+        });
+        showToast(
+          nextVerifiedState
+            ? `Kode ${affiliateCode} sudah diverifikasi. Komisi aktif.`
+            : `Verifikasi kode ${affiliateCode} dimatikan. Komisi dihentikan.`
+        );
         loadAffiliates();
       } catch (error) {
         showToast(error.message);
@@ -1440,6 +1998,11 @@ if (affiliateList) {
         showToast(error.message);
       }
     }
+  });
+
+  affiliateList.addEventListener("input", (event) => {
+    if (!event.target?.dataset?.codeInput) return;
+    event.target.value = normalizeAffiliateCode(event.target.value);
   });
 }
 
@@ -1500,7 +2063,7 @@ if (exportAffiliatesBtn) {
     });
     try {
       const token = getToken();
-      const response = await fetch(`${API_BASE}/admin/affiliates/export?${query.toString()}`, {
+      const response = await fetchWithApiFallback(`/admin/affiliates/export?${query.toString()}`, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
       });
       if (!response.ok) {
@@ -1518,7 +2081,7 @@ if (exportAffiliatesBtn) {
       URL.revokeObjectURL(url);
       showToast("Export berhasil.");
     } catch (error) {
-      showToast(error.message);
+      showToast(isNetworkError(error) ? NETWORK_ERROR_MESSAGE : error.message);
     }
   });
 }
@@ -1593,6 +2156,10 @@ function maybeShowDisclaimer() {
   }, 300);
 }
 
+applyReferralFromQuery();
+syncCheckoutAffiliateCode();
+setCheckoutFlowMode("gateway");
+handlePaymentReturn();
 initShop();
 updateCartUI();
 maybeShowDisclaimer();
@@ -1683,7 +2250,7 @@ if (chatForm) {
     chatMessage.value = "";
     pushChatHistory("user", message);
     const typing = addChatBubble("...", "ai");
-    fetch("/.netlify/functions/ai-chat", {
+    fetch("/ai-chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages: chatHistory }),
@@ -1702,6 +2269,42 @@ if (chatForm) {
           "Maaf, koneksi sedang bermasalah. Coba lagi atau hubungi admin lewat WhatsApp.";
         if (typing) typing.textContent = fallback;
       });
+  });
+}
+
+if (paymentVerifyForm) {
+  paymentVerifyForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const orderNumberValue = String(paymentOrderNumber?.value || "").trim();
+    const statusValue = String(paymentStatus?.value || "").trim().toLowerCase();
+    const methodValue = String(paymentMethod?.value || "").trim() || "QRIS";
+    const referenceValue = String(paymentReference?.value || "").trim();
+    const noteValue = String(paymentNote?.value || "").trim();
+
+    if (!orderNumberValue || !statusValue) {
+      showToast("Order number dan status wajib diisi.");
+      return;
+    }
+
+    try {
+      const result = await apiFetch(`/admin/orders/${encodeURIComponent(orderNumberValue)}/payment`, {
+        method: "PATCH",
+        body: JSON.stringify({
+          status: statusValue,
+          method: methodValue,
+          reference: referenceValue || "",
+          note: noteValue || "",
+        }),
+      });
+
+      showToast(`Status pembayaran ${result.paymentStatus || statusValue} tersimpan.`);
+      if (statusValue === "paid") {
+        loadAffiliates();
+      }
+      loadAuditLog();
+    } catch (error) {
+      showToast(error.message);
+    }
   });
 }
 

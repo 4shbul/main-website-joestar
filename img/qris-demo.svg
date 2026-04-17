@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" role="img" aria-label="QRIS Demo">
+  <rect width="900" height="1200" fill="#f6f7fb"/>
+  <rect x="70" y="70" width="760" height="1060" rx="24" fill="#ffffff" stroke="#d8dbe6" stroke-width="4"/>
+  <text x="450" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="52" font-weight="700" fill="#1b1d24">QRIS DEMO</text>
+  <text x="450" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#4d5364">JOESTAR PEPTIDE - TEST ONLY</text>
+
+  <rect x="170" y="250" width="560" height="560" rx="14" fill="#ffffff" stroke="#1b1d24" stroke-width="8"/>
+
+  <rect x="210" y="290" width="120" height="120" fill="#1b1d24"/>
+  <rect x="228" y="308" width="84" height="84" fill="#ffffff"/>
+  <rect x="246" y="326" width="48" height="48" fill="#1b1d24"/>
+
+  <rect x="570" y="290" width="120" height="120" fill="#1b1d24"/>
+  <rect x="588" y="308" width="84" height="84" fill="#ffffff"/>
+  <rect x="606" y="326" width="48" height="48" fill="#1b1d24"/>
+
+  <rect x="210" y="650" width="120" height="120" fill="#1b1d24"/>
+  <rect x="228" y="668" width="84" height="84" fill="#ffffff"/>
+  <rect x="246" y="686" width="48" height="48" fill="#1b1d24"/>
+
+  <g fill="#1b1d24">
+    <rect x="370" y="310" width="24" height="24"/>
+    <rect x="418" y="310" width="24" height="24"/>
+    <rect x="466" y="310" width="24" height="24"/>
+    <rect x="514" y="310" width="24" height="24"/>
+
+    <rect x="370" y="358" width="24" height="24"/>
+    <rect x="418" y="358" width="24" height="24"/>
+    <rect x="466" y="358" width="24" height="24"/>
+    <rect x="514" y="358" width="24" height="24"/>
+
+    <rect x="370" y="406" width="24" height="24"/>
+    <rect x="466" y="406" width="24" height="24"/>
+    <rect x="562" y="406" width="24" height="24"/>
+
+    <rect x="370" y="454" width="24" height="24"/>
+    <rect x="418" y="454" width="24" height="24"/>
+    <rect x="514" y="454" width="24" height="24"/>
+    <rect x="562" y="454" width="24" height="24"/>
+
+    <rect x="370" y="502" width="24" height="24"/>
+    <rect x="418" y="502" width="24" height="24"/>
+    <rect x="466" y="502" width="24" height="24"/>
+    <rect x="562" y="502" width="24" height="24"/>
+
+    <rect x="370" y="550" width="24" height="24"/>
+    <rect x="466" y="550" width="24" height="24"/>
+    <rect x="514" y="550" width="24" height="24"/>
+    <rect x="562" y="550" width="24" height="24"/>
+
+    <rect x="370" y="598" width="24" height="24"/>
+    <rect x="418" y="598" width="24" height="24"/>
+    <rect x="466" y="598" width="24" height="24"/>
+    <rect x="514" y="598" width="24" height="24"/>
+    <rect x="562" y="598" width="24" height="24"/>
+
+    <rect x="370" y="646" width="24" height="24"/>
+    <rect x="418" y="646" width="24" height="24"/>
+    <rect x="514" y="646" width="24" height="24"/>
+    <rect x="562" y="646" width="24" height="24"/>
+
+    <rect x="370" y="694" width="24" height="24"/>
+    <rect x="418" y="694" width="24" height="24"/>
+    <rect x="466" y="694" width="24" height="24"/>
+    <rect x="514" y="694" width="24" height="24"/>
+  </g>
+
+  <rect x="140" y="860" width="620" height="170" rx="18" fill="#fff8de" stroke="#f2d37b" stroke-width="3"/>
+  <text x="450" y="925" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#a06200">DEMO ONLY</text>
+  <text x="450" y="968" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#7e5a1a">JANGAN TRANSFER DANA REAL</text>
+  <text x="450" y="1005" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#7e5a1a">Gunakan untuk testing tampilan checkout</text>
+</svg>
