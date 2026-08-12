@@ -739,11 +739,6 @@ h1, h2, h3, h4 {
   font-size: 1.15rem;
 }
 
-.product-card.ramadan-promo .price {
-  color: #0f6b4b;
-  font-size: 1.2rem;
-}
-
 .price.has-discount {
   display: grid;
   gap: 0.15rem;
@@ -767,35 +762,6 @@ h1, h2, h3, h4 {
   text-align: center;
 }
 
-.product-card.ramadan-promo .primary {
-  background: #0f6b4b;
-  border-color: #0f6b4b;
-}
-
-.product-card.ramadan-promo .ghost {
-  border-color: #0f6b4b;
-  color: #0f6b4b;
-}
-
-.product-card.ramadan-promo .ghost:hover {
-  background: rgba(15, 107, 75, 0.1);
-}
-
-.promo-ramadan-badge {
-  position: absolute;
-  top: 0.9rem;
-  left: 0.9rem;
-  z-index: 4;
-  background: linear-gradient(135deg, #f2d48a, #d8b25f);
-  color: #1d2f25;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  font-weight: 800;
-  text-transform: uppercase;
-  padding: 0.28rem 0.62rem;
-  border-radius: 999px;
-  border: 1px solid rgba(29, 47, 37, 0.18);
-}
 
 .badge {
   position: absolute;

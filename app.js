@@ -407,7 +407,7 @@ const renderProducts = () => {
   filtered.forEach((product) => {
     const isUnavailable = Boolean(product.comingSoon || product.soldOut);
     const card = document.createElement("article");
-    card.className = "product-card ramadan-promo";
+    card.className = "product-card";
     card.dataset.productId = product.id;
 
     const priceLabel = product.price ? formatIDR(product.price) : "Hubungi Kami";
@@ -421,7 +421,7 @@ const renderProducts = () => {
       ? '<span class="badge badge-soldout">Sold Out</span>'
       : product.comingSoon
       ? '<span class="badge badge-comingsoon">Coming Soon</span>'
-      : '<span class="promo-ramadan-badge">Promo Ramadhan</span>';
+      : '';
     card.innerHTML = `
       ${statusBadgeHtml}
       <div class="product-image" data-detail="${product.id}">
