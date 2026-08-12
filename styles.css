@@ -678,21 +678,6 @@ h1, h2, h3, h4 {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.product-card.ramadan-promo {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.98)) padding-box,
-    linear-gradient(145deg, #0c4d3b, #16815f, #d8b25f) border-box;
-  border: 1px solid transparent;
-}
-
-.product-card.ramadan-promo::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(circle at 90% 12%, rgba(216, 178, 95, 0.2), transparent 30%);
-}
-
 .product-image {
   width: 100%;
   height: clamp(260px, 36vw, 320px);
