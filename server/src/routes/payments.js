@@ -32,7 +32,7 @@ const PRODUCT_CATALOG = Object.freeze({
   "ret-5": { name: "Retatrutide 5mg", price: 1150000, available: true },
   "ret-10": { name: "Retatrutide 10mg", price: 1600000, available: true },
   "ret-30": { name: "Retatrutide 30mg", price: 4200000, available: true },
-  "cjc-ipa": { name: "CJC (no dac) + IPA 10mg", price: 1300000, available: false },
+  "cjc-ipa": { name: "CJC (no dac) + IPA 10mg", price: 1300000, available: true },
   "ghk-cu": { name: "GHK-Cu 100mg", price: 1300000, available: true },
   semax: { name: "Semax 10mg", price: 1150000, available: true },
   motsc: { name: "MOTS-c 10mg", price: 1000000, available: true },

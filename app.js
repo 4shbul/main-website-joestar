@@ -46,7 +46,7 @@ const products = [
     description: "Blend peptide untuk riset karakterisasi senyawa di laboratorium.",
     storage: "Simpan 2-8°C.",
     benefits: ["For laboratory research only", "Peptide blend research reference", "Refer to COA per batch"],
-    soldOut: true,
+    soldOut: false,
     comingSoon: false,
   },
   {
